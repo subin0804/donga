@@ -1,0 +1,203 @@
+<!--
+function CateLink(str1, str2){
+	var rStr = String(str1) + String(str2);
+	switch (rStr) {
+		case "11" :	location.href = "/product/product_list.asp?code1=1";	break;
+		case "21" :	location.href = "/product/product_list.asp?code1=2";	break;
+		case "31" :	location.href = "/product/product_list.asp?code1=3";	break;
+		case "41" :	location.href = "/product/product_list.asp?code1=4";	break;
+		case "51" :	location.href = "/product/product_list.asp?code1=5";	break;
+		case "61" :	location.href = "/product/product_list.asp?code1=6";	break;
+		case "71" :	location.href = "/product/product_list.asp?code1=7";	break;
+		case "81" :	location.href = "/product/product_list.asp?code1=8";	break;
+		case "91" :	location.href = "/product/product_list.asp?code1=9";	break;
+
+	}
+}
+function MenuLink(str1, str2){
+	var rStr = String(str1) + String(str2);
+	switch (rStr) {
+		case "01" :	location.href = "/product/new.asp";	break;
+		case "02" :	location.href = "/product/product_brand.asp";	break;
+		case "03" :	location.href = "/product/product_list.asp?code1=1";	break;
+		case "04" :	location.href = "/product/product_list.asp?code1=2";	break;
+		case "05" :	location.href = "/product/product_list.asp?code1=3";	break;
+		case "06" :	location.href = "/product/best.asp";	break;
+		case "07" :	location.href = "/product/sale.asp";	break;
+		case "08" :	location.href = "/community/event/list.asp?t_name=BOARD4";	break;
+		case "09" :	location.href = "/community/blog/list.asp?t_name=BOARD3";	break;
+		case "010" :location.href = "/customer/review/review_list.asp";	break;
+
+		case "11" :	location.href = "/mypage/edit_member.asp";	break;
+		case "12" :	location.href = "/mypage/mileage_list.asp";	break;
+		case "13" :	location.href = "/mypage/order_list.asp";	break;
+		case "14" :	location.href = "/mypage/wish_list.asp";	break;
+		case "15" :	location.href = "/mypage/today_prod.asp";	break;		
+		case "16" :	location.href = "/mypage/myqna_list.asp";	break;
+		case "17" :	location.href = "/mypage/secession.asp";	break;
+		case "18" :	location.href = "/mypage/my_coupon.asp";	break;
+
+
+
+		case "21" :	location.href = "/customer/board/board_list.asp?t_name=BOARD1";	break;
+		case "22" :	location.href = "/customer/faq/faq_list.asp";	break;
+		case "23" :	location.href = "/customer/board/board_list.asp?t_name=BOARD2";	break;
+		case "24" :	location.href = "/customer/counsel/counsel_write.asp";	break;
+		case "25" :	location.href = "/etc/protection_policy.asp";	break;
+		case "26" :	location.href = "/etc/use_info.asp";	break;
+
+		case "31" :	location.href = "/etc/company_info.asp";	break;
+		case "32" :	location.href = "/etc/jaehu.asp?cls=4";	break;
+		case "33" :	location.href = "/etc/jaehu.asp?cls=3";	break;
+	}
+}
+function LinkPage(str1){
+	location.href = "/product/product_list.asp?code1="+str1;
+}
+
+function ProdLinkPage(str1, str2){
+	location.href = "/product/product_list.asp?code1="+str1+"&code2="+str2;
+}
+
+function LinkProductView(pNo){
+	location.href = "/product/product_detail.asp?product_num="+pNo;
+}
+
+function PopWin(url, w, h, sb) {
+	var newWin;
+	var setting = "width="+w+", height="+h+", top=5, left=20, scrollbars="+sb;
+	newWin = window.open (url, "", setting);
+	newWin.focus();
+}
+
+function ZoomImg(str){
+	window.open("/product/zoom_image.asp?product_num="+str,"ZoomImg","width=650, height=680, top=50, left=50, scrollbars=no");
+}
+
+function adjustImageW(target_img, mmWid) {
+//	var newX, newY;
+//	var newHeight, newWidth;
+//	var newImg;
+//	var maxWidth = mmWid;
+//
+//	newImg = new Image();
+//	newImg.src = target_img.src;
+//	imgw = newImg.width;
+//	imgh = newImg.height;
+//
+//	if (imgw > maxWidth) {
+//		newWidth = maxWidth;
+//
+//		target_img.onload = null;
+//		target_img.src = newImg.src;
+//		target_img.width = newWidth;
+//	} else {
+//		newWidth = imgw;
+//		newHeight = imgh;
+//
+//		target_img.onload = null;
+//		target_img.src = newImg.src;
+//		target_img.width = newWidth;
+//		target_img.height = newHeight;
+//	}
+}
+
+function bookmark(){
+	window.external.AddFavorite('http://www.buyhankook.co.kr', ':: 바이한국닷컴 ::')
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function goFaceBook(msg, url, img, sum) {
+	var href = "http://www.facebook.com/sharer.php?s=100&p[images][0]=" + encodeURIComponent(img) + "&p[url]=" + encodeURIComponent(url) + "&p[title]=" + encodeURIComponent(msg)+ "&p[summary]=" + encodeURIComponent(sum);
+	var a = window.open(href, 'facebook', '');
+	if (a) {
+		a.focus();
+	}
+}
+
+function goTwitter(msg, url) {
+	var href = "http://twitter.com/home?status=" + encodeURIComponent(msg) + " " + encodeURIComponent(url);
+	var a = window.open(href, 'twitter', '');
+	if (a) {
+		a.focus();
+	}
+}
+
+// writePop
+function writePop(el) {
+    var temp = $('#' + el); //레이어의 id를 temp변수에 저장
+
+    if(!$('#mask').length) {
+        $("<div/>", {
+            "id": "mask"
+        }).appendTo("body");
+    }
+    $('.popup.write').hide();
+    temp.show();
+    resizePop();
+
+    $('body').on('click', '#mask, .popup .btn-x', function(e) {
+        temp.hide(0, function() {
+            $('#mask').hide(0, function() {
+                $(this).remove();
+            });
+        });
+        e.preventDefault();
+    });
+}
+
+//-->

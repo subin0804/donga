@@ -1,0 +1,661 @@
+@charset "utf-8";
+
+/* reset */
+/* Default */
+* {
+    margin: 0; padding: 0;
+    font: inherit; color: inherit;
+    line-height: 1;
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1.7rem;
+}
+section {
+    padding: 120px 0;
+    min-height: 100vh;
+    position: relative;
+    /* max-height: 108.0rem */
+}
+h1,h2,h3,h4 {font: inherit;margin: 0;padding: 0;}
+
+h2 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+ul, li{
+    list-style:none;
+    margin: 0;padding: 0;
+}
+a {
+    color: inherit; 
+    text-decoration: none;
+}
+button {
+    background: none;
+    border: none;
+    line-height: 1em;
+    cursor: pointer;
+    font: inherit;
+}
+
+.blind {
+    display: block;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+}
+.container {
+    /* border: 1px solid #000; */
+    margin: 0 160px;
+}
+.pin_name {
+    position: absolute;
+    left: 2.5rem;
+    top: 2.5rem;
+}
+
+/* =================================== Header */
+header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 2rem 0;
+    color: #fff;
+}
+header>* {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header.scroll {
+    background: #FFF;
+    color: #000;
+}
+header.scroll h1 a {
+    background-image: url(/img/logo-3.png);
+    
+}
+header h1 a {
+    display: block;
+    background: url(/img/logo-donga.png) no-repeat;
+    height: 3rem;
+    width: 17.8rem;
+    background-position: left top;
+    background-size: 100% auto;
+}
+
+header .dep1 {
+    display: flex;
+    /* position: absolute; */
+    gap: 8rem;
+    font-weight: bold;
+}
+#gnb .dep2, .search_box {
+    display: none;    
+}
+.header_util{
+    display: flex;
+    /* justify-content: space-around; */
+    gap: 1.4rem;
+    font-size: 1.8rem;
+}
+.header_util .lang_wrap ul {
+    display: none;
+}
+.header_util .shop_wrap {
+    padding-left: 0.8rem;
+}
+
+/* =================================== main */
+/* 섹션1 - main_visual */
+.main_visual {height: 100vh;overflow: hidden;}
+.main_swiper {    
+    position: relative;
+    border: 1px solid #000;
+}
+.main_slide_mode {
+    /* border: 3px solid red; */
+    /* background: #000; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    position: absolute;
+    left: 0;
+    bottom: 2rem;
+    z-index: 10;
+    width: 100%;
+    color: #FFF;
+}
+.main_slide_mode .swiper-pagination {
+    position: static;width: auto;
+}
+.main_slide_mode .progress {
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,.5);
+}
+.main_slide_mode .progress .bar {
+    width: 0;
+    border: 1px solid red;
+    height: 0.4rem;
+    background: #fff;
+    animation: slideBar 5s linear;
+    /* transition: all 0.5s; */
+    
+}
+.main_slide_mode .swiper_btn::after {
+    content: "\EA64";
+    font-family: 'remixicon';
+    font-size: 2rem;
+}
+.main_slide_mode .swiper-next {
+    transform: rotate(180deg);
+}
+@keyframes slideBar {
+    0% {width: 0;}
+    100% {width: 100px;}
+}
+    
+
+/* 섹션2 - brand_story */
+.brand_story_wrap {
+    /* aspect-ratio: 1; */
+    
+}
+.brand_story_wrap .brand_container {    
+    background: url(/img/brandstory-1.jpg) no-repeat center;
+    /* background-size: 1760px 660px; */
+    background-size: cover;
+    margin-left: 16rem;
+    color: #fff;
+}
+.brand_story_wrap .brand_story_img {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 15rem;
+    height: 100%;
+    padding: 10rem; 
+    background: rgba(0,0,0,0.4); 
+}
+.brand_story_wrap .brand_conbox {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    
+}
+.brand_story_wrap .brand_conbox p {
+    font-size: 2.4rem;
+    line-height: 1.5em;
+    font-weight: 600;
+}
+.brand_story_wrap .brand_conbox a {
+} 
+.brand_story_wrap ul {
+    display: flex;
+    width: calc(100% + 10rem);
+}
+.brand_story_wrap ul li {
+    flex-grow: 1;
+}
+.brand_story_wrap ul span {
+    display: block;
+    margin-bottom: 3rem;
+    line-height: 2.4rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+.brand_story_wrap ul strong {
+    font-size: 3rem;
+    font-weight: 700;    ;
+}
+
+
+/* 섹션3 - ESG */
+.esg_content {
+    /* border: 2px solid red; */
+    display: flex;
+    position: relative;
+    gap: 10rem;
+    /* padding: 2rem; */
+}
+
+.esg_content>* {
+    /* width: 100%; */
+    flex-shrink: 0;
+}
+.esg_event_left {
+    /* border: 1px solid red; */
+    flex: 4;
+}
+.esg_wrap hgroup {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.esg_wrap h2 {
+    margin-bottom: 2rem;
+}
+.esg_wrap hgroup p {
+    /* margin-bottom: 1rem; */
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+}
+.esg_wrap a {
+    color: rgba(0, 0, 0, 0.5);
+    /* opacity: 1; */
+}
+.preview_swiper {
+    flex: 6;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 1 / 0.8 ;
+    background: lightblue;
+    color: #FFF;
+    font-weight: 700;
+    /* margin-left: 8rem; */
+    /* border: 1px solid red; */
+    
+}
+.preview_swiper .swiper-slide {
+    height: 100%;
+    position: relative;
+}
+.preview_swiper .swiper-slide:nth-child(1) {
+    background: url(/img/esg-environment.jpeg) no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+.preview_swiper .swiper-slide:nth-child(2) {
+    background: url(/img/esg-humanism.jpg);
+    background-size: cover;
+    object-fit: cover;
+}
+.preview_swiper .swiper-slide:nth-child(3) {
+    background: url(/img/esg-safe.jpg);
+    background-size: cover;
+    object-fit: cover;
+}
+.preview_swiper .swiper-slide:nth-child(4) {
+    background: url(/img/esg-low.jpg);
+    background-size: cover;
+    object-fit: cover;
+}
+.preview_swiper .swiper-slide:nth-child(5) {
+    background:url(/img/esg-jeong.jpg);
+    background-size: cover;
+    object-fit: cover;
+}
+.preview_swiper .swiper-slide:nth-child(6) {
+    background: url(/img/esg-csr.jpg);
+    background-size: cover;
+    object-fit: cover;
+}
+
+.esg_content .event_thumb {
+    /* bottom: 3rem; */
+    left: 0;
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 2%;
+}
+.event_thumb span {
+    /* border: 1px solid #000; */
+    margin: 0;
+    width: 29%;
+    height: 10rem;
+    opacity: 1;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.event_thumb span.swiper-pagination-bullet-active {}
+.event_thumb span:nth-child(1) {
+    background: url(/img/esg-environment.jpeg);
+    background-size: cover;
+}
+.event_thumb span:nth-child(2) {
+    background: url(/img/esg-humanism.jpg);
+    background-size: cover;
+}
+.event_thumb span:nth-child(3) {
+    background: url(/img/esg-safe.jpg);
+    background-size: cover;
+}
+.event_thumb span:nth-child(4) {
+    background: url(/img/esg-low.jpg);
+    background-size: cover;
+}
+.event_thumb span:nth-child(5) {
+    background:url(/img/esg-jeong.jpg);
+    background-size: cover;
+}
+.event_thumb span:nth-child(6) {
+    background: url(/img/esg-csr.jpg);
+    background-size: cover;
+}
+.event_thumb span:nth-child(1)::before {
+    content: "환경경영";
+}
+.event_thumb span:nth-child(2)::before {
+    content: "인권경영";
+}
+.event_thumb span:nth-child(3)::before {
+    content: "안전보건경영";
+}
+.event_thumb span:nth-child(4)::before {
+    content: "준법경영";
+}
+.event_thumb span:nth-child(5)::before {
+    content: "정도경영";
+}
+.event_thumb span:nth-child(6)::before {
+    content: "CSR";
+}
+.preview_swiper .hover_bg {
+    position: relative;
+}
+.preview_swiper i {
+    position: absolute;
+    top: 1.6rem;
+    right: 4rem;
+    color: #FFF;
+    font-size: 2.2rem;
+}
+.preview_swiper .hover_text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+    left: 3rem;
+    bottom: 6rem;
+    color: #FFF;
+}
+.preview_swiper .hover_text .e_text2 {
+    line-height: 2.4rem;
+}
+
+
+/* 섹션4 - product */
+.product_wrap {
+    /* height: 102.4rem; */
+    height: 100vh;
+    background: #F7F2EA;
+}
+.product_wrap h2 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+.product_wrap hgroup p {
+    font-size: 2rem;
+    margin-top: 5rem;
+    line-height: 4rem;
+}
+.product_wrap .product_swiper {
+    overflow: hidden;
+    position: relative;
+    right: 0;
+    margin-left: 25%;
+    /* margin-top: 10%; */
+    padding-top: 10rem;
+}
+.product_wrap li {
+    position: relative;
+    width: 46rem;padding: 6.5rem 4rem;
+    height: 37.5rem;
+    display: flex;flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #FFF;
+    border-radius: 10px;
+}
+.product_wrap .p_rank {
+    position: absolute;
+    left: 3rem;
+    top: -5rem;
+}
+.product_wrap .p_rank span { /* rank-label*/
+    position: absolute;
+    left: 3rem;
+    top: 1.6rem;
+    z-index: 100;
+    font-size: 4rem;
+    color: #FFF;
+}
+.product_wrap ul .p_rank img {
+    width: 8rem;
+    height: 8rem;
+}
+.product_wrap li >img { /* product - img */
+    position: absolute;
+    bottom: 2rem;
+    left: 28rem;
+}
+.product_wrap .p_text {
+    line-height: 4rem;
+    margin-left: 4rem;
+}
+.product_wrap .product_swiper strong {
+    display: block;
+    margin-bottom: 2rem;
+    font-size: 3.2rem;
+    font-weight: bold;
+}
+.product_wrap .product_swiper p {    
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+.product_wrap .product_swiper a {
+    bottom: 0;
+    left: 0;
+    padding: .5rem 4rem;
+    color: #034EB4;
+    border: 2px solid #034EB4;   
+}
+.product_wrap .controls {
+    position: absolute;left: 0;top: 0;
+    background: green;
+}
+.product_wrap .container  {
+    /* border: 1px solid #000; */
+    position: relative;
+}
+
+/* 섹션5 - business */
+.business {
+    height: 100vh;
+    padding: 0;
+}
+.business .business_content { 
+    /* height: 100%; */
+    /* width: 100%; */
+}
+
+.business .business_text {
+
+    /* border: 1px solid #000; */
+    display: none;
+}
+.business .business_text p {
+
+}
+.business .business_text span {
+
+}
+
+
+/* 섹션6 - business2 */
+.business2 {
+    height: 100vh;
+}
+.business2_content {
+    border: 1px solid #000;
+    width: 160rem;
+    height: 66rem;
+}
+.business2_content>* { 
+    flex-shrink: 0;
+}
+.business2 .business2_swiper {
+    overflow: hidden;
+    height: 100%;
+    /* background: lightblue; */
+}
+.business2_swiper .swiper-slide {
+
+}
+.business2_swiper .b_con_box {
+    display: flex;
+    height: 100%;
+    gap: 2rem;
+}
+.business2_swiper .img_box {
+    width: 92.4rem;
+    height: 54rem;
+}
+
+
+.business2_swiper .slide_move_3 {
+    border: 5px solid blue;
+}
+
+.business2_swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.business2_swiper .txt_box span {
+
+}
+.business2_swiper .swiper-slide video {
+
+}
+.business2_swiper .swiper-slide image {
+
+}
+
+.business2_content .event2_thumb {
+    
+}
+
+
+/* 섹션7 - news */
+.news {
+    background: #F7F2EA;
+} 
+.news .news_content {
+    /* border: 2px solid red; */
+    /* display: flex; */
+    /* justify-content: space-around; */
+}
+.news .news_content>* {
+
+}
+.news .news_top {
+    position: relative;
+}
+.news .news_top a {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.news .news_img_swiper {
+    /* overflow: hidden; */
+}
+
+.news .news_swiper {
+    /* overflow: hidden; */
+}
+.news .news_below {
+}
+.news ul {
+    /* display: flex; */
+}
+
+
+/* 뉴스 스와이퍼 */
+.news_content {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+}
+.news .news_top  {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    font-size: 1.8rem;
+
+}
+.news_top h2 {
+    /* margin-bottom: 4rem; */
+
+}
+.news_content .view_more {
+
+
+}
+.news_below {
+
+}
+.news_img_swiper {
+    overflow: hidden;
+    padding: 20px 0; 
+    /* height: 400px; */
+}
+.news_img_swiper .swiper-wrapper {
+  /* gap: 10%; */
+  /* align-items: center; */
+}
+.news_img_swiper .swiper-slide {
+    /* width: 290px; */
+    /* height: 230px; */
+  /* opacity: .5; */
+  /* border-radius: 20px; */
+  /* aspect-ratio: 1 / 1; */
+
+  /* height: auto; */
+  /* transition: all 0.5s; */
+}
+.news_img_swiper .swiper-slide .n_img {
+    /* border: 1px solid green; */
+    height: 230px;
+}
+.news_img_swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.news_img_swiper .swiper-slide-active {
+  /* width: 40%; */
+  /* opacity: 1; */
+  /* aspect-ratio: 1 / 0.7; */
+  /* box-shadow: 4px 4px 3px rgba(0,0,0,.5); */
+}
+
+.slide_move_7 {
+    
+}
+.news_text_swiper {
+    overflow: hidden;
+}
+.slide_move_7 .swiper-prev::before {
+    content:'\EA64';
+    font-family: 'remixicon';
+    
+}
+.slide_move_7 .swiper-next::after {
+    content:'\EA6E';
+    font-family: 'remixicon';
+}   

@@ -1,0 +1,4 @@
+@charset "utf-8";
+
+.scroll-area {max-height: 800px !important}
+.scroll-area.height {max-height:1200px; !important}
