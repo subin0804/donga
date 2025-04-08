@@ -46,8 +46,10 @@ const mainSwiper = new Swiper('.main-swiper', {
 
 /* ESG */
 const esgSwiper = new Swiper('.preview_swiper', {
-  autoplay: true,
-  // loop: true,
+  autoplay: {
+    delay: 5000,
+  },
+  loop: true,
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
@@ -113,8 +115,12 @@ const productSwiper = new Swiper('.product_swiper', {
   spaceBetween: 20,
   pagination: {
     el: '.swiper-pagination',
+    type: 'fraction',
   },
-
+  navigation: {
+    nextEl: '.swiper-next',
+    prevEl: '.swiper-prev',
+  },
 })
 
 

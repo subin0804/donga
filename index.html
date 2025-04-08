@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>동아오츠카</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css"./>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
-    <link rel="stylesheet" href="/font/main.css">
+    <link rel="stylesheet" href="./font/main.css">
     <link rel="stylesheet" href="./css/main.css">
 
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-    <script src="/js/main.js" defer></script>
+    <script src="./js/main.js" defer></script>
 </head>
 <body>
     <header id="header">
@@ -113,9 +113,9 @@
         <div class="main_visual">
             <div class="main-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><video src="img/mainvisual-wonhee.mp4" autoplay muted></video></div>
-                    <div class="swiper-slide"><video src="img/mainvisual-taeyeon.mp4" autoplay muted></video></div>
-                    <div class="swiper-slide"><video src="img/mainvisual-cider.mp4" autoplay muted></video></div>
+                    <div class="swiper-slide"><video src="./img/mainvisual-wonhee.mp4" autoplay muted></video></div>
+                    <div class="swiper-slide"><video src="./img/mainvisual-taeyeon.mp4" autoplay muted></video></div>
+                    <div class="swiper-slide"><video src="./img/mainvisual-cider.mp4" autoplay muted></video></div>
                 </div>
                 <div class="main_slide_mode">
                     <div class="swiper-prev swiper_btn"></div>
@@ -136,7 +136,7 @@
             </div>  
             <div class="brand_container">
                 <div class="brand_story_img">
-                    <!-- <img src="/Image/브랜드스토리-회의.jpg" alt=""> CSS 넣기 -->
+                    <!-- <img src="./Image/브랜드스토리-회의.jpg" alt=""> CSS 넣기 -->
                     <div class="brand_conbox">
                         <p>동아오츠카㈜ 창립에서 현재까지, <br> 세계적인 기업으로 거듭나기 위해 노력하겠습니다.</p>
                         <a href="#" class="view_more">View more</a>
@@ -279,18 +279,19 @@
                     <p>소비자의 요구에 맞게 맛과 기능을 함께 제공하는<br> 기능성 음료 시장을 개척해 온 동아오츠카</p>
                 </hgroup>
                 <div class="product_swiper"><!--oveflow: hidden / position-->
+                    <div class="box"></div>
                     <ul class="swiper-wrapper">
                         <li class="swiper-slide"><!--기준부모-->
                             <div class="p_rank">
                                 <span class="rank_num">1</span><!--포지션 left: 20, top : -30-->
-                                <img src="img/rank.webp" alt="">
+                                <img src="./img/rank.webp" alt="">
                             </div>
                             <div>
                                 <strong>포카리스웨트</strong>
                                 <p>체액과 유사한 전해질 농도로<br> 빠른 수분 보충과 밸런스 제공</p>
                             </div>
                             <a href="#">MORE</a>
-                            <img src="img/pocari222.png" alt="">
+                            <img src="./img/pocari222.png" alt="">
                             <!--position rightL 30 / bottome: 30-->
                         </li>
                         <li class="swiper-slide">
@@ -307,7 +308,7 @@
                         </li>
                         <li class="swiper-slide">
                             <div class="p_rank">
-                                <span class="rank_num">2</span>
+                                <span class="rank_num">3</span>
                                 <img src="img/rank.webp" alt="">
                             </div>
                             <div>
@@ -319,7 +320,7 @@
                         </li>
                         <li class="swiper-slide">
                             <div class="p_rank">
-                                <span class="rank_num">2</span>
+                                <span class="rank_num">4</span>
                                 <img src="img/rank.webp" alt="">
                             </div>
                             <div>
@@ -331,7 +332,7 @@
                         </li>
                         <li class="swiper-slide">
                             <div class="p_rank">
-                                <span class="rank_num">2</span>
+                                <span class="rank_num">5</span>
                                 <img src="img/rank.webp" alt="">
                             </div>
                             <div>
@@ -343,7 +344,7 @@
                         </li>
                         <li class="swiper-slide">
                             <div class="p_rank">
-                                <span class="rank_num">2</span>
+                                <span class="rank_num">6</span>
                                 <img src="img/rank.webp" alt="">
                             </div>
                             <div>
@@ -391,7 +392,11 @@
                         </li>
  
                     </ul>
-                    <!-- <div class="swiper-pagination"></div> -->                    
+                    <div class="controls">
+                        <div class="swiper-prev"></div>
+                        <div class="swiper-pagination"></div> 
+                        <div class="swiper-next"></div>
+                    </div>                   
                 </div>
             </div>
         </section>
@@ -516,7 +521,7 @@
                         <span>고객의 건강을 생각하는 동아오츠카의 최근 소식을 전해드립니다.</span>
                         <a href="#" class="view_more">View more</a>
                     </div>
-                    <div class="news_below">                        
+                    <div class="news_below">                      
                         <div class="news_img_swiper">
                             <ul class="swiper-wrapper">
                                 <li class="swiper-slide">
@@ -658,7 +663,7 @@
         <div class="container">
             <div class="footer_lnfo">
                 <a href="#">
-                    <img src="/Image/동아오츠카 로고111.png" alt="">
+                    <img src="./Image/동아오츠카 로고111.png" alt="">
                 </a>
                 <div>
                     <address>
