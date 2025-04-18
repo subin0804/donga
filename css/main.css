@@ -14,13 +14,18 @@ html {
 }
 body {
     font-family: 'Pretendard', sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 }
 section {
     padding: 12.0rem 0;
     min-height: 100vh;
     position: relative;
     /* max-height: 108.0rem */
+}
+.container {
+    padding: 0 16.0rem;
+    /* border: 1px solid #000; */
+    /* margin: 0 16.0rem; */
 }
 h1,h2,h3,h4 {font: inherit;margin: 0;padding: 0;}
 
@@ -51,15 +56,37 @@ button {
     width: 1px;
     height: 1px;
 }
-.container {
-    /* border: 1px solid #000; */
-    margin: 0 16.0rem;
-}
+
 .pin_name {
     position: absolute;
     left: 2.5rem;
     top: 2.5rem;
+    font-size: 1.3rem;
+    color: #8b8b8b;
 }
+/* .ri-arrow-right-up-long-line {
+    font-size: 1.4rem;
+    padding-left: .2rem;
+    padding: 0 0 0 auto;
+    margin: 0;
+    border: 1px solid #000;
+} */
+ .view_more::after {
+    content: "\F5DE";
+    font-family: 'remixicon';
+    font-size: 1.5rem;
+    /* border: 1px solid #000; */
+ }
+
+ @media screen and (max-width: 500px) {
+    section {
+        padding: 3rem 1rem;
+    }
+    .container {
+        padding: 0;
+    }
+ }
+    
 
 /* =================================== Header */
 header {
@@ -68,21 +95,15 @@ header {
     right: 0;
     z-index: 9999;
     padding: 2rem 0;
+    /* padding: 0;
+    height: 4rem; */
     color: #fff;
 }
+
 header>* {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-header.scroll {
-    background: #FFF;
-    color: #000;
-}
-header.scroll h1 a {
-    background-image: url(../img/logo-3.png);
-    border: 1px solid #000;
-    
 }
 header h1 a {
     display: block;
@@ -92,15 +113,60 @@ header h1 a {
     background-position: left top;
     background-size: 100% auto;
 }
+header.scroll {
+    background: #FFF;
+    color: #000;
+}
+header.scroll h1 a {
+    background-image: url(../img/2donga-logo2.png);
+    object-fit: cover;
+    /* background-image: url(../img/logo-donga.png); */
+    /* border: 1px solid #000; */
+    
+}
 
+/* ------------------- gnb */
 header .dep1 {
     display: flex;
     /* position: absolute; */
     gap: 8rem;
     font-weight: bold;
 }
-#gnb .dep2, .search_box {
-    display: none;    
+
+/* header 오버 시 높이 커짐 */
+header:hover {
+    height: 20rem; /* 원하는 만큼 확장 */
+    transition: height 0.3s ease;
+    overflow: hidden; /* 안쪽 내용 넘치지 않게 */
+  }
+  
+  /* dep2 기본 숨김 */
+  #gnb .dep2 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    color: #000;
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+  
+  /* header 오버 시 dep2 보임 */
+  header:hover .dep2 {
+    display: block;
+  }
+  
+  /* 기준점 필요 */
+  header .dep1 > li {
+    position: relative;
+  }
+  
+  
+
+header .search_box {
+    display: none;
 }
 .header_util{
     display: flex;
@@ -114,13 +180,44 @@ header .dep1 {
 .header_util .shop_wrap {
     padding-left: 0.8rem;
 }
+header .header_menu {
+    display: none;
+}
+
+@media screen and (max-width: 1140px) {
+    .container {
+        padding: 0 2rem;
+    }
+    header {
+        /* padding: 0; */
+
+    }
+    #gnb {
+        display: none;
+    }
+}
+@media screen and (max-width: 500px) {
+    header .dep1 {
+        display: none;
+    }
+    header .search_wrap, .shop_wrap {
+        display: none;
+    }
+    header .header_menu {
+        display: block;
+    }
+}
 
 /* =================================== main */
 /* 섹션1 - main_visual */
 .main_visual {height: 100vh;overflow: hidden;}
+.main_visual .swiper-wrapper>span {
+    font-size: 5rem;
+
+}
 .main_swiper {    
     position: relative;
-    border: 1px solid #000;
+    border: 1px solid gold;
 }
 .main_slide_mode {
     /* border: 3px solid red; */
@@ -182,10 +279,9 @@ header .dep1 {
 .brand_story_wrap .brand_story_img {
     display: flex;
     flex-direction: column;
-  
     gap: 15rem;
     height: 100%;
-    padding: 10rem; 
+    padding: 8rem ; 
     background: rgba(0,0,0,0.4); 
 }
 .brand_story_wrap .brand_conbox {
@@ -199,8 +295,7 @@ header .dep1 {
     line-height: 1.5em;
     font-weight: 600;
 }
-.brand_story_wrap .brand_conbox a {
-} 
+.brand_story_wrap .brand_conbox a {} 
 .brand_story_wrap ul {
     display: flex;
     width: calc(100% + 10rem);
@@ -217,13 +312,55 @@ header .dep1 {
 }
 .brand_story_wrap ul strong {
     font-size: 3rem;
-    font-weight: 700;    ;
+    font-weight: 700;    
+}
+
+@media screen and (max-width: 500px) {
+    .brand_story_wrap .brand_container {
+        margin: 0;
+    }
+    .brand_story_wrap .brand_conbox p {
+        font-size: 1.8rem;
+        line-height: 1.4em;
+        font-weight: 600;
+    }
+    .brand_story_wrap .brand_conbox p br {
+        display: none;
+    }
+    .pin_name {
+        display: none;
+    }
+    .brand_story_wrap ul {
+        /* width: calc(100% + 10rem); */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        height: auto;
+        overflow: hidden;
+    }
+    .brand_story_wrap ul li {
+    }
+    .brand_story_wrap ul span {
+        display: block;
+        margin: 2rem 0;
+        font-weight: 500;
+        opacity: 0.8;
+        font-size: 1.4rem;
+        /* text-align: center; */
+    }
+    .brand_story_wrap ul span br {
+        /* display: none; */
+    }
+    .brand_story_wrap ul strong {
+        font-size: 2rem;
+        font-weight: 700;    
+        /* text-align: center; */
+    }
 }
 
 
 /* 섹션3 - ESG */
 .esg_content {
-    /* border: 2px solid red; */
     display: flex;
     position: relative;
     gap: 10rem;
@@ -418,6 +555,33 @@ header .dep1 {
     content: "CSR";
 }
 
+@media screen and (max-width: 500px) {
+    .esg_content {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        gap: 25rem;
+        /* padding: 2rem; */
+    }
+    .esg_wrap hgroup {
+       
+    }
+    .esg_content .event_thumb {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #000;
+        gap: 2rem 2%;
+        
+    }
+    .esg_content .event_thumb span {
+        /* position: absolute; */
+    }
+}
+
+
 /* 섹션4 - product */
 .product_wrap {
     /* height: 102.4rem; */
@@ -469,8 +633,8 @@ header .dep1 {
 }
 .product_wrap .p_rank span { /* rank-label*/
     position: absolute;
-    left: 3rem;
-    top: 1.6rem;
+    left: 2.9rem;
+    top: 2rem;
     z-index: 100;
     font-size: 4rem;
     color: #FFF;
@@ -508,19 +672,24 @@ header .dep1 {
 .product_wrap .controls {
     position: absolute;left: 0;bottom: 0; z-index: 50;
     /* border: 1px solid #000; */
-    display: flex;gap: 20px;
+    display: flex;gap: 2rem;
     align-items: center;
 }
 .product_wrap .controls>* {
     position: static;
 }
 
-.product_wrap .controls .swiper-prev::after {
+.product_wrap .controls .swiper-mode4::after {
     content:"\EA64";
     font-family: 'remixicon';
-    font-size: 3rem;
-    border: 1px solid green;
-    margin: 0;position: static;
+    font-size: 2.4rem;
+    color: #6e6e6e;
+    margin: 0;
+    position: static;
+    /* border: 1px solid green; */
+}
+.product_wrap .controls .swiper-next {
+    transform: rotate(180deg);
 }
 .product_wrap .container  {
     /* border: 1px solid #000; */
@@ -528,171 +697,200 @@ header .dep1 {
 }
 
 /* 섹션5 - business */
+
+
+
 .business {
+    position: relative;
     height: 100vh;
-    padding: 0;
-}
-.business .business_content { 
-    /* height: 100%; */
-    /* width: 100%; */
-}
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .business video {
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    object-fit: cover;
+    transform: scale(1);
+    transform-origin: center center;
+    will-change: transform;
+    transition: transform 0.3s ease;
+  }
+  
+  .business_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(20px);
+    opacity: 0;
+    color: white;
+    text-align: center;
+    transition: all 0.3s ease;
+    will-change: opacity, transform;
+  }
+  
 
-.business .business_text {
-    /* border: 1px solid #000; */
-    display: none;
-}
-.business .business_text p {
-
-}
-.business .business_text span {
-
-}
 
 
 /* 섹션6 - business2 */
 .business2 {
     height: 90rem;
+    width: 192.0rem;
 }
 .business2_content {
-    border: 1px solid red;
+    position: relative;
     width: 160rem;
-    height: 66rem;
+    height: 54rem;
+    /* border: 1px solid red; */
 }
-.business2_content>* { 
-    flex-shrink: 0;
+
+.business2_content h2 {
+    position: absolute;
 }
+.business2_content .view_more {
+    position: absolute;
+    bottom: 15%;
+    border: 1px solid #000;
+    padding: 1.6rem;
+
+
+}
+
 .business2 .business2_swiper {
-    background: lightblue;
-    border: 2px solid blue;
     overflow: hidden;
     height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    
 }
 .business2_swiper .swiper-slide {
- 
+    height: 100%;
+    width: 100%;
 }
 .business2_swiper .b_con_box {
     display: flex;
+    gap: 4rem;
+    /* gap: 2rem; */
     height: 100%;
-    gap: 2rem;
-    /* border: 3px solid gold;  */
+    width: 100%;
+    
 }
 .business2_swiper .txt_box {
-    width: 35%;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;   
+
+    opacity: 0;  /* 기본적으로 숨기기 */
+    transition: opacity 1s ease-in-out;  /* 부드럽게 fade */
 }
+.business2_swiper .txt_box span {
+    display: block; 
+    position: absolute;
+    top: 30%;
+    width: 40%;
+    line-height: 3rem;
+}
+
+/* swiper에서 활성화된 슬라이드에 대해 텍스트 보이도록 설정 */
+.business2_swiper .swiper-slide-active .txt_box {
+    opacity: 1;  /* 활성화된 슬라이드에서 텍스트 보이기 */
+}
+
 .business2_swiper .img_box {
-    width: 65%;
-    height: 66rem;
+    /* position: relative; */
+    overflow: hidden;
+    width: 60%;
+    height: 100%;
+    /* height: 66rem; */
+    transition: opacity 2s ease-in-out; /* 부드러운 전환 효과 */
 }
 .business2_swiper img {
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
-
-.business2_swiper .slide_move_3 {
-    border: 5px solid blue;
-}
-
-.business2_swiper .swiper-slide img {
+.business2_swiper video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.business2_swiper .txt_box span {
-
-}
-.business2_swiper .swiper-slide video {
-
-}
-.business2_swiper .swiper-slide image {
-
-}
-
-.business2_content .event2_thumb {
+.business2_content .slide_move_3 {
     
 }
+.business2_content .event2_thumb {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    /* height: auto; */
+    width: auto;
+}
+.business2_content .num {
+    /* position: static; */
+} 
+.swiper-pagination .custom_pagination_wrap {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+.custom_pagination_wrap .progress {
+    width: 20rem;
+    height: 0.4rem;
+    background: rgba(255,255,255,.5);
+    position: relative;
+  }
+  
+.custom_pagination_wrap .bar {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    animation: slideBar 3s linear infinite;
+  }
+.business2_swiper .swiper-slide-active .txt_box {
+    opacity: 1;  /* 활성화된 슬라이드에서만 텍스트가 보이도록 설정 */
+}
+
+
+
+
 
 
 /* 섹션7 - news */
 .news {
     background: #F7F2EA;
 } 
-.news .news_content {
-    /* border: 2px solid red; */
-    /* display: flex; */
-    /* justify-content: space-around; */
-}
-.news .news_content>* {
-
+.news .news_content>* {}
+.news_content {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
 }
 .news .news_top {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.8rem;
 }
 .news .news_top a {
     position: absolute;
     right: 0;
     top: 0;
 }
-.news .news_img_swiper {
-    /* overflow: hidden; */
-}
-
-.news .news_swiper {
-    /* overflow: hidden; */
-}
-.news .news_below {
-}
-.news ul {
-    /* display: flex; */
-}
-
-
-/* 뉴스 스와이퍼 */
-.news_content {
-    display: flex;
-    flex-direction: column;
-    gap: 10rem;
-}
-.news .news_top  {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
-    font-size: 1.8rem;
-
-}
-.news_top h2 {
-    /* margin-bottom: 4rem; */
-
-}
-.news_content .view_more {
-
-
-}
-.news_below {
-
-}
 .news_img_swiper {
+    position: relative;
+    /* display: flex; */
     overflow: hidden;
     padding: 20px 0; 
-    /* height: 400px; */
 }
-.news_img_swiper .swiper-wrapper {
-  /* gap: 10%; */
-  /* align-items: center; */
-}
-.news_img_swiper .swiper-slide {
-    /* width: 290px; */
-    /* height: 230px; */
-  /* opacity: .5; */
-  /* border-radius: 20px; */
-  /* aspect-ratio: 1 / 1; */
-
-  /* height: auto; */
-  /* transition: all 0.5s; */
+.news_img_swiper a {
+    
 }
 .news_img_swiper .swiper-slide .n_img {
-    /* border: 1px solid green; */
     height: 23.0rem;
 }
 .news_img_swiper .swiper-slide img {
@@ -700,25 +898,61 @@ header .dep1 {
     height: 100%;
     object-fit: cover;
 }
-.news_img_swiper .swiper-slide-active {
-  /* width: 40%; */
-  /* opacity: 1; */
-  /* aspect-ratio: 1 / 0.7; */
-  /* box-shadow: 4px 4px 3px rgba(0,0,0,.5); */
-}
-
-.slide_move_7 {
-    
-}
 .news_text_swiper {
     overflow: hidden;
+    /* display: none; */
+    text-align: center;
+    
+}
+.news_text_swiper p {
+    margin-bottom: 3rem;
 }
 .slide_move_7 .swiper-prev::before {
     content:'\EA64';
     font-family: 'remixicon';
+    position: absolute;
+    top: 50%;
+    right: 58.5%;
+    border: 1px solid #000;
+    border-radius: 50%;
+    padding: .4rem;
+    z-index: 10;
+    /* background: gold; */
+    /* justify-content: center;
+    align-items: center;
+    background: #000; */
     
 }
 .slide_move_7 .swiper-next::after {
     content:'\EA6E';
     font-family: 'remixicon';
+    position: absolute;
+    top: 50%;
+    left: 58.5%;
+    border: 1px solid #000;
+    border-radius: 50%;
+    padding: .4rem;
+    z-index: 10;
+    /* background: blue; */
 }   
+
+
+/* footer */
+footer {
+    /* display: flex; */
+    height: auto;
+    background: #323131;
+    padding: 4rem 0;
+}
+/* footer>* {
+    width: 50%;
+} */
+footer .footer_lnfo {
+    display: flex;
+    justify-content: space-between;
+}
+footer img {
+    width: 20rem;
+    height: auto;
+    /* object-fit: cover; */
+}
