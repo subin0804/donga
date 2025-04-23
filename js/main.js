@@ -1,6 +1,9 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
+
+
+
 // 헤더
 window.addEventListener('scroll' ,function() {
   if(window.scrollY > 10) {
@@ -10,18 +13,94 @@ window.addEventListener('scroll' ,function() {
     header.classList.remove('scroll')
   }
 })
-// 헤더 메뉴
-// const header = document.querySelector('header')
-// const gnbDep1 = document.querySelectorAll('#gnb .dep1>li')
 
-// gnbDep1.forEach(function(item) {
-//   item.addEventListener('mouseover', function() {
-//     header.classList.add('scroll')
-//   })
-//   item.addEventListener('mouseout', function() {
-//     header.classList.remove('scroll')
-//   })
-// })
+
+// 헤더 메뉴
+
+  // const header = document.querySelector('#header');
+  // const gnb = document.querySelector('#gnb');
+
+
+  // gnb.addEventListener('mouseenter', () => {
+  //   header.classList.add('on');
+  // });
+  // gnb.addEventListener('mouseleave', () => {
+  //   header.classList.remove('on');
+  // });
+
+
+  // const header = document.querySelector('header');
+
+  // header.addEventListener('mouseenter', () => {
+  //   header.classList.add('on');
+  // });
+  
+  // header.addEventListener('mouseleave', () => {
+  //   header.classList.remove('on');
+  // });
+
+  const header = document.querySelector('header');
+  const menuItems = document.querySelectorAll('header #gnb .dep1 > li');
+  const dep2Links = document.querySelectorAll('header .dep2 a');
+  
+  // 메뉴 hover 시 열기
+  menuItems.forEach((item) => {
+    item.addEventListener('mouseenter', function () {
+      header.classList.add('on');
+      this.classList.add('over');
+    });
+  
+    item.addEventListener('mouseleave', function () {
+      this.classList.remove('over');
+    });
+  });
+  
+  // dep2 클릭 시 닫기
+  dep2Links.forEach(link => {
+    link.addEventListener('click', () => {
+      header.classList.remove('on');
+      menuItems.forEach(item => item.classList.remove('over'));
+    });
+  });
+  
+  // header 전체에서 마우스 빠져나가면 닫기
+  header.addEventListener('mouseleave', function (e) {
+    if (!header.contains(e.relatedTarget)) {
+      header.classList.remove('on');
+      menuItems.forEach(item => item.classList.remove('over'));
+    }
+  });
+  
+  
+
+  // const ex1 = document.querySelector('header');
+	// 		const menuItems = document.querySelectorAll('header #gnb .dep1>li');
+
+	// 		menuItems.forEach((item) => {
+	// 			item.addEventListener('mouseover', function () {
+	// 				ex1.classList.add('on');
+	// 				this.classList.add('over');
+	// 			});
+
+	// 			item.addEventListener('mouseout', function () {
+	// 				ex1.classList.remove('on');
+	// 				this.classList.remove('over');
+	// 			});
+	// 		});
+  
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
 
 
 
