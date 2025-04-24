@@ -61,34 +61,99 @@ utilBtn.addEventListener('click', function() {
   }
 })
 
-/* 헤더 검색 */
-const searchBtn = document.querySelector('.search_wrap')
-const searchBox = document.querySelector('.search_box')
+/* ************ 헤더 검색 */
+const searchBtn = document.querySelector('.search_wrap');
+const searchBox = document.querySelector('.search_box');
 
+let searchTimer = null; // 닫힘 지연 타이머
+
+// 처음엔 숨김
 searchBox.style.display = 'none';
-searchBtn.addEventListener('click', function() {
-  if(searchBox.style.display === 'none') {
-    searchBox.style.display = 'block'
-    console.log('none')
-  } else {
-    searchBox.style.display = 'none'
+
+// 마우스를 search_wrap에 올리면 보이게
+searchBtn.addEventListener('mouseenter', () => {
+  clearTimeout(searchTimer); // 이전 타이머 제거
+  searchBox.style.display = 'block';
+});
+
+// search_wrap에서 마우스를 떼면 타이머로 지연 닫기 시도
+searchBtn.addEventListener('mouseleave', () => {
+  searchTimer = setTimeout(() => {
+    searchBox.style.display = 'none';
+  }, 200); // 200ms 동안 searchBox로 진입할 기회 줌
+});
+
+// searchBox에 마우스 들어오면 닫힘 취소
+searchBox.addEventListener('mouseenter', () => {
+  clearTimeout(searchTimer); // 타이머 삭제
+  searchBox.style.display = 'block';
+});
+
+// searchBox에서도 마우스 벗어나면 닫기
+searchBox.addEventListener('mouseleave', () => {
+  searchBox.style.display = 'none';
+});
+
+
+// 마우스를 menuBox 위에 올리면 그대로 유지
+searchBox.addEventListener('mouseenter', () => {
+  searchBox.style.display = 'block';
+});
+
+// menuBox에서 마우스가 벗어났을 때 닫음
+searchBox.addEventListener('mouseleave', (e) => {
+  // 만약 마우스가 menuBtn으로 되돌아가는 경우는 닫지 않음
+  if (!searchBtn.contains(e.relatedTarget)) {
+    searchBox.style.display = 'none';
   }
-})
+});
+
+// *********** 클릭하면 열리는 이벤트리스너.
+// searchBox.style.display = 'none';
+// searchBtn.addEventListener('click', function() {
+//   if(searchBox.style.display === 'none') {
+//     searchBox.style.display = 'block'
+//     console.log('none')
+//   } else {
+//     searchBox.style.display = 'none'
+//   }
+// })
 
 
-/* 사이트맵 */
-const menuBtn = document.querySelector('.header_menu')
-const menuBox = document.querySelector('.header_menu_popup')
 
+// ************** 사이트맵
+const menuBtn = document.querySelector('.header_menu');
+const menuBox = document.querySelector('.header_menu_popup');
+
+let menuTimer = null; // 닫힘 지연 타이머
+
+// 처음엔 숨김
 menuBox.style.display = 'none';
-menuBtn.addEventListener('click', function() {
-  if(menuBox.style.display === 'none') {
-    menuBox.style.display = 'block'
-    console.log('none')
-  } else {
-    menuBox.style.display = 'none'
-  }
-})
+
+// 마우스를 menuBtn 위에 올리면 menuBox 보여줌
+menuBtn.addEventListener('mouseenter', () => {
+  clearTimeout(menuTimer); // 타이머 제거
+  menuBox.style.display = 'block';
+});
+
+// menuBtn에서 마우스를 떼면, menuBox로 이동할 시간 부여
+menuBtn.addEventListener('mouseleave', () => {
+  menuTimer = setTimeout(() => {
+    menuBox.style.display = 'none';
+  }, 200); // 200ms 안에 menuBox 진입하면 안 닫힘
+});
+
+// menuBox에 마우스 들어오면 닫힘 취소
+menuBox.addEventListener('mouseenter', () => {
+  clearTimeout(menuTimer);
+  menuBox.style.display = 'block';
+});
+
+// menuBox에서 마우스 벗어나면 닫힘
+menuBox.addEventListener('mouseleave', () => {
+  menuBox.style.display = 'none';
+});
+
 
 
 
