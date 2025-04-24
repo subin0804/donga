@@ -1,6 +1,11 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
+console.log('innerWidth:', window.innerWidth);
+console.log('devicePixelRatio:', window.devicePixelRatio);
+
+
+
 
 
 
@@ -61,51 +66,22 @@ utilBtn.addEventListener('click', function() {
   }
 })
 
-/* ************ 헤더 검색 */
-const searchBtn = document.querySelector('.search_wrap');
-const searchBox = document.querySelector('.search_box');
+/* 헤더 검색 */
+const searchBtn = document.querySelector('.search_wrap')
+const searchBox = document.querySelector('.search_box')
 
-let searchTimer = null; // 닫힘 지연 타이머
-
-// 처음엔 숨김
+// *********** 마우스 가져다대면 열림.
+// 처음엔 검색 박스를 숨겨둠
 searchBox.style.display = 'none';
 
-// 마우스를 search_wrap에 올리면 보이게
+// 마우스를 올리면 검색 박스를 보여줌
 searchBtn.addEventListener('mouseenter', () => {
-  clearTimeout(searchTimer); // 이전 타이머 제거
   searchBox.style.display = 'block';
 });
 
-// search_wrap에서 마우스를 떼면 타이머로 지연 닫기 시도
+// 마우스가 벗어나면 다시 숨김
 searchBtn.addEventListener('mouseleave', () => {
-  searchTimer = setTimeout(() => {
-    searchBox.style.display = 'none';
-  }, 200); // 200ms 동안 searchBox로 진입할 기회 줌
-});
-
-// searchBox에 마우스 들어오면 닫힘 취소
-searchBox.addEventListener('mouseenter', () => {
-  clearTimeout(searchTimer); // 타이머 삭제
-  searchBox.style.display = 'block';
-});
-
-// searchBox에서도 마우스 벗어나면 닫기
-searchBox.addEventListener('mouseleave', () => {
   searchBox.style.display = 'none';
-});
-
-
-// 마우스를 menuBox 위에 올리면 그대로 유지
-searchBox.addEventListener('mouseenter', () => {
-  searchBox.style.display = 'block';
-});
-
-// menuBox에서 마우스가 벗어났을 때 닫음
-searchBox.addEventListener('mouseleave', (e) => {
-  // 만약 마우스가 menuBtn으로 되돌아가는 경우는 닫지 않음
-  if (!searchBtn.contains(e.relatedTarget)) {
-    searchBox.style.display = 'none';
-  }
 });
 
 // *********** 클릭하면 열리는 이벤트리스너.
@@ -121,38 +97,32 @@ searchBox.addEventListener('mouseleave', (e) => {
 
 
 
-// ************** 사이트맵
-const menuBtn = document.querySelector('.header_menu');
-const menuBox = document.querySelector('.header_menu_popup');
 
-let menuTimer = null; // 닫힘 지연 타이머
+// 메뉴 관련 요소 선택
+const menuBtn = document.querySelector('.header_menu'); // 햄버거 아이콘
+const menuBox = document.querySelector('.header_menu_popup'); // 사이트맵 팝업
+const menuClose = document.querySelector('.header_menu_popup .ri-close-line'); // 닫기 아이콘
 
-// 처음엔 숨김
+// 처음엔 팝업 숨김
 menuBox.style.display = 'none';
 
-// 마우스를 menuBtn 위에 올리면 menuBox 보여줌
-menuBtn.addEventListener('mouseenter', () => {
-  clearTimeout(menuTimer); // 타이머 제거
+// 햄버거 버튼 클릭 시 사이트맵 열기
+menuBtn.addEventListener('click', () => {
   menuBox.style.display = 'block';
 });
 
-// menuBtn에서 마우스를 떼면, menuBox로 이동할 시간 부여
-menuBtn.addEventListener('mouseleave', () => {
-  menuTimer = setTimeout(() => {
-    menuBox.style.display = 'none';
-  }, 200); // 200ms 안에 menuBox 진입하면 안 닫힘
-});
-
-// menuBox에 마우스 들어오면 닫힘 취소
-menuBox.addEventListener('mouseenter', () => {
-  clearTimeout(menuTimer);
-  menuBox.style.display = 'block';
-});
-
-// menuBox에서 마우스 벗어나면 닫힘
-menuBox.addEventListener('mouseleave', () => {
+// 닫기 아이콘 클릭 시 사이트맵 닫기
+menuClose.addEventListener('click', () => {
   menuBox.style.display = 'none';
 });
+
+// 브라우저 크기 변경 시 자동 닫기 (781px 이상일 때)
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 780) {
+    menuBox.style.display = 'none';
+  }
+});
+
 
 
 
