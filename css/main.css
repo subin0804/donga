@@ -148,11 +148,13 @@ header.scroll h1 a {
 /* ---------------------------------- gnb */
 header #gnb {
     z-index: 10;
+
+
 }
 header .dep1 {
     position: relative;
     display: flex;
-    gap: 9rem;
+    gap: 7rem;
     font-size: 1.8rem;
     font-weight: 500;
 
@@ -181,7 +183,7 @@ header nav ul.dep1 > li > a::after {
     transform: translateX(-50%);
     width: 0;
     height: 0.3rem;
-    background: powderblue;
+    background: #ACDFF5;
     transition: all 0.3s ease;
     opacity: 0;
   }
@@ -215,13 +217,11 @@ header.on .dep2 {
 
 
 /* --------------------------------- header_util */
-
 .header_util {
     display: flex;
     align-items: center; /* 모든 버튼/아이콘 수직 정렬 맞추기 */
     gap: 1rem;
 }
-
 .header_util button {
     background: none;
     border: none;
@@ -239,25 +239,92 @@ header.on .dep2 {
     font-size: 1.8rem;
     vertical-align: middle; /* 아이콘 수직 정렬 보정 */
 }
+.header .lang_wrap {
+    position: relative;
+}
+.header .lang_wrap>button {
+    color: #ACDFF5;
+    
+}
 .header_util ul {
     display: none;
+    position: absolute;
+    /* left: 50%; */
+    top: 3.3rem;
+    width: 8rem;
+    height: 9rem;
+    transform: translateX(-20%);
+    border-radius: .5rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.05);
+    /* background: #FFF; */
+    color: #000;
+    z-index: 8;
+    background-color: #ACDFF5;
 } 
-.header_util .header_menu {
-    display: none;
-    border: 1px solid #000;
+.header_util ul li {
+    text-align: center;
+    padding: .7rem 0;
+    /* margin: 1rem 0; */
+
+}
+.header_util ul li:hover  {
+    box-sizing: border-box;
 }
 .search_box {
     display: none;
 }
-  
-  
-  
-  
-  
-  
+header .search_box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5rem; 
+    text-align: center;
+    line-height: 8rem;
+    padding: 10rem 0;
+    background: rgba(52, 53, 53, 0.5);
+}
+
+.header_menu {
+    display: none;
+}
+.header_menu_popup {
+    position: absolute; 
+    left: 0;
+    right: 0;
+    top: -2rem;
+    width: 100%;
+    /* height: 80rem; */
+    background: #FFF;
+    /* border: 1px solid #000; */
+}
 
 
+@media screen and (max-width: 1024px) {
+    header .container {
+        padding: 0 3rem;
+    }
+    header #gnb {
+        display: none;
+    }
+    
+    .header_util .header_menu {
+        display: block;
+    }
+}
 
+@media screen and (max-width: 780px) {
+    header #gnb {
+        display: none;
+    }
+    header .header_util .search_wrap, header .header_util .shop_wrap {
+        display: none;
+    }
+    .header_util .header_menu {
+        display: block;
+    }
+        
+}
 
 /* =================================== main */
 /* 섹션1 - main_visual */
@@ -297,10 +364,10 @@ header.on .dep2 {
 }
 .main_slide_mode .progress .bar {
     width: 0;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 0.4rem;
     background: #fff;
-    animation: slideBar 5s linear;
+    /* animation: slideBar 90s linear; */
     /* transition: all 0.5s; */
     
 }
@@ -312,10 +379,13 @@ header.on .dep2 {
 .main_slide_mode .swiper-next {
     transform: rotate(180deg);
 }
+
+
 @keyframes slideBar {
     0% {width: 0;}
-    100% {width: 10rem;}
+    100% {width: 100%;}
 }
+
 
 @media screen and (max-width: 500px) {
     .main_visual .main-swiper video {
@@ -920,11 +990,6 @@ header.on .dep2 {
 .business2_swiper .swiper-slide-active .txt_box {
     opacity: 1;  /* 활성화된 슬라이드에서만 텍스트가 보이도록 설정 */
 }
-
-
-
-
-
 
 /* 섹션7 - news */
 .news {

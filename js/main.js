@@ -4,7 +4,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 
 
-// 헤더
+/* 헤더 스크롤*/
 window.addEventListener('scroll' ,function() {
   if(window.scrollY > 10) {
     header.classList.add('scroll')
@@ -15,105 +15,91 @@ window.addEventListener('scroll' ,function() {
 })
 
 
-// 헤더 메뉴
-
-  // const header = document.querySelector('#header');
-  // const gnb = document.querySelector('#gnb');
-
-
-  // gnb.addEventListener('mouseenter', () => {
-  //   header.classList.add('on');
-  // });
-  // gnb.addEventListener('mouseleave', () => {
-  //   header.classList.remove('on');
-  // });
-
-
-  // const header = document.querySelector('header');
-
-  // header.addEventListener('mouseenter', () => {
-  //   header.classList.add('on');
-  // });
+/* 헤더 */
+const header = document.querySelector('header');
+const menuItems = document.querySelectorAll('header #gnb .dep1 > li');
+const dep2Links = document.querySelectorAll('header .dep2 a');
   
-  // header.addEventListener('mouseleave', () => {
-  //   header.classList.remove('on');
-  // });
-
-  const header = document.querySelector('header');
-  const menuItems = document.querySelectorAll('header #gnb .dep1 > li');
-  const dep2Links = document.querySelectorAll('header .dep2 a');
-  
-  // 메뉴 hover 시 열기
-  menuItems.forEach((item) => {
-    item.addEventListener('mouseenter', function () {
-      header.classList.add('on');
-      this.classList.add('over');
-    });
-  
-    item.addEventListener('mouseleave', function () {
-      this.classList.remove('over');
-    });
+// 메뉴 hover 시 열기
+menuItems.forEach((item) => {
+  item.addEventListener('mouseenter', function () {
+    header.classList.add('on');
+    this.classList.add('over');
   });
-  
-  // dep2 클릭 시 닫기
-  dep2Links.forEach(link => {
-    link.addEventListener('click', () => {
-      header.classList.remove('on');
-      menuItems.forEach(item => item.classList.remove('over'));
-    });
+
+  item.addEventListener('mouseleave', function () {
+    this.classList.remove('over');
   });
-  
-  // header 전체에서 마우스 빠져나가면 닫기
-  header.addEventListener('mouseleave', function (e) {
-    if (!header.contains(e.relatedTarget)) {
-      header.classList.remove('on');
-      menuItems.forEach(item => item.classList.remove('over'));
-    }
+});
+
+// dep2 클릭 시 닫기
+dep2Links.forEach(link => {
+  link.addEventListener('click', () => {
+    header.classList.remove('on');
+    menuItems.forEach(item => item.classList.remove('over'));
   });
+});
+
+// header 전체에서 마우스 빠져나가면 닫기
+header.addEventListener('mouseleave', function (e) {
+  if (!header.contains(e.relatedTarget)) {
+    header.classList.remove('on');
+    menuItems.forEach(item => item.classList.remove('over'));
+  }
+});
+
+/* 헤더 util */
+const utilBtn = document.querySelector('.header_util button')
+const utilList = document.querySelector('.header_util ul')
+
+// utilBtn.addEventListener('click', function() {})
+utilBtn.addEventListener('click', function() {
+  if(utilList.style.display === 'none') {
+    utilList.style.display = 'block'
+  } else {
+    utilList.style.display = 'none'
+  }
+})
+
+/* 헤더 검색 */
+const searchBtn = document.querySelector('.search_wrap')
+const searchBox = document.querySelector('.search_box')
+
+searchBox.style.display = 'none';
+searchBtn.addEventListener('click', function() {
+  if(searchBox.style.display === 'none') {
+    searchBox.style.display = 'block'
+    console.log('none')
+  } else {
+    searchBox.style.display = 'none'
+  }
+})
+
+
+/* 사이트맵 */
+const menuBtn = document.querySelector('.header_menu')
+const menuBox = document.querySelector('.header_menu_popup')
+
+menuBox.style.display = 'none';
+menuBtn.addEventListener('click', function() {
+  if(menuBox.style.display === 'none') {
+    menuBox.style.display = 'block'
+    console.log('none')
+  } else {
+    menuBox.style.display = 'none'
+  }
+})
+
+
+
   
-  
-
-  // const ex1 = document.querySelector('header');
-	// 		const menuItems = document.querySelectorAll('header #gnb .dep1>li');
-
-	// 		menuItems.forEach((item) => {
-	// 			item.addEventListener('mouseover', function () {
-	// 				ex1.classList.add('on');
-	// 				this.classList.add('over');
-	// 			});
-
-	// 			item.addEventListener('mouseout', function () {
-	// 				ex1.classList.remove('on');
-	// 				this.classList.remove('over');
-	// 			});
-	// 		});
-  
-  
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* main-swiper */
-// const btnPlayStop = document.querySelector('.btn-play-stop');
-// let isPlaying = true
-
+/* 메인 비주얼 */
 const mainSwiper = new Swiper('.main-swiper', {
-  delay: 8000,
-
-  autoplay: true,
   loop: true,
+  autoplay: {
+    delay: 9999999, // 동영상 길이로 제어할 것이므로 의미 없는 값
+    disableOnInteraction: false,
+  },
   pagination: {
     el: '.swiper-pagination',
     type: 'fraction',
@@ -122,7 +108,90 @@ const mainSwiper = new Swiper('.main-swiper', {
     nextEl: '.swiper-next',
     prevEl: '.swiper-prev',
   },
+  on: {
+    slideChangeTransitionStart() {
+      if (!isPaused) {
+        const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
+        resetProgressBar(currentVideo.duration);
+      }
+    }
+  }
+});
+
+const progressBar = document.querySelector('.progress .bar');
+const playBtn = document.querySelector('.btn-play-stop i');
+let isPaused = false;
+let progressTimeout = null;
+
+// 프로그레스바 초기화 함수
+function resetProgressBar(duration) {
+  clearTimeout(progressTimeout);
+  progressBar.style.animation = 'none';
+  progressBar.offsetHeight; // 리플로우 강제 발생
+  progressBar.style.animation = `slideBar ${duration}s linear forwards`;
+
+  // 해당 영상 끝나면 다음 슬라이드로 전환
+  progressTimeout = setTimeout(() => {
+    mainSwiper.slideNext();
+  }, duration * 1000);
+}
+
+// 슬라이드 초기 실행 시 처리
+window.addEventListener('DOMContentLoaded', () => {
+  const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
+  if (currentVideo.readyState >= 1) {
+    resetProgressBar(currentVideo.duration);
+  } else {
+    currentVideo.addEventListener('loadedmetadata', () => {
+      resetProgressBar(currentVideo.duration);
+    });
+  }
+});
+
+// 재생/일시정지 버튼 토글
+document.querySelector('.btn-play-stop').addEventListener('click', () => {
+  isPaused = !isPaused;
+
+  if (isPaused) {
+    mainSwiper.autoplay.stop();
+    clearTimeout(progressTimeout);
+    progressBar.style.animationPlayState = 'paused';
+    playBtn.className = 'ri-play-line';
+  } else {
+    const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
+    const remaining = (1 - parseFloat(getComputedStyle(progressBar).width) / progressBar.parentElement.offsetWidth) * currentVideo.duration;
+    progressBar.style.animationPlayState = 'running';
+    progressTimeout = setTimeout(() => {
+      mainSwiper.slideNext();
+    }, remaining * 1000);
+    resetProgressBar(currentVideo.duration);
+    mainSwiper.autoplay.start();
+    playBtn.className = 'ri-pause-line';
+  }
+});
+
+btnPlayStop.addEventListener('click', () => {
+  if(isPlaying) { //true, play, pause-icon => 슬라이드 멈춤
+      swiper4.autoplay.pause();
+      swiperElm.classList.add('reset')
+      btnPlayStop.innerHTML = '<i class="ri-play-line"></i>'
+  } else { //true, stop, play-icon => 슬라이드 replay
+      swiper4.autoplay.resume();
+      swiperElm.classList.remove('reset')
+      btnPlayStop.innerHTML = '<i class="ri-pause-line"></i>'
+  }
+  isPlaying = !isPlaying
 })
+
+// 구조가 너무 복잡해진 것 같아요,,이방법밖에 없나용
+// 영상 프로그래스바가 작동 잘하는 것 같다가도 영상길이에 맞게 작동안해요 
+// play pause버튼 작동 x
+
+
+
+
+
+
 
 /* ESG */
 const esgSwiper = new Swiper('.preview_swiper', {
@@ -137,37 +206,7 @@ const esgSwiper = new Swiper('.preview_swiper', {
 });
 
 
-
-
-
-// /* Business2 */
-// const businesSwiper2 = new Swiper('.business2_swiper', {
-//   slidesPerView: 1,
-//   autoplay: {
-//     delay: 3000,
-//   },
-//   effect:'fade',
-//   // speed:500,
-//   loop: true,
-//   clickable: true,
-//   pagination: {
-//     el: '.swiper-pagination',
-//     type: 'custom',
-//       renderCustom: function (swiper, current, total) {
-//         return `
-//           <div class="custom_pagination_wrap">
-//             <span class="num">0${current}</span>
-//             <div class="progress">
-//               <div class="bar"></div>
-//             </div>
-//             <span class="num">0${total}</span>
-//           </div>
-//         `
-//       },
-//       // effect: fade,
-//   },
-// });
-
+/* Business2 */
 const businesSwiper2 = new Swiper('.business2_swiper', {
   slidesPerView: 1,
   autoplay: {
@@ -223,11 +262,6 @@ const businesSwiper2 = new Swiper('.business2_swiper', {
     }
   }
 });
-
-
-
-
-
 
 
 /* News */
