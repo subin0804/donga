@@ -586,6 +586,12 @@ header .search_box {
         height: 100%;
         object-fit: cover;
     }
+    .main_slide_mode {
+        padding: 6rem 0;
+    }
+    .main_visual .swiper-slide>span {
+
+    }
 }
 
 
