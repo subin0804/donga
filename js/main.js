@@ -20,6 +20,27 @@ window.addEventListener('scroll' ,function() {
 })
 
 
+// menu_popup 열었을 때 브라우저 스크롤x
+// 메뉴 열기 버튼
+document.querySelector('.header_menu').addEventListener('click', function () {
+  // 메뉴 팝업 보이기
+  document.querySelector('.header_menu_popup').classList.add('on');
+  // 스크롤 막기
+  document.body.classList.add('fixed');
+});
+
+// 메뉴 닫기 버튼 (닫기 아이콘)
+document.querySelector('.header_menu_popup .ri-close-line').addEventListener('click', function () {
+  // 메뉴 팝업 숨기기
+  document.querySelector('.header_menu_popup').classList.remove('on');
+  // 스크롤 풀기
+  document.body.classList.remove('fixed');
+});
+
+
+
+
+
 /* 헤더 */
 const header = document.querySelector('header');
 const menuItems = document.querySelectorAll('header #gnb .dep1 > li');
