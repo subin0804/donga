@@ -148,13 +148,11 @@ header.scroll h1 a {
 /* ---------------------------------- gnb */
 header #gnb {
     z-index: 10;
-
-
 }
 header .dep1 {
     position: relative;
     display: flex;
-    gap: 7rem;
+    gap: 10rem;
     font-size: 1.8rem;
     font-weight: 500;
 
@@ -285,28 +283,33 @@ header .search_box {
     background: rgba(52, 53, 53, 0.5);
 }
 .header_menu {
-    display: none;
+    /* display: none; */
 }
 .header_menu_popup {
-    display: block;
+    /* display: block; */
     position: absolute; 
-    /* display: flex; */
+    padding: 5rem;
     left: 0;
     right: 0;
     top: -2rem;
     width: 100%;
-    height: 80rem;
+    height: 90rem;
     color: #000;
-    background: #FFF;
+    background: url(../img/menu.jpg);
+    background-size: cover;
 }
 .header_menu_popup .dep1 {
     position: relative;
-    
-    
-}
-.header_menu_popup .dep1>li {
     display: flex;
     justify-content: space-between;
+    /* border: 1px solid red; */
+}
+.header_menu_popup .dep1>li {
+    overflow: hidden;
+    margin: 4rem 0;
+    max-width: 100%;
+    color: #FFF;
+    /* border: 1px solid #000; */
 }
 .header_menu_popup .dep2 {
     /* 사이트맵은 dropdown이 아니므로 float처럼 안 띄워도 됨 */
@@ -314,30 +317,47 @@ header .search_box {
     position: static;
     display: block !important;
     flex-grow: 1;
-    margin-left: 1rem; /* 예쁘게 정렬되게끔 약간의 여백 */
+    color: #ccc;
+    font-size: 1.6rem;
+    /* border: 1px solid blue; */
 }
 .header_menu_popup i {
     position: absolute;
-    right: 0;
-    border: 2px solid #ccc;
+    top: 1rem;
+    right: 1rem;
+    /* border: 2px solid #ccc; */
+    font-size: 2rem;
     color: #ccc;
     z-index: 21;
 }
 
 
-
+/* 대형 PC */
+@media screen and (min-width: 1281px) {
+    header .container {
+        padding: 0 3rem;
+    }
+    .header_util .header_menu {
+        display: none;
+    }
+    
+}
 /* 노트북 */
 @media screen and (max-width: 1280px) {
     header .container {
         padding: 0 3rem;
     }
+    .header_util .header_menu {
+        display: block;
     }
-    
-    /* 대형 PC */
-    @media screen and (min-width: 1281px) {
-    
+    .header_menu_popup {
+        display: block;
+        z-index: 22;
     }
-
+    header .dep1 {
+        gap: 6rem;
+    }
+}
 /* 태블릿 가로, 저해상도 노트북 */
 @media screen and (max-width: 1024px) {
     header .container {
@@ -347,12 +367,7 @@ header .search_box {
         display: none;
     }
     
-    .header_util .header_menu {
-        display: none;
-    }
-    .header_menu_popup {
-        display: none;
-    }
+   
 }
 @media screen and (max-width: 780px) {
     header #gnb {
@@ -361,9 +376,9 @@ header .search_box {
     header .header_util .search_wrap, header .header_util .shop_wrap {
         display: none;
     }
-    .header_util .header_menu {
+    /* .header_util .header_menu {
         display: block;
-    }
+    } */
     
 }
 

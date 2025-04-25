@@ -118,7 +118,7 @@ menuClose.addEventListener('click', () => {
 
 // 브라우저 크기 변경 시 자동 닫기 (781px 이상일 때)
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 780) {
+  if (window.innerWidth > 1281) {
     menuBox.style.display = 'none';
   }
 });
@@ -172,51 +172,51 @@ function resetProgressBar(duration) {
 }
 
 // 슬라이드 초기 실행 시 처리
-window.addEventListener('DOMContentLoaded', () => {
-  const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
-  if (currentVideo.readyState >= 1) {
-    resetProgressBar(currentVideo.duration);
-  } else {
-    currentVideo.addEventListener('loadedmetadata', () => {
-      resetProgressBar(currentVideo.duration);
-    });
-  }
-});
+// window.addEventListener('DOMContentLoaded', () => {
+//   const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
+//   if (currentVideo.readyState >= 1) {
+//     resetProgressBar(currentVideo.duration);
+//   } else {
+//     currentVideo.addEventListener('loadedmetadata', () => {
+//       resetProgressBar(currentVideo.duration);
+//     });
+//   }
+// });
 
-// 재생/일시정지 버튼 토글
-document.querySelector('.btn-play-stop').addEventListener('click', () => {
-  isPaused = !isPaused;
+// // 재생 일시정지 버튼 토글
+// document.querySelector('.btn-play-stop').addEventListener('click', () => {
+//   isPaused = !isPaused;
 
-  if (isPaused) {
-    mainSwiper.autoplay.stop();
-    clearTimeout(progressTimeout);
-    progressBar.style.animationPlayState = 'paused';
-    playBtn.className = 'ri-play-line';
-  } else {
-    const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
-    const remaining = (1 - parseFloat(getComputedStyle(progressBar).width) / progressBar.parentElement.offsetWidth) * currentVideo.duration;
-    progressBar.style.animationPlayState = 'running';
-    progressTimeout = setTimeout(() => {
-      mainSwiper.slideNext();
-    }, remaining * 1000);
-    resetProgressBar(currentVideo.duration);
-    mainSwiper.autoplay.start();
-    playBtn.className = 'ri-pause-line';
-  }
-});
+//   if (isPaused) {
+//     mainSwiper.autoplay.stop();
+//     clearTimeout(progressTimeout);
+//     progressBar.style.animationPlayState = 'paused';
+//     playBtn.className = 'ri-play-line';
+//   } else {
+//     const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
+//     const remaining = (1 - parseFloat(getComputedStyle(progressBar).width) / progressBar.parentElement.offsetWidth) * currentVideo.duration;
+//     progressBar.style.animationPlayState = 'running';
+//     progressTimeout = setTimeout(() => {
+//       mainSwiper.slideNext();
+//     }, remaining * 1000);
+//     resetProgressBar(currentVideo.duration);
+//     mainSwiper.autoplay.start();
+//     playBtn.className = 'ri-pause-line';
+//   }
+// });
 
-btnPlayStop.addEventListener('click', () => {
-  if(isPlaying) { //true, play, pause-icon => 슬라이드 멈춤
-      swiper4.autoplay.pause();
-      swiperElm.classList.add('reset')
-      btnPlayStop.innerHTML = '<i class="ri-play-line"></i>'
-  } else { //true, stop, play-icon => 슬라이드 replay
-      swiper4.autoplay.resume();
-      swiperElm.classList.remove('reset')
-      btnPlayStop.innerHTML = '<i class="ri-pause-line"></i>'
-  }
-  isPlaying = !isPlaying
-})
+// btnPlayStop.addEventListener('click', () => {
+//   if(isPlaying) { //true, play, pause-icon => 슬라이드 멈춤
+//       swiper4.autoplay.pause();
+//       swiperElm.classList.add('reset')
+//       btnPlayStop.innerHTML = '<i class="ri-play-line"></i>'
+//   } else { //true, stop, play-icon => 슬라이드 replay
+//       swiper4.autoplay.resume();
+//       swiperElm.classList.remove('reset')
+//       btnPlayStop.innerHTML = '<i class="ri-pause-line"></i>'
+//   }
+//   isPlaying = !isPlaying
+// })
 
 // 구조가 너무 복잡해진 것 같아요,,이방법밖에 없나용
 // 영상 프로그래스바가 작동 잘하는 것 같다가도 영상길이에 맞게 작동안해요 
