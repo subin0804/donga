@@ -588,9 +588,11 @@ header .search_box {
     }
     .main_slide_mode {
         padding: 6.2rem 0;
+
     }
     .main_visual .swiper-slide>span {
         right: 6rem;
+        bottom: 9%
     }
     .main_slide_mode .progress {
         width: 20rem;
@@ -602,12 +604,13 @@ header .search_box {
 /* 섹션2 - brand_story */
 .brand_story_wrap {
     /* aspect-ratio: 1; */
+    height: 100vh;
     
 }
 .brand_story_wrap .brand_container {    
     background: url(../img/brandstory-1.jpg) no-repeat center;
-    height: 66rem;
-    /* background-size: 1760px 660px; */
+    /* height: 66rem; */
+    height: 100%;
     background-size: cover;
     margin-left: 16rem;
     color: #fff;
@@ -632,7 +635,6 @@ header .search_box {
     line-height: 1.5em;
     font-weight: 600;
 }
-.brand_story_wrap .brand_conbox a {} 
 .brand_story_wrap ul {
     display: flex;
     width: calc(100% + 10rem);
@@ -657,9 +659,13 @@ header .search_box {
     .brand_story_wrap .brand_container {
         margin: 0;
     }
+    .brand_story_wrap .brand_story_img { 
+        padding: 6rem 3rem;
+        gap: 14rem;
+    }
     .brand_story_wrap .brand_conbox p {
         font-size: 1.8rem;
-        line-height: 1.4em;
+        line-height: 1.6em;
         font-weight: 600;
     }
     .brand_story_wrap .brand_conbox p br {
@@ -669,14 +675,10 @@ header .search_box {
         display: none;
     }
     .brand_story_wrap ul {
-        /* width: calc(100% + 10rem); */
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3rem;
-        height: auto;
-        overflow: hidden;
-    }
-    .brand_story_wrap ul li {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 25rem 25rem ;
+         /* grid-template-columns:; */
     }
     .brand_story_wrap ul span {
         display: block;
@@ -684,7 +686,6 @@ header .search_box {
         font-weight: 500;
         opacity: 0.8;
         font-size: 1.4rem;
-        /* text-align: center; */
     }
     .brand_story_wrap ul span br {
         /* display: none; */
@@ -692,7 +693,6 @@ header .search_box {
     .brand_story_wrap ul strong {
         font-size: 2rem;
         font-weight: 700;    
-        /* text-align: center; */
     }
 }
 
