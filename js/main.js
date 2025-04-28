@@ -105,19 +105,6 @@ searchBtn.addEventListener('mouseleave', () => {
   searchBox.style.display = 'none';
 });
 
-// *********** 클릭하면 열리는 이벤트리스너.
-// searchBox.style.display = 'none';
-// searchBtn.addEventListener('click', function() {
-//   if(searchBox.style.display === 'none') {
-//     searchBox.style.display = 'block'
-//     console.log('none')
-//   } else {
-//     searchBox.style.display = 'none'
-//   }
-// })
-
-
-
 
 // 메뉴 관련 요소 선택
 const menuBtn = document.querySelector('.header_menu'); // 햄버거 아이콘
@@ -145,10 +132,51 @@ window.addEventListener('resize', () => {
 });
 
 
+/* 메뉴 팝업 - 모바일 */
+// (1) 플러스 아이콘(i)과 dep2 메뉴 리스트 가져오기
+// 메뉴 아이콘과 dep2 리스트 가져오기
+const menuIcons = document.querySelectorAll('.header_menu_popup .dep1 > li > a > i');
+const dep2Menus = document.querySelectorAll('.header_menu_popup .dep2');
+
+menuIcons.forEach(function(item, i) {
+  item.addEventListener('click',function() {
+
+    dep2Menus.forEach(function(dep2) {
+      dep2.classList.remove('active')
+    })
+    dep2Menus[i].classList.add('active')
+  })
+}) 
+
+/* 예시 */
+// const esgImg = document.querySelectorAll('.esg_img img')
+// const esgCon = document.querySelectorAll('.esg_content div')
+
+// esgCon.forEach(function(item, i){
+//         item.addEventListener('mouseover',function(){
+
+//             esgImg.forEach(function(img) {
+//                 img.classList.remove('active')
+//             })
+//             esgImg[i].classList.add('active')
+//         })
+//     })
 
 
 
+// menuPlus.addEventListener('click', () => {
+//   menuDep2.style.display = 'block';
+// });
+// menuPlus.addEventListener('click', function() {
+//   if(menuDep2.style.display === 'none') {
+//     menuDep2.style.display = 'block'
+//   } else {
+//     menuDep2.style.display = 'none'
+//   }
+// })
   
+
+
 /* 메인 비주얼 */
 const mainSwiper = new Swiper('.main-swiper', {
   loop: true,
@@ -192,60 +220,10 @@ function resetProgressBar(duration) {
   }, duration * 1000);
 }
 
-// 슬라이드 초기 실행 시 처리
-// window.addEventListener('DOMContentLoaded', () => {
-//   const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
-//   if (currentVideo.readyState >= 1) {
-//     resetProgressBar(currentVideo.duration);
-//   } else {
-//     currentVideo.addEventListener('loadedmetadata', () => {
-//       resetProgressBar(currentVideo.duration);
-//     });
-//   }
-// });
-
-// // 재생 일시정지 버튼 토글
-// document.querySelector('.btn-play-stop').addEventListener('click', () => {
-//   isPaused = !isPaused;
-
-//   if (isPaused) {
-//     mainSwiper.autoplay.stop();
-//     clearTimeout(progressTimeout);
-//     progressBar.style.animationPlayState = 'paused';
-//     playBtn.className = 'ri-play-line';
-//   } else {
-//     const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
-//     const remaining = (1 - parseFloat(getComputedStyle(progressBar).width) / progressBar.parentElement.offsetWidth) * currentVideo.duration;
-//     progressBar.style.animationPlayState = 'running';
-//     progressTimeout = setTimeout(() => {
-//       mainSwiper.slideNext();
-//     }, remaining * 1000);
-//     resetProgressBar(currentVideo.duration);
-//     mainSwiper.autoplay.start();
-//     playBtn.className = 'ri-pause-line';
-//   }
-// });
-
-// btnPlayStop.addEventListener('click', () => {
-//   if(isPlaying) { //true, play, pause-icon => 슬라이드 멈춤
-//       swiper4.autoplay.pause();
-//       swiperElm.classList.add('reset')
-//       btnPlayStop.innerHTML = '<i class="ri-play-line"></i>'
-//   } else { //true, stop, play-icon => 슬라이드 replay
-//       swiper4.autoplay.resume();
-//       swiperElm.classList.remove('reset')
-//       btnPlayStop.innerHTML = '<i class="ri-pause-line"></i>'
-//   }
-//   isPlaying = !isPlaying
-// })
 
 // 구조가 너무 복잡해진 것 같아요,,이방법밖에 없나용
 // 영상 프로그래스바가 작동 잘하는 것 같다가도 영상길이에 맞게 작동안해요 
 // play pause버튼 작동 x
-
-
-
-
 
 
 
