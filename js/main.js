@@ -139,14 +139,21 @@ const menuIcons = document.querySelectorAll('.header_menu_popup .dep1 > li > a >
 const dep2Menus = document.querySelectorAll('.header_menu_popup .dep2');
 
 menuIcons.forEach(function(item, i) {
-  item.addEventListener('click',function() {
+  item.addEventListener('click', function(event) {
+    event.preventDefault(); // a 태그의 기본 동작 방지
 
-    dep2Menus.forEach(function(dep2) {
-      dep2.classList.remove('active')
-    })
-    dep2Menus[i].classList.add('active')
-  })
-}) 
+    const isActive = dep2Menus[i].classList.contains('active');
+
+    // 모든 dep2 닫기
+    dep2Menus.forEach(dep2 => dep2.classList.remove('active'));
+
+    // 클릭한 항목이 기존에 닫혀있던 경우만 열기
+    if (!isActive) {
+      dep2Menus[i].classList.add('active');
+    }
+  });
+});
+
 
 /* 예시 */
 // const esgImg = document.querySelectorAll('.esg_img img')

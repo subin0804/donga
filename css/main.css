@@ -39,6 +39,7 @@ h1,h2,h3,h4 {font: inherit;margin: 0;padding: 0;}
 h2 {
     font-size: 5rem;
     font-weight: bold;
+    color: #333;
 }
 
 ul, li{
@@ -452,15 +453,16 @@ header .search_box {
         position: relative;
         display: flex;
         flex-direction: column;
-        padding: 4rem 2.5rem;
-        gap: 0;
-        /* margin: 0 auto;   */
+        gap: 6rem;
+        margin-top: 7rem;
+        padding: 0 2.5rem;
     }
     .header_menu_popup .dep1>li {
+        /* align-items가 왜 먹히는 건지 모르겠음.. */
         align-items: flex-start;
         width: 100%;
+        margin: 0rem;
         color: #333;
-        border-bottom: #ddd;
     }
     .header_menu_popup .dep1>li>a {
         display: flex;
@@ -470,6 +472,7 @@ header .search_box {
         position: absolute;
         display: block;
         right: 2rem;
+        color: #333;
     }
     .header_menu_popup .dep2 {
         /* 사이트맵은 dropdown이 아니므로 float처럼 안 띄워도 됨 */
@@ -480,6 +483,10 @@ header .search_box {
         width: 100%;
         font-size: 1.4rem;
         font-weight: 500;
+    }
+    .header_menu_popup .dep2.active {
+        display: block;
+        color: #333;
     }
     .header_menu_popup i {
         color: #333;
@@ -637,9 +644,9 @@ header .search_box {
 .brand_story_wrap .brand_story_img {
     display: flex;
     flex-direction: column;
-    gap: 15rem;
+    gap: 8rem;
     height: 100%;
-    padding: 8rem ; 
+    padding: 8rem; 
     background: rgba(0,0,0,0.4); 
 
 }
@@ -657,17 +664,18 @@ header .search_box {
 .brand_story_wrap ul {
     display: flex;
     width: calc(100% + 10rem);
-    margin-top: 12rem;
+    margin-top: 10rem;
+
 }
 .brand_story_wrap ul li {
     flex-grow: 1;
 }
 .brand_story_wrap ul span {
     display: block;
-    margin-bottom: 3rem;
     line-height: 2.4rem;
     font-weight: 500;
     opacity: 0.8;
+
 }
 .brand_story_wrap ul strong {
     font-size: 3rem;
@@ -696,6 +704,7 @@ header .search_box {
     .brand_story_wrap ul {
         width: 100%;
         display: grid;
+        gap: 2.9rem;
         grid-template-columns: 25rem 25rem ;
          /* grid-template-columns:; */
     }
@@ -711,7 +720,7 @@ header .search_box {
     }
     .brand_story_wrap ul strong {
         font-size: 2rem;
-        font-weight: 700;    
+        font-weight: 700;   
     }
 }
 
@@ -1117,7 +1126,7 @@ will-change: opacity, transform;
 .business2_content .view_more {
     position: absolute;
     bottom: 15%;
-    border: 1px solid #000;
+    border: 1px solid #333;
     padding: 1.6rem;
 
 
