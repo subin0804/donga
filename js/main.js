@@ -7,8 +7,6 @@ console.log('devicePixelRatio:', window.devicePixelRatio);
 
 
 
-
-
 /* 헤더 스크롤*/
 window.addEventListener('scroll', function () {
   if (window.scrollY > 10) {
@@ -388,11 +386,39 @@ const newsSwiper2 = new Swiper('.news_text_swiper', {
 
 
 /* product_swiper */
+// const productSwiper = new Swiper('.product_swiper', {
+//   autoplay: true,
+//   loop: true,
+//   slidesPerView: 'auto',
+//   spaceBetween: 20,
+//   pagination: {
+//     el: '.swiper-pagination',
+//     type: 'fraction',
+//   },
+//   navigation: {
+//     nextEl: '.swiper-next',
+//     prevEl: '.swiper-prev',
+//   },
+// })
+/* product_swiper */
 const productSwiper = new Swiper('.product_swiper', {
   autoplay: true,
   loop: true,
   slidesPerView: 'auto',
+
+  // ✅ 기본 간격 (넓은 화면)
   spaceBetween: 20,
+
+  // ✅ 반응형 설정 추가
+  breakpoints: {
+    0: {
+      spaceBetween: 3, // 0 ~ 499px 사이에서는 간격 제거
+    },
+    501: {
+      spaceBetween: 20, // 500px 이상에서는 간격 20 유지
+    }
+  },
+
   pagination: {
     el: '.swiper-pagination',
     type: 'fraction',
@@ -401,7 +427,8 @@ const productSwiper = new Swiper('.product_swiper', {
     nextEl: '.swiper-next',
     prevEl: '.swiper-prev',
   },
-})
+});
+
 
 
 
@@ -464,3 +491,48 @@ gsap.from('.business2_swiper', {
   duration: 1.2,
   ease: 'power2.out'
 });
+
+
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const sections = document.querySelectorAll('.main_visual, .brand_story_wrap, .esg_wrap, .product_wrap,  .business2, .news');
+//   let current = 0;
+//   let isAnimating = false;
+
+//   function goToSection(index) {
+//       if (index < 0 || index >= sections.length || isAnimating) return;
+//       isAnimating = true;
+//       gsap.to(window, {
+//           duration: 1,
+//           scrollTo: {
+//               y: sections[index].offsetTop - document.querySelector("header").offsetHeight
+//           },
+//           ease: "power2.out",
+//           onComplete: () => {
+//               current = index;
+//               isAnimating = false;
+//           }
+//       });
+//   }
+
+//   // 현재 섹션을 실시간으로 감지해서 current 인덱스 갱신
+//   window.addEventListener("scroll", () => {
+//       const scrollY = window.pageYOffset + window.innerHeight / 2;
+//       sections.forEach((section, i) => {
+//           if (scrollY >= section.offsetTop) {
+//               current = i;
+//           }
+//       });
+//   });
+
+//   // 휠 이벤트로 섹션 이동
+//   window.addEventListener("wheel", (e) => {
+//       if (isAnimating) return;
+//       if (e.deltaY > 0) {
+//           goToSection(current + 1);
+//       } else {
+//           goToSection(current - 1);
+//       }
+//   });
+// }); 

@@ -243,8 +243,7 @@ header .dep2 {
     text-align: center;
     color: #666;
     font-weight: normal;
-    transition: all 0.5s
-        /* border: 1px solid #000; */
+    transition: all 0.5s;
 }
 
 header .dep2>li {
@@ -1123,6 +1122,9 @@ header .search_box {
     background: #F7F2EA;
     position: relative;
 }
+.product_wrap .container {
+    position: relative;
+}
 
 .product_wrap h2 {
     font-size: 5rem;
@@ -1225,6 +1227,7 @@ header .search_box {
     padding: .5rem 4rem;
     color: #034EB4;
     border: 2px solid #034EB4;
+    border-radius: .6rem;
 }
 
 .product_wrap .controls {
@@ -1236,6 +1239,7 @@ header .search_box {
     display: flex;
     gap: 2rem;
     align-items: center;
+    
 }
 
 .product_wrap .controls>* {
@@ -1256,15 +1260,50 @@ header .search_box {
     transform: rotate(180deg);
 }
 
-.product_wrap .container {
-    /* border: 1px solid #000; */
-    position: relative;
+
+
+@media screen and (max-width: 500px) {
+    .product_wrap hgroup p {
+        font-size: 1.6rem;
+        margin-top: 4rem;
+        /* margin-bottom: 6rem; */
+        line-height: 3rem;
+    }
+    .product_wrap .best_product {
+        display: none;
+    }    
+    .product_wrap .product_swiper {
+        /* border: 1px solid #000; */
+        padding-top: 20rem;
+        overflow: hidden;
+    }
+    .product_wrap .product_swiper .box {
+        display: none;
+    }
+    .product_wrap .controls {
+        position: absolute;
+        left: 0;
+        /* bottom: 0rem; */
+        top: -52rem;
+        z-index: 50;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+    .product_wrap li {
+        margin: 0;
+        border: 1px solid  #ACDFF5;
+    }
 }
 
+
+
+
+
+
+
+
 /* 섹션5 - business */
-
-
-
 .business {
     position: relative;
     height: 100vh;
