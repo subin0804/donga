@@ -365,6 +365,17 @@ const newsSwiper = new Swiper('.news_img_swiper', {
     nextEl: '.swiper-next',
     prevEl: '.swiper-prev',
   },
+  breakpoints: {
+    // 화면 너비가 "480px 이하"일 때 설정
+    0: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    501: {
+      slidesPerView: 5,
+      spaceBetween: 40,
+    }
+  }
 })
 const newsSwiper2 = new Swiper('.news_text_swiper', {
   autoplay: true,

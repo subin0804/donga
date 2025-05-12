@@ -20,6 +20,7 @@ body {
     font-family: 'Pretendard', sans-serif;
     font-size: 1.6rem;
     overflow-x: hidden;
+
 }
 
 /* menu_popup 열었을 때 스크롤 x 넣음 */
@@ -30,7 +31,8 @@ body.fixed {
 
 section {
     padding: 12.0rem 0;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: calc(100vh - 7rem);
     position: relative;
     /* max-height: 108.0rem */
 }
@@ -102,16 +104,18 @@ button {
     content: "\F5DE";
     font-family: 'remixicon';
     font-size: 1.5rem;
-    /* border: 1px solid #000; */
 }
 
 @media screen and (max-width: 500px) {
     section {
-        padding: 3rem 1rem;
+        padding: 9rem 1rem;
     }
 
     .container {
         padding: 0;
+    }
+    h2 {
+        font-size: 3rem;
     }
 
 }
@@ -174,6 +178,7 @@ header h1 a {
 }
 
 header.scroll {
+    border-bottom: 1px solid #ccc;
     background: #FFF;
     color: #000;
 }
@@ -853,6 +858,7 @@ header .search_box {
     position: relative;
     gap: 10rem;
     /* padding: 2rem; */
+    height: 65rem;
 }
 
 .esg_content>* {
@@ -891,12 +897,8 @@ header .search_box {
     border-radius: 1rem;
     overflow: hidden;
     aspect-ratio: 1 / 0.8;
-    background: lightblue;
     color: #FFF;
     font-weight: 700;
-    /* margin-left: 8rem; */
-    /* border: 1px solid red; */
-
 }
 
 .preview_swiper .swiper-slide {
@@ -1125,12 +1127,6 @@ header .search_box {
 .product_wrap .container {
     position: relative;
 }
-
-.product_wrap h2 {
-    font-size: 5rem;
-    font-weight: bold;
-}
-
 .product_wrap hgroup p {
     font-size: 2rem;
     margin-top: 5rem;
@@ -1299,10 +1295,6 @@ header .search_box {
 
 
 
-
-
-
-
 /* 섹션5 - business */
 .business {
     position: relative;
@@ -1311,6 +1303,7 @@ header .search_box {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #000;
 }
 
 .business video {
@@ -1340,17 +1333,21 @@ header .search_box {
 
 
 
+
 /* 섹션6 - business2 */
 .business2 {
-    height: 90rem;
-    width: 192.0rem;
+    /* height: 90rem; */
+    /* width: 192.0rem; */
+    border: 1px solid green;
 }
-
+.business2 .container {
+    height: 90rem;
+}
 .business2_content {
     position: relative;
-    width: 160rem;
     height: 54rem;
-    /* border: 1px solid red; */
+    width: 160rem;
+    box-sizing: border-box;
 }
 
 .business2_content h2 {
@@ -1362,31 +1359,27 @@ header .search_box {
     bottom: 15%;
     border: 1px solid #333;
     padding: 1.6rem;
-
-
 }
 
 .business2 .business2_swiper {
     overflow: hidden;
     height: 100%;
     width: 100%;
+    /* max-width: 100%; */
     opacity: 1;
-    position: relative;
+    position: relative; 
 }
 
 .business2_swiper .swiper-slide {
     height: 100%;
     width: 100%;
 }
-
-
 .business2_swiper .b_con_box {
     display: flex;
     gap: 4rem;
     /* gap: 2rem; */
     height: 100%;
     width: 100%;
-
 }
 
 .business2_swiper .txt_box {
@@ -1431,8 +1424,8 @@ header .search_box {
 
 .business2_content .slide_move_3 {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
+    bottom: 2rem;
+    /* left: 2rem; */
     z-index: 100;
     display: block;
 }
@@ -1452,12 +1445,14 @@ header .search_box {
 .swiper-pagination .custom_pagination_wrap {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.8rem;
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
 .custom_pagination_wrap .progress {
     width: 20rem;
-    height: 0.4rem;
+    height: 0.2rem;
     background: rgba(255, 255, 255, .5);
     position: relative;
 }
@@ -1502,6 +1497,69 @@ header .search_box {
     opacity: 1;
     /* 활성화된 슬라이드에서만 텍스트가 보이도록 설정 */
 }
+
+@media screen and (max-width: 500px) {
+    .business2 {
+        width: 100%;
+    }
+    .business2_content .view_more {
+        bottom: 11rem;
+        left: 18rem;
+        padding: 1.4rem;
+    }
+    .business2_content {
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid gold;
+    }
+
+    .business2 .business2_swiper  {
+        max-width: 100%;
+    }
+    .business2_swiper .b_con_box {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .business2_swiper .img_box {
+        width: 100%;
+        height: 40rem;
+        box-sizing: border-box;
+    }
+    .business2_swiper img {
+        height: 100%;
+        /* max-width: fit-content; */
+        /* width: 100%; */
+    }
+    .business2_swiper .txt_box {
+        height: 30rem;
+        width: 100%;
+
+    }
+    .business2_swiper .txt_box span {
+        top: 7%;
+
+        width: 100%;
+        line-height: 3rem;
+        font-size: 1.4rem;
+    }
+    .business2_swiper .txt_box span br {
+        display: none;
+    }
+    .business2_content .slide_move_3 {
+        /* position: absolute; */
+        top: 32%;
+        z-index: 100;
+        display: block;
+    }
+}
+
+
+
+
 
 /* 섹션7 - news */
 .news {
