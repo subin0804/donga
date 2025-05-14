@@ -411,6 +411,7 @@ const newsSwiper2 = new Swiper('.news_text_swiper', {
 //     prevEl: '.swiper-prev',
 //   },
 // })
+
 /* product_swiper */
 const productSwiper = new Swiper('.product_swiper', {
   autoplay: true,
@@ -423,7 +424,7 @@ const productSwiper = new Swiper('.product_swiper', {
   // ✅ 반응형 설정 추가
   breakpoints: {
     0: {
-      spaceBetween: 3, // 0 ~ 499px 사이에서는 간격 제거
+      spaceBetween: 20, // 0 ~ 499px 사이에서는 간격 제거
     },
     501: {
       spaceBetween: 20, // 500px 이상에서는 간격 20 유지
