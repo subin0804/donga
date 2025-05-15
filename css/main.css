@@ -458,7 +458,7 @@ header .search_box {
 /* 대형 PC */
 @media screen and (min-width: 1281px) {
     header .container {
-        padding: 0 3rem;
+        padding: 0 8rem;
     }
 
     .header_util .header_menu {
@@ -888,8 +888,7 @@ header .search_box {
 
 /* 섹션3 - ESG */
 .esg_wrap .container {
-    /* height: 100%; */
-
+    height: 100%;
 }
 
 .esg_content {
@@ -1040,24 +1039,22 @@ header .search_box {
 .esg_content .event_thumb {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     left: 0;
     width: 45%;
     gap: 2rem 2%;
 }
 
 .event_thumb span {
-    /* border: 1px solid #000; */
-    margin: 0;
-    width: 29%;
-    height: 10rem;
-    opacity: 1;
-    border-radius: 1rem;
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
-    position: relative;
     overflow: hidden;
+    width: 29%;
+    height: 10rem;
+    margin: 0;
+    opacity: 1;
+    border-radius: 1rem;
 }
 
 .event_thumb span.swiper-pagination-bullet-active::after {
@@ -1129,7 +1126,38 @@ header .search_box {
     content: "CSR";
 }
 
-
+/* 모바일 가로 & 태블릿 세로 (해상도 480px ~ 767px)*/ 
+@media all and (min-width:481px) and (max-width:767px) {
+    .esg_content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 25rem;
+    }
+    .esg_content .event_thumb {
+        position: absolute; 
+        justify-content: center;
+        bottom: 50%;
+        width: 100%;
+    }
+    .esg_content .event_thumb span {
+        height: 8rem;
+    }
+    .preview_swiper .swiper-slide .hover_text {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 2.8rem;
+        left: 6rem;
+        bottom: -3rem;
+        color: #FFF;
+        font-size: 3.2rem;
+        opacity: 0;
+        transition: all 0.5s;
+    }
+    
+}  
+/* 모바일 세로 */    
 @media screen and (max-width: 480px) {
     .esg_content {
         position: relative;
@@ -1148,6 +1176,7 @@ header .search_box {
 
     .esg_content .event_thumb {
         position: absolute; 
+        justify-content: center;
         bottom: 50%;
         width: 100%;
         
