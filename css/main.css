@@ -895,6 +895,7 @@ header .search_box {
     display: flex;
     position: relative;
     gap: 10rem;
+    /* min-height: unset; */
     /* height: 65rem; */
 }
 
@@ -1128,34 +1129,31 @@ header .search_box {
 
 /* 모바일 가로 & 태블릿 세로 (해상도 480px ~ 767px)*/ 
 @media all and (min-width:481px) and (max-width:767px) {
+    .esg_wrap {
+        height: 50rem;
+    }
     .esg_content {
-        position: relative;
+        /* position: relative; */
         display: flex;
         flex-direction: column;
         gap: 25rem;
+        height: 100%;
     }
     .esg_content .event_thumb {
-        position: absolute; 
-        justify-content: center;
-        bottom: 50%;
+        /* position: relative;  */
+        left: unset;
+        justify-content : space-between;
+        height: 50%;
         width: 100%;
+        
     }
     .esg_content .event_thumb span {
         height: 8rem;
     }
     .preview_swiper .swiper-slide .hover_text {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        gap: 2.8rem;
-        left: 6rem;
-        bottom: -3rem;
-        color: #FFF;
-        font-size: 3.2rem;
-        opacity: 0;
-        transition: all 0.5s;
-    }
-    
+
+
+    } 
 }  
 /* 모바일 세로 */    
 @media screen and (max-width: 480px) {
@@ -1386,14 +1384,7 @@ header .search_box {
         display: none;
     }
     .product_wrap .controls {
-        position: absolute;
-        left: 0;
-        /* bottom: 0rem; */
         top: -52rem;
-        z-index: 50;
-        display: flex;
-        gap: 2rem;
-        align-items: center;
     }
     .product_wrap li {
         margin: 0;
@@ -1412,7 +1403,6 @@ header .search_box {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000;
 }
 
 .business video {
@@ -1689,6 +1679,8 @@ header .search_box {
 /* 섹션7 - news */
 .news {
     background: #F7F2EA;
+    position: relative;
+    width: 100W;
 }
 
 .news .news_content>* {}
@@ -1697,6 +1689,7 @@ header .search_box {
     display: flex;
     flex-direction: column;
     gap: 10rem;
+    max-width: 100%;
 }
 
 .news .news_top {
@@ -1705,33 +1698,43 @@ header .search_box {
     flex-direction: column;
     gap: 2rem;
     font-size: 1.8rem;
+    color: #333;
+
 }
 
 .news .news_top a {
     position: absolute;
     right: 0;
-    top: 0;
+    bottom: 0;
+    padding: 1rem 1.4rem;
+    color: #333;
+    border: 1px solid #333;
 }
 
 .news_img_swiper {
     position: relative;
-    /* display: flex; */
     overflow: hidden;
     padding: 20px 0;
+    margin-top: 5rem;
+    /* max-width: 100%; */
+    
+    /* min-width: 160rem; */
+    /* border: 1px solid #000; */
+}
+.news .swiper-slide {
+    /* flex-shrink: 0; */
+  }
+.news_img_swiper a {
+
+}
+.news_text_swiper {
+
 }
 
-.news_img_swiper a {}
-
-.swiper-slide-active .n_text {
-    display: block;
-}
-
-.n_text {
-    display: none;
-}
 
 .news_img_swiper .swiper-slide .n_img {
     height: 23.0rem;
+    width: 29rem;
 }
 
 .news_img_swiper .swiper-slide img {
@@ -1739,12 +1742,31 @@ header .search_box {
     height: 100%;
     object-fit: cover;
 }
+.news .news_below::after {
+    /* content: "";
+    position: absolute;
+    top: 30%;
+    left: 42%;
+    background: #fff;
+    width: 30rem;
+    height: 45rem;
+    border: 2px solid black;  */
+
+}
 
 .news_text_swiper {
     overflow: hidden;
     /* display: none; */
     text-align: center;
-
+    /* min-width: 160rem; */
+    box-sizing: border-box;
+}
+.swiper-slide-active .n_text {
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    width: 31rem;
+    box-sizing: border-box;
 }
 
 .news_text_swiper li {
@@ -1753,6 +1775,20 @@ header .search_box {
 
 .news_text_swiper p {
     margin-bottom: 3rem;
+    display: inline;
+    
+}
+.news .phone_frame {
+    width: 32rem;
+    height: 58rem;
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    left: 50.2%;
+    pointer-events: none;
+    transform: translateX(-50%);
+    border: 8px solid #333;
+    border-radius: 4rem;
 }
 
 .slide_move_7 .swiper-prev::before {
@@ -1783,6 +1819,20 @@ header .search_box {
     padding: .4rem;
     z-index: 10;
     /* background: blue; */
+}
+
+@media screen and (max-width: 500px) {
+    .news_img_swiper .swiper-slide .n_img {
+        height: 15rem;
+        width: 15rem;
+    
+    }
+    
+    .news_img_swiper .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 
 
