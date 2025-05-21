@@ -781,7 +781,6 @@ header .search_box {
     height: 100%;
     padding: 8rem;
     background: rgba(0, 0, 0, 0.4);
-    border: 1px solid red;
 
 }
 
@@ -1619,6 +1618,7 @@ header .search_box {
     .business2 {
         /* width: 100%; */
     }
+    
     .business2_content .view_more {
         bottom: 11rem;
         left: 18rem;
@@ -1652,21 +1652,21 @@ header .search_box {
     .business2_swiper .txt_box {
         height: 30rem;
         width: 100%;
-
     }
     .business2_swiper .txt_box span {
         top: 7%;
-
         width: 100%;
+        margin-top: 3rem;
         line-height: 3rem;
         font-size: 1.4rem;
+
     }
     .business2_swiper .txt_box span br {
         display: none;
     }
     .business2_content .slide_move_3 {
         /* position: absolute; */
-        top: 32%;
+        top: 40%;
         z-index: 100;
         display: block;
     }
@@ -1680,7 +1680,7 @@ header .search_box {
 .news {
     background: #F7F2EA;
     position: relative;
-    width: 100W;
+    
 }
 
 .news .news_content>* {}
@@ -1716,21 +1716,14 @@ header .search_box {
     overflow: hidden;
     padding: 20px 0;
     margin-top: 5rem;
-    /* max-width: 100%; */
-    
-    /* min-width: 160rem; */
-    /* border: 1px solid #000; */
 }
 .news .swiper-slide {
-    /* flex-shrink: 0; */
+    flex-shrink: 0;
+    width: 29rem;
+
+    /* slideperview : 'auto'를 설정시 slide width값 설정해줘야 함 */
+
   }
-.news_img_swiper a {
-
-}
-.news_text_swiper {
-
-}
-
 
 .news_img_swiper .swiper-slide .n_img {
     height: 23.0rem;
@@ -1756,39 +1749,50 @@ header .search_box {
 
 .news_text_swiper {
     overflow: hidden;
+    margin: 0 auto;
+    width: 29rem;
+    /* text-align: center; */
     /* display: none; */
-    text-align: center;
-    /* min-width: 160rem; */
-    box-sizing: border-box;
+}
+
+.news_text_swiper .swiper-slide {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 29rem; 
+    background: #FFF;
+
 }
 .swiper-slide-active .n_text {
-    display: inline-flex;
-    flex-direction: column;
-    text-align: center;
-    width: 31rem;
-    box-sizing: border-box;
-}
-
-.news_text_swiper li {
-    background: #F7F2EA;
-}
-
-.news_text_swiper p {
-    margin-bottom: 3rem;
-    display: inline;
+    /* text-align: center; */
     
 }
+.news_text_swiper strong {
+    font-size: 2rem;
+    font-weight: 500;
+}
+.news_text_swiper p {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    font-size: 2rem;
+    /* font-weight: 500; */
+    /* display: inline; */
+    
+}
+.news_text_swiper span {
+    color: #ccc;
+}
 .news .phone_frame {
+    position: absolute;
+    top: 30%;
+    left: 50%;
     width: 32rem;
     height: 58rem;
-    position: absolute;
-    z-index: 1;
-    top: 25%;
-    left: 50.2%;
-    pointer-events: none;
     transform: translateX(-50%);
+    background: #FFF;
     border: 8px solid #333;
     border-radius: 4rem;
+    /* pointer-events: none; */
 }
 
 .slide_move_7 .swiper-prev::before {
@@ -1801,10 +1805,7 @@ header .search_box {
     border-radius: 50%;
     padding: .4rem;
     z-index: 10;
-    /* background: gold; */
-    /* justify-content: center;
-    align-items: center;
-    background: #000; */
+
 
 }
 
@@ -1821,11 +1822,29 @@ header .search_box {
     /* background: blue; */
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 780px) {
+    .news {
+        padding: 5rem 0;
+    }
+    .news .container {
+        padding: 0;
+    }
+}
+@media screen and (max-width: 480px) {
+    .news {
+        padding: 5rem 0;
+    }
+    .news .container {
+        padding: 0;
+    }
+    .news_img_swiper {
+        overflow: unset;
+
+    }
+    
     .news_img_swiper .swiper-slide .n_img {
         height: 15rem;
         width: 15rem;
-    
     }
     
     .news_img_swiper .swiper-slide img {
@@ -1833,6 +1852,18 @@ header .search_box {
         height: 100%;
         object-fit: cover;
     }
+    .news_text_swiper {
+        
+    }
+    .swiper-slide-active .n_text {
+        
+    }
+    .news .phone_frame {
+        top: 25%;
+        width: 18.5rem;
+        height: 37.2rem;
+    }
+    
 }
 
 

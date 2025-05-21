@@ -355,8 +355,12 @@ const businesSwiper2 = new Swiper('.business2_swiper', {
 
 /* News */
 const newsSwiper = new Swiper('.news_img_swiper', {
-  autoplay: true,
-  slidesPerView: 5,
+  // autoplay: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  slidesPerView: 'auto',
   spaceBetween: 40,
   centeredSlides: true,
   loopedSlides: 2,
@@ -365,33 +369,47 @@ const newsSwiper = new Swiper('.news_img_swiper', {
     nextEl: '.swiper-next',
     prevEl: '.swiper-prev',
   },
+  // 화면 너비가 "480px 이하"일 때 설정
   breakpoints: {
-    // 화면 너비가 "480px 이하"일 때 설정
     0: {
-      slidesPerView: 3,
-      spaceBetween: 20,
+      slidesPerView: 'auto',
+      spaceBetween: 30,
     },
     501: {
-      slidesPerView: 5,
+      slidesPerView: 'auto',
       spaceBetween: 40,
     }
   }
 })
 const newsSwiper2 = new Swiper('.news_text_swiper', {
-  autoplay: true,
-  loop: true,
-  slidesPerView: 5,
+  // autoplay: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  slidesPerView: 'auto',
   spaceBetween: 40,
   centeredSlides: true,
   loopedSlides: 2,
+  loop: true,
+  // effect: 'fade',
   // navigation: {
   //   nextEl: '.swiper-next',
   //   prevEl: '.swiper-prev',
   // },
-  effect: 'fade',
   // watchSlidesProgress: true,
   // freeMode: true,
-})
+});
+
+// 방법1 이미지 ↔ 텍스트 슬라이더 동기화
+newsSwiper.controller.control = newsSwiper2;
+newsSwiper2.controller.control = newsSwiper;
+
+// 방법2 이미지 슬라이드에 맞춰 텍스트 자동 연동 시키고 싶다면
+// newsSwiper.on('slideChange', () => {
+//   newsSwiper2.slideToLoop(newsSwiper.realIndex);
+// });
+
 
 
 
