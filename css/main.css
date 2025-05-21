@@ -1187,10 +1187,9 @@ header .search_box {
 
 /* 섹션4 - product */
 .product_wrap {
-    /* height: 102.4rem; */
-    /* height: 90rem; */
     background: #F7F2EA;
     position: relative;
+    min-height: 89.5rem;
 }
 .product_wrap .container {
     position: relative;
@@ -1720,7 +1719,6 @@ header .search_box {
 .news .swiper-slide {
     flex-shrink: 0;
     width: 29rem;
-
     /* slideperview : 'auto'를 설정시 slide width값 설정해줘야 함 */
 
   }
@@ -1756,9 +1754,6 @@ header .search_box {
 }
 
 .news_text_swiper .swiper-slide {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     width: 29rem; 
     background: #FFF;
 
@@ -1820,6 +1815,10 @@ header .search_box {
     padding: .4rem;
     z-index: 10;
     /* background: blue; */
+}
+
+@media screen and (max-width: 1440px) {
+    
 }
 
 @media screen and (max-width: 780px) {
