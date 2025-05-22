@@ -1831,7 +1831,8 @@ header .search_box {
 }
 @media screen and (max-width: 500px) {
     .news {
-        min-height: 100vh;
+        /* min-height: 100vh; */
+        min-height: 90vh;
         padding: 5rem 0;
     }
     .news .container {
@@ -1840,6 +1841,13 @@ header .search_box {
 
     .news .news_top {
         padding-left: 3rem;
+    }
+
+    .news .news_top span{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
     }
 
     .news .news_top a {
@@ -1906,8 +1914,8 @@ header .search_box {
 
     }
     .news .phone_frame {
-        /* top: 38%; */
-        top: 35%;
+        top: 38%;
+        /* top: 35%; */
         width: 18.5rem;
         height: 37.2rem;
     }
