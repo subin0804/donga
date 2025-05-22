@@ -1831,7 +1831,7 @@ header .search_box {
 }
 @media screen and (max-width: 500px) {
     .news {
-        min-height: 90vh;
+        min-height: 100vh;
         padding: 5rem 0;
     }
     .news .container {
@@ -1843,14 +1843,14 @@ header .search_box {
     }
 
     .news .news_top a {
-        position: static; /* position absolute 제거 */
+        position: static; 
         width: fit-content;
         margin-top: 2rem;
     }
 
 
     .news_img_swiper {
-        overflow: unset;
+        /* overflow: unset; */
 
     }
     .news .swiper-slide {
@@ -1869,13 +1869,23 @@ header .search_box {
         object-fit: cover;
     }
 
+    /* ============================ */
+    .news_below {
+        /* position: relative;  */
+    }
+    
     .news_text_swiper {
         width: 15rem;
-    }
 
-    .news_text_swiper .n_text {
-
+        /* position: absolute;
+        top: 24rem;               
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2; */
     }
+/* ======================================== */
+
+
     .news_text_swiper strong {
         font-size: 1.6rem;
         font-weight: 500;
@@ -1896,7 +1906,8 @@ header .search_box {
 
     }
     .news .phone_frame {
-        top: 38%;
+        /* top: 38%; */
+        top: 35%;
         width: 18.5rem;
         height: 37.2rem;
     }
