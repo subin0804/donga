@@ -392,6 +392,7 @@ const newsSwiper2 = new Swiper('.news_text_swiper', {
   centeredSlides: true,
   loopedSlides: 2,
   loop: true,
+  
   // effect: 'fade',
   // navigation: {
   //   nextEl: '.swiper-next',
