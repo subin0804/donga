@@ -1218,6 +1218,7 @@ header .search_box {
     left: 0;
     top: 0;
     width: 46.5rem;
+    /* width: 48rem; */
     height: 100%;
     background: #F7F2EA;
     z-index: 11;
@@ -1434,8 +1435,8 @@ header .search_box {
 
 /* 섹션6 - business2 */
 .business2 {
-    /* height: 54rem; */
-    /* height: calc(100vh - 7rem); */
+    /* min-height: 90rem; */
+    min-height: 78rem;
     /* height가 안먹힘힘 945네 왜지? */
     /* width: 192.0rem; */
 }
@@ -1444,10 +1445,11 @@ header .search_box {
 }
 .business2_content {
     position: relative;
-    /* height: 54rem; */
-    height: 66rem;
+    height: 54rem;
+    /* height: 66rem; */
     width: 160rem;
     box-sizing: border-box;
+
 }
 
 .business2_content h2 {
@@ -1614,15 +1616,22 @@ header .search_box {
         /* height: 40rem; */
     }
 }
+
+@media screen and (max-width: 780px) {
+
+}
+
 @media screen and (max-width: 500px) {
     .business2 {
         /* width: 100%; */
     }
     
     .business2_content .view_more {
-        bottom: 11rem;
-        left: 18rem;
-        padding: 1.4rem;
+        font-size: 1.4rem;
+        color: #333;
+        top: 25%;
+        height: fit-content;
+        padding: .8rem;
     }
     .business2_content {
         height: 100%;
@@ -1828,19 +1837,29 @@ header .search_box {
     .news .container {
         padding: 0;
     }
+    .news .news_top {
+        padding-left: 3rem;
+    }
+    .news .news_top a {
+        position: static; 
+        width: fit-content;
+        margin-top: 1rem;
+        font-size: 1.4rem;
+        padding: .8rem;
+    }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
     .news {
         /* min-height: 100vh; */
         min-height: 90vh;
-        padding: 5rem 0;
+        padding: 5rem 1rem;
     }
     .news .container {
         padding: 0;
     }
 
     .news .news_top {
-        padding-left: 3rem;
+        /* padding-left: 1rem; */
     }
 
     .news .news_top span{
