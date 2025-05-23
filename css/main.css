@@ -1327,7 +1327,8 @@ header .search_box {
 
 
 /* 노트북 */
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1700px) {
+    
     .product_wrap hgroup p {
         font-size: 1.6rem;
         line-height: 2.8rem;
@@ -1338,13 +1339,32 @@ header .search_box {
         width: 90rem;
     }
     .product_wrap .product_swiper {
+        position: relative;
+        width: calc(100vw - 16.0rem);
+        padding-top: 10rem;
+        padding-left: 40rem;
+        overflow: hidden;
+    }
+
+    .product_wrap .product_swiper .box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40rem;
+        /* width: 48rem; */
+        height: 100%;
+        background: #F7F2EA;
+        z-index: 11;
+
+    }
+    .product_wrap .product_swiper {
         /* width: calc(100vw - 16.0rem); */
         width: 100vw;
 
     }
     .product_wrap li {
         width: 40rem;
-        height: 33.5rem;
+        height: 31.5rem;
     }
     .product_wrap .p_rank {
         left: 3rem;
@@ -1361,11 +1381,104 @@ header .search_box {
         left: 25rem;
     }
 }
-@media screen and (max-width: 1280px) {
-    
+@media screen and (max-width: 1300px) {
+    .product_wrap {
+        min-height: 84.1rem;
+    }
+    .product_wrap hgroup p {
+        font-size: 1.6rem;
+        line-height: 2.8rem;
+    }
+    .product_wrap .best_product {
+        right: 0;
+        top: 16rem;
+        width: 80rem;
+    }
+    .product_wrap .product_swiper {
+        position: relative;
+        width: calc(100vw - 16.0rem);
+        padding-top: 10rem;
+        padding-left: 40rem;
+        overflow: hidden;
+    }
+
+    .product_wrap .product_swiper .box {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40rem;
+        /* width: 48rem; */
+        height: 100%;
+        background: #F7F2EA;
+        z-index: 11;
+
+    }
+    .product_wrap .product_swiper {
+        /* width: calc(100vw - 16.0rem); */
+        width: 100vw;
+
+    }
+    .product_wrap li {
+        width: 40rem;
+        height: 31.5rem;
+    }
+    .product_wrap .p_rank {
+        left: 3rem;
+        top: -5rem;
+    }
+    .product_wrap ul .p_rank img {
+        width: 7.5rem;
+        height: 7.5rem;
+    }
+    .product_wrap li>img {
+        width: 13rem;
+        height: 38rem;
+        bottom: 2rem;
+        left: 25rem;
+    }
 
 }
+/* 780인데 1170으로 바꿔봄 이상하면 원위치 */
+@media screen and (max-width: 1170px) {
+    
+    .product_wrap .product_swiper .box {
+        position: static;
+
+        
+        /* width: 46.5rem; */
+        /* width: 48rem; */
+        /* height: 100%; */
+        /* background: #F7F2EA; */
+        /* z-index: 11; */
+    }
+
+    .product_wrap .best_product {
+        position: absolute;
+        right: 0;
+        top: 16rem;
+        width: 4rem;
+    }
+    .product_wrap .product_swiper {
+        margin-top: 3rem;
+
+    }
+    .product_wrap li>img {
+        /* position: absolute; */
+        /* bottom: 2rem; */
+        left: 25rem;
+        width: 12rem;
+        height: 35rem;
+
+    }
+    .product_wrap .controls {
+        top: -40rem;
+    }
+
+
+}
+
 @media screen and (max-width: 500px) {
+
     .product_wrap hgroup p {
         font-size: 1.6rem;
         margin-top: 4rem;
@@ -1379,16 +1492,30 @@ header .search_box {
         /* border: 1px solid #000; */
         padding-top: 20rem;
         overflow: hidden;
+        box-sizing: border-box;
     }
     .product_wrap .product_swiper .box {
         display: none;
+        
     }
     .product_wrap .controls {
-        top: -52rem;
+        top: -45rem;
     }
     .product_wrap li {
+        width: 40rem;
+        height: 31.5rem;
+
         margin: 0;
         border: 1px solid  #ACDFF5;
+        box-sizing: border-box;
+    }
+    .product_wrap li>img {
+        /* position: absolute; */
+        /* bottom: 2rem; */
+        left: 25rem;
+        width: 12rem;
+        height: 35rem;
+
     }
 }
 
