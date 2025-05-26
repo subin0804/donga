@@ -100,11 +100,16 @@ button {
     margin: 0;
     border: 1px solid #000;
 } */
-.view_more::after {
+.view_more span::after {
     content: "\F5DE";
     font-family: 'remixicon';
     font-size: 1.5rem;
 }
+.view_more {
+
+}
+
+
 @media screen and (max-width: 1440px) {
     .container {
         padding: 0 8rem;
@@ -126,7 +131,9 @@ button {
     h2 {
         font-size: 3rem;
     }
-
+    .view_more {
+    min-width: 10rem;
+    }
 }
 /* @media screen and (max-width: 1280px) {
     html {font-size: 9px;}
@@ -1843,6 +1850,15 @@ header .search_box {
 }
 
 .news .news_top a {
+    /* position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 1rem 1.4rem;
+    color: #333;
+    border: 1px solid #333; */
+ 
+}
+.news .news_top a span {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -1964,15 +1980,24 @@ header .search_box {
 @media screen and (max-width: 780px) {
     .news {
         padding: 5rem 0;
+        
     }
     .news .container {
         padding: 0;
     }
     .news .news_top {
         padding-left: 3rem;
+
     }
     .news .news_top a {
-        position: static; 
+        /* position: static; 
+        width: fit-content;
+        margin-top: 1rem;
+        font-size: 1.4rem;
+        padding: .8rem; */
+    }
+    .news .news_top a span {
+        position: static;
         width: fit-content;
         margin-top: 1rem;
         font-size: 1.4rem;
@@ -1984,6 +2009,7 @@ header .search_box {
         /* min-height: 100vh; */
         min-height: 90vh;
         padding: 5rem 1rem;
+
     }
     .news .container {
         padding: 0;
@@ -2001,9 +2027,14 @@ header .search_box {
     }
 
     .news .news_top a {
+        min-width: 10rem;
+        /* width: 100%; */
+    }
+    .news .news_top a span {
         position: static; 
         width: fit-content;
         margin-top: 2rem;
+
     }
 
 
