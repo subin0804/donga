@@ -1555,7 +1555,9 @@ header .search_box {
     will-change: opacity, transform;
 }
 
-.business_text p {}
+.business_text p {
+    
+}
 
 
 
@@ -1585,7 +1587,8 @@ header .search_box {
 
 .business2_content .view_more {
     position: absolute;
-    bottom: 15%;
+    
+    top: 50%;
     border: 1px solid #333;
     padding: 1.6rem;
 }
@@ -1615,6 +1618,7 @@ header .search_box {
     width: 40%;
     height: 100%;
     overflow: hidden;
+    /* border: 1px solid #000; */
 }
 
 .business2_swiper .txt_box span {
