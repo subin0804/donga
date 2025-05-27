@@ -839,7 +839,7 @@ header .search_box {
     font-weight: 700;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
     .brand_story_wrap .brand_container {
         margin: 0;
     }
