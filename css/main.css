@@ -2105,7 +2105,7 @@ header .search_box {
 
     }
     .news_content {
-        gap: 5rem;
+        gap: 3rem;
     }
 
     .news_img_swiper {
@@ -2169,6 +2169,32 @@ header .search_box {
         /* top: 35%; */
         width: 18.5rem;
         height: 37.2rem;
+    }
+    .slide_move_7 .swiper-prev::before {
+        content: '\EA64';
+        font-family: 'remixicon';
+        position: absolute;
+        top: 50%;
+        right: 70%;
+        border: 3px solid #333;
+        border-radius: 50%;
+        padding: .4rem;
+        z-index: 10;
+    
+    
+    }
+    
+    .slide_move_7 .swiper-next::after {
+        content: '\EA6E';
+        font-family: 'remixicon';
+        position: absolute;
+        top: 50%;
+        left: 70%;
+        border: 3px solid #333;
+        border-radius: 50%;
+        padding: .4rem;
+        z-index: 10;
+        /* background: blue; */
     }
     
 }
