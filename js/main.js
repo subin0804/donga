@@ -237,6 +237,7 @@ const esgSwiper = new Swiper('.preview_swiper', {
   autoplay: {
     delay: 5000,
   },
+  slidesPerView: 'auto',
   loop: true,
   pagination: {
     el: '.swiper-pagination',
@@ -308,7 +309,8 @@ const currentEl = document.querySelector('.custom_pagination_wrap .current');
 const totalEl = document.querySelector('.custom_pagination_wrap .total');
 const barEl = document.querySelector('.custom_pagination_wrap .bar');
 const businesSwiper2 = new Swiper('.business2_swiper', {
-  slidesPerView: 1,
+  // slidesPerView: 1,
+  slidesPerView: 'auto',
   loop: true,
   effect: 'fade',
   autoplay: {
