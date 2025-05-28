@@ -121,7 +121,13 @@ button {
 @media screen and (max-width: 480px) {
     section {
         padding: 5rem 1rem;
+        /* min-height: fit-content; */
+    }
+    .brand_story_wrap, .esg_wrap {
         min-height: fit-content;
+    }
+    .main_visual, .business, .product_wrap, .news {
+        min-height: 100vh;
     }
 
     .container {
@@ -131,7 +137,7 @@ button {
         font-size: 3rem;
     }
     .view_more {
-    min-width: 10rem;
+        min-width: 10rem;
     }
 }
 /* @media screen and (max-width: 1280px) {
@@ -765,8 +771,6 @@ header .search_box {
 
 /* 섹션2 - brand_story */
 .brand_story_wrap {
-    min-height: 80vh;
-    /* min-height: 909rem; */
 
 }
 
@@ -1233,7 +1237,7 @@ header .search_box {
 .product_wrap {
     background: #F7F2EA;
     position: relative;
-    min-height: 89.5rem;
+    /* min-height: 89.5rem; */
 }
 .product_wrap .container {
     position: relative;
@@ -1592,11 +1596,10 @@ header .search_box {
 /* 섹션5 - business */
 .business {
     position: relative;
-    height: 100vh;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .business video {
@@ -1636,8 +1639,7 @@ header .search_box {
 
 /* 섹션6 - business2 */
 .business2 {
-    /* min-height: 90rem; */
-    min-height: 78rem;
+    /* min-height: 78rem; */
     /* height가 안먹힘힘 945네 왜지? */
     /* width: 192.0rem; */
 }
@@ -1890,9 +1892,8 @@ header .search_box {
 
 /* 섹션7 - news */
 .news {
-    background: #F7F2EA;
     position: relative;
-    
+    background: #F7F2EA;
 }
 
 .news .news_content>* {}
