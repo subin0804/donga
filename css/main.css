@@ -1595,6 +1595,7 @@ header .search_box {
 
 /* 섹션5 - business */
 .business {
+    min-height: 100vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -1630,7 +1631,7 @@ header .search_box {
 }
 @media screen and (max-width: 500px) {
     .business {
-        min-height: fit-content;
+       
     }
 }
 
