@@ -1314,6 +1314,7 @@ header .search_box {
 .product_wrap .p_text {
     line-height: 4rem;
     margin-left: 4rem;
+
 }
 
 .product_wrap .product_swiper strong {
@@ -1520,20 +1521,22 @@ header .search_box {
 }
 
 @media screen and (max-width: 500px) {
+    .product_wrap {
+        min-height: fit-content;
 
+    }
     .product_wrap hgroup p {
         font-size: 1.6rem;
         margin-top: 4rem;
-        /* margin-bottom: 6rem; */
         line-height: 3rem;
+ 
     }
     .product_wrap .best_product {
         display: none;
-    }    
+    }   
     .product_wrap .product_swiper {
-        /* border: 1px solid #000; */
-        padding-top: 20rem;
         overflow: hidden;
+        padding-top: 10rem;
         box-sizing: border-box;
     }
     .product_wrap .product_swiper .box {
@@ -1544,9 +1547,9 @@ header .search_box {
         top: -45rem;
     }
     .product_wrap li {
-        width: 40rem;
-        height: 31.5rem;
-
+        width: 30rem;
+        height: 25rem;
+        padding: 6rem 2rem;
         margin: 0;
         border: 1px solid  #ACDFF5;
         box-sizing: border-box;
@@ -1554,10 +1557,31 @@ header .search_box {
     .product_wrap li>img {
         /* position: absolute; */
         /* bottom: 2rem; */
-        left: 25rem;
-        width: 12rem;
-        height: 35rem;
+        left: 20rem;
+        width: 8rem;
+        height: 25rem;
+        
+    }
+    .product_wrap .product_swiper strong {
+        display: block;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    
+    .product_wrap .product_swiper p {
+        font-size: 1.4rem;
+        line-height: 2rem;
+    }
+    .product_wrap .product_swiper a {
+        bottom: 0;
+        left: 0;
 
+        padding: .5rem 4rem;
+        border-radius: .6rem;
+    }
+    .product_wrap .controls>* {
+        
     }
 }
 
@@ -2042,7 +2066,8 @@ header .search_box {
 @media screen and (max-width: 480px) {
     .news {
         /* min-height: 100vh; */
-        min-height: 90vh;
+        /* min-height: 90vh; */
+        min-height: 100vh;
         padding: 5rem 1rem;
 
     }
@@ -2052,6 +2077,8 @@ header .search_box {
 
     .news .news_top {
         /* padding-left: 1rem; */
+        padding: 0;
+
     }
 
     .news .news_top span{
@@ -2071,7 +2098,6 @@ header .search_box {
         margin-top: 2rem;
 
     }
-
 
     .news_img_swiper {
         /* overflow: unset; */
