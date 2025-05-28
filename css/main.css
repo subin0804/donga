@@ -1273,13 +1273,13 @@ header .search_box {
 
 .product_wrap li {
     position: relative;
-    width: 46rem;
-    height: 37.5rem;
-    padding: 6.5rem 4rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    width: 46rem;
+    height: 37.5rem;
+    padding: 6.5rem 4rem;
     background: #FFF;
     border-radius: 1rem;
 }
@@ -1293,8 +1293,8 @@ header .search_box {
 .product_wrap .p_rank span {
     /* rank-label*/
     position: absolute;
-    left: 2.9rem;
-    top: 2rem;
+    left: 2.7rem;
+    top: 1.9rem;
     z-index: 100;
     font-size: 4rem;
     color: #FFF;
@@ -1624,6 +1624,11 @@ header .search_box {
 
 .business_text p {
     
+}
+@media screen and (max-width: 500px) {
+    .business {
+        min-height: fit-content;
+    }
 }
 
 
@@ -2066,10 +2071,10 @@ header .search_box {
 }
 @media screen and (max-width: 480px) {
     .news {
-        /* min-height: 100vh; */
         /* min-height: 90vh; */
-        /* min-height: 100vh; */
+        min-height: fit-content;
         padding: 5rem 1rem;
+        
 
     }
     .news .container {
@@ -2160,7 +2165,7 @@ header .search_box {
 
     }
     .news .phone_frame {
-        top: 42%;
+        top: 38%;
         /* top: 35%; */
         width: 18.5rem;
         height: 37.2rem;
