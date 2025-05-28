@@ -121,6 +121,7 @@ button {
 @media screen and (max-width: 480px) {
     section {
         padding: 5rem 1rem;
+        min-height: fit-content;
     }
 
     .container {
@@ -2067,7 +2068,7 @@ header .search_box {
     .news {
         /* min-height: 100vh; */
         /* min-height: 90vh; */
-        min-height: 100vh;
+        /* min-height: 100vh; */
         padding: 5rem 1rem;
 
     }
@@ -2095,8 +2096,11 @@ header .search_box {
     .news .news_top a span {
         position: static; 
         width: fit-content;
-        margin-top: 2rem;
+        /* margin-top: 1rem; */
 
+    }
+    .news_content {
+        gap: 5rem;
     }
 
     .news_img_swiper {
