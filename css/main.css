@@ -137,7 +137,12 @@ button {
         font-size: 3rem;
     }
     .view_more {
+        font-size: 1.4rem;
+        color: #333;
+        top: 25%;
+        height: fit-content;
         min-width: 10rem;
+        padding: .8rem;
     }
 }
 /* @media screen and (max-width: 1280px) {
@@ -1244,9 +1249,9 @@ header .search_box {
     .esg_content .event_thumb {
         position: absolute;
 
-        z-index: 30;
+        /* z-index: 30; */
 
-        bottom: 45%;
+        bottom: 50%;
         width: 100%;
         
     }
@@ -1691,6 +1696,7 @@ header .search_box {
 @media screen and (max-width: 480px) {
     .business {
         margin: 0;
+        padding: 0;
     }
     .business video {
         width: 100vw;
@@ -1797,9 +1803,9 @@ header .search_box {
 }
 
 .business2_swiper img {
-    object-fit: cover;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .business2_swiper video {
@@ -1917,18 +1923,7 @@ header .search_box {
     }
 }
 
-@media screen and (max-width: 480px) {
-    .business2 {
-        /* width: 100%; */
-    }
-    
-    .business2_content .view_more {
-        font-size: 1.4rem;
-        color: #333;
-        top: 25%;
-        height: fit-content;
-        padding: .8rem;
-    }
+@media screen and (max-width: 480px) { 
     .business2_content {
         height: 100%;
         width: 100%;
@@ -1946,8 +1941,7 @@ header .search_box {
     }
     .business2_swiper .img_box {
         width: 100%;
-        height: 40rem;
-        box-sizing: border-box;
+        height: 30rem;
     }
     .business2_swiper img {
         height: 100%;
@@ -1966,8 +1960,11 @@ header .search_box {
         font-size: 1.4rem;
 
     }
-    .business2_swiper .txt_box span br {
-        display: none;
+    .custom_pagination_wrap .progress {
+        width: 15rem;
+        height: 0.2rem;
+        background: rgba(255, 255, 255, .5);
+        position: relative;
     }
     .business2_content .slide_move_3 {
         /* position: absolute; */
