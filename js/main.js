@@ -238,7 +238,7 @@ const esgSwiper = new Swiper('.preview_swiper', {
     delay: 5000,
   },
   slidesPerView: 'auto',
-  loop: true,
+  loop: false,
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
@@ -247,64 +247,6 @@ const esgSwiper = new Swiper('.preview_swiper', {
 
 
 /* Business2 */
-/*
-const businesSwiper2 = new Swiper('.business2_swiper', {
-  slidesPerView: 1,
-  autoplay: {
-    delay: 3000,
-  },
-  effect: 'fade',
-  // fadeEffect: {
-  //   crossFade: true, // 이미지 부드럽게 페이드 처리
-  // },
-  loop: true,
-  clickable: true,
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'custom',
-    renderCustom: function (swiper, current, total) {
-      return `
-        <div class="custom_pagination_wrap">
-          <span class="num">0${current}</span>
-          <div class="progress">
-            <div class="bar"></div>
-          </div>
-          <span class="num">0${total}</span>
-        </div>
-      `;
-    },
-  },
-
-  // ✅ 텍스트와 이미지에 동시에 fade 적용
-  on: {
-    slideChangeTransitionStart: function () {
-      const slides = document.querySelectorAll('.business2_swiper .swiper-slide');
-
-      // 모든 슬라이드의 텍스트/이미지 숨기기
-      slides.forEach(slide => {
-        const textBox = slide.querySelector('.txt_box');
-        const imgBox = slide.querySelector('.img_box');
-
-        if (textBox) textBox.style.opacity = '0';
-        if (imgBox) imgBox.style.opacity = '0';
-      });
-
-      // 현재 슬라이드 텍스트/이미지만 보이게
-      const activeSlide = document.querySelector('.business2_swiper .swiper-slide-active');
-      if (activeSlide) {
-        const activeTextBox = activeSlide.querySelector('.txt_box');
-        const activeImgBox = activeSlide.querySelector('.img_box');
-
-        setTimeout(() => {
-          if (activeTextBox) activeTextBox.style.opacity = '1';
-          if (activeImgBox) activeImgBox.style.opacity = '1';
-        }, 100);
-      }
-    }
-  }
-});
-
-*/
 const currentEl = document.querySelector('.custom_pagination_wrap .current');
 const totalEl = document.querySelector('.custom_pagination_wrap .total');
 const barEl = document.querySelector('.custom_pagination_wrap .bar');

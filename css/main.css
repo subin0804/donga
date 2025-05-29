@@ -1224,28 +1224,35 @@ header .search_box {
         position: relative;
         display: flex;
         flex-direction: column;
-        gap: 25rem;
+        gap: 20rem;
 
         /* padding: 2rem; */
     }
-    .esg_wrap hgroup {
+    .esg_event_left {
+        width: 100%;
 
     }
     .preview_swiper {
-        
+        aspect-ratio: 1 / 0.8;
+        width: 100%;
+    }
+    .preview_swiper .swiper-slide {
+        height: 100%;
+        width: 100%;
     }
 
     .esg_content .event_thumb {
         position: absolute;
-        /* position: static;  */
+
         z-index: 30;
 
-        bottom: 50%;
+        bottom: 45%;
         width: 100%;
         
     }
 
     .esg_content .event_thumb span {
+        height: 6rem;
         /* position: absolute; */
     }
 }
@@ -1634,7 +1641,7 @@ header .search_box {
 
 .business_text {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%) translateY(20px);
     opacity: 0;
@@ -1642,15 +1649,68 @@ header .search_box {
     text-align: center;
     transition: all 0.3s ease;
     will-change: opacity, transform;
+    width: 100%;
 }
 
 .business_text p {
-    
+    font-size: 4rem; 
+    font-weight: 600; 
+    margin-bottom: 8rem;
+  }
+  .business_text span {
+    font-size: 1.8rem; /* 보조 텍스트도 조절 가능 */
+    line-height: 1.6;
+  }
+  
+@media screen and (max-width: 840px) {
+    .business_text p {
+        font-size: 3rem; 
+        font-weight: 600; 
+        margin-bottom: 8rem;
+      }
+      .business_text span {
+        font-size: 1.6rem; /* 보조 텍스트도 조절 가능 */
+        line-height: 1.6;
+      }
+      
 }
-@media screen and (max-width: 500px) {
+  
+@media screen and (max-width: 630px) {
     .business {
-       
     }
+    .business_text p {
+        font-size: 2.4rem; 
+        font-weight: 600; 
+        margin-bottom: 8rem;
+      }
+      .business_text span {
+        font-size: 1.3rem; /* 보조 텍스트도 조절 가능 */
+        line-height: 1.6;
+      }
+}
+@media screen and (max-width: 480px) {
+    .business {
+        margin: 0;
+    }
+    .business video {
+        width: 100vw;
+        height: 100vw;
+        border-radius: 100%;
+        object-fit: cover;
+        transform: scale(1);
+        transform-origin: center center;
+        will-change: transform;
+        transition: transform 0.3s ease;
+    }
+    .business_text p {
+        font-size: 1.8rem; 
+        font-weight: 600; 
+        margin-bottom: 8rem;
+      }
+      .business_text span {
+        font-size: 1.2rem; /* 보조 텍스트도 조절 가능 */
+        line-height: 1.6;
+      }
 }
 
 
@@ -1842,10 +1902,22 @@ header .search_box {
 }
 
 @media screen and (max-width: 780px) {
-
+    .business2_content .view_more {  
+        top: 85%;
+        padding: 1rem;
+    }
+    
+}
+@media screen and (max-width: 700px) {
+    .custom_pagination_wrap .progress {
+        width: 15rem;
+        height: 0.2rem;
+        background: rgba(255, 255, 255, .5);
+        position: relative;
+    }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
     .business2 {
         /* width: 100%; */
     }
