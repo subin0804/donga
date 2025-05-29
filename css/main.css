@@ -648,11 +648,12 @@ header .search_box {
     align-items: center;
     gap: 2rem;
     position: absolute;
-    left: 0;
+    /* left: 0; */
     bottom: 4rem;
     z-index: 10;
     width: 100%;
     color: #FFF;
+
 }
 
 .main_slide_mode .swiper-pagination {
@@ -668,7 +669,6 @@ header .search_box {
 
 .main_slide_mode .progress .bar {
     width: 0;
-    /* border: 1px solid red; */
     height: 0.4rem;
     background: #fff;
     /* animation: slideBar 90s linear; */
@@ -697,7 +697,23 @@ header .search_box {
     }
 }
 
-
+@media screen and (min-width: 1360px) {
+    .main_slide_mode {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        position: absolute;
+        left: 0;
+        bottom: 4rem;
+        z-index: 10;
+        width: 100%;
+        color: #FFF;
+    }
+    .main_visual .swiper-slide>span {
+        
+    }
+}
 @media screen and (min-width: 1281px) {
     .main-swiper {
         height: 100vh;
@@ -708,6 +724,7 @@ header .search_box {
         height: 100%;
         object-fit: cover;
     }
+    
 }
 
 @media screen and (max-width: 1280px) {
@@ -720,6 +737,14 @@ header .search_box {
         height: 100%;
         object-fit: cover;
     }
+    .main_slide_mode .progress {
+        width: 20rem;
+
+    }
+    .main_visual .swiper-slide>span {
+        
+    }
+    
 }
 
 @media screen and (max-width: 1024px) {
@@ -738,15 +763,30 @@ header .search_box {
     .main-swiper {
         height: 100vh;
     }
+    
 
     .main_visual .main-swiper video {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
+    .main_slide_mode {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        position: absolute;
+        left: 0;
+        bottom: 4rem;
+        z-index: 10;
+        width: 100%;
+        color: #FFF;
+    }
+    
+    
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
     .main-swiper {
         height: 100vh;
     }
@@ -763,8 +803,8 @@ header .search_box {
     }
 
     .main_visual .swiper-slide>span {
-        right: 6rem;
-        bottom: 9%
+        /* display: none; */
+        display: none;
     }
 
     .main_slide_mode .progress {
@@ -1295,14 +1335,13 @@ header .search_box {
     left: 0;
     top: 0;
     width: 46.5rem;
-    /* width: 48rem; */
     height: 100%;
     background: #F7F2EA;
     z-index: 11;
 }
 
 .product_wrap .product_swiper .swiper-wrapper {
-    /* overflow: hidden; */
+
 }
 
 .product_wrap li {
@@ -1520,7 +1559,7 @@ header .search_box {
 @media screen and (max-width: 1170px) {
     
     .product_wrap .product_swiper .box {
-        position: static;
+        /* position: static; */
 
         
         /* width: 46.5rem; */
@@ -1553,6 +1592,12 @@ header .search_box {
     }
 
 
+}
+@media screen and (max-width: 930px) {
+    .product_wrap .product_swiper .box {
+        /* position: static; */
+        display: none;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -1729,13 +1774,12 @@ header .search_box {
     /* width: 192.0rem; */
 }
 .business2 .container {
-   
+   width: 100%;
 }
 .business2_content {
     position: relative;
     height: 54rem;
-    /* height: 66rem; */
-    width: 160rem;
+    /* width: 160rem; */
     box-sizing: border-box;
 
 }
@@ -1764,6 +1808,7 @@ header .search_box {
 .business2_swiper .swiper-slide {
     height: 100%;
     width: 100%;
+    flex-shrink: 0;
 }
 .business2_swiper .b_con_box {
     display: flex;
@@ -2309,5 +2354,6 @@ footer .footer_lnfo {
 footer img {
     width: 20rem;
     height: auto;
+    border: 1px solid #000;
     /* object-fit: cover; */
 }

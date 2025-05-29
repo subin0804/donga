@@ -252,7 +252,7 @@ const totalEl = document.querySelector('.custom_pagination_wrap .total');
 const barEl = document.querySelector('.custom_pagination_wrap .bar');
 const businesSwiper2 = new Swiper('.business2_swiper', {
   // slidesPerView: 1,
-  slidesPerView: 'auto',
+  slidesPerView: 'auto',        
   loop: true,
   effect: 'fade',
   autoplay: {
@@ -380,6 +380,8 @@ const productSwiper = new Swiper('.product_swiper', {
   autoplay: true,
   loop: true,
   slidesPerView: 'auto',
+  // slidesPerView: 3,
+  // slidesOffsetBefore: 465,
 
   // ✅ 기본 간격 (넓은 화면)
   spaceBetween: 20,
