@@ -903,12 +903,8 @@ header .search_box {
     }
     
 }
-@media screen and (max-width: 840px) {
-    .brand_story_wrap ul {
-        min-width: 84rem;
-    }
-}
-@media screen and (max-width: 500px) {
+
+@media screen and (max-width: 830px) {
     .brand_story_wrap {
         padding-bottom: 0;
         min-height: fit-content;
