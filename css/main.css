@@ -123,15 +123,14 @@ button {
         padding: 5rem 1rem;
         /* min-height: fit-content; */
     }
+    .container {
+        padding: 0;
+    }
     .brand_story_wrap, .esg_wrap {
         min-height: fit-content;
     }
     .main_visual, .business, .product_wrap, .news {
         min-height: 100vh;
-    }
-
-    .container {
-        padding: 0;
     }
     h2 {
         font-size: 3rem;
@@ -858,6 +857,7 @@ header .search_box {
     flex-wrap: wrap;
     width: calc(100% + 10rem);
     /* margin-top: 10rem; */
+
 }
 
 .brand_story_wrap ul li {
@@ -894,8 +894,18 @@ header .search_box {
         padding: 8rem 3rem;
     }
     .brand_story_wrap ul {
-        
-        /* margin-top: 10rem; */
+        width: 100%;
+        text-align: center;
+    }
+    .brand_story_wrap ul strong {
+        font-size: 2.7rem;
+        font-weight: 600;
+    }
+    
+}
+@media screen and (max-width: 840px) {
+    .brand_story_wrap ul {
+        min-width: 84rem;
     }
 }
 @media screen and (max-width: 500px) {
@@ -934,10 +944,9 @@ header .search_box {
     }
 
     .brand_story_wrap ul {
-        width: 100%;
+        min-width: 100%;
         display: grid;
         gap: 2rem 2.9rem;
-        /* grid-template-columns: 20rem 20rem; */
         grid-template-columns: 1fr 1fr;
 
     }
@@ -945,8 +954,7 @@ header .search_box {
         display: flex;
         max-width: 100%;
         gap: .8rem;
-        /* border: 1px solid #000; */
-        
+        /* border: 1px solid #000; */ 
     }
 
     .brand_story_wrap ul span {
@@ -957,11 +965,6 @@ header .search_box {
         line-height: 1.8rem;
         opacity: 0.8;
     }
-
-    .brand_story_wrap ul span br {
-        /* display: none; */
-    }
-
     .brand_story_wrap ul strong {
         font-size: 1.7rem;
         font-weight: 600;
@@ -1224,8 +1227,8 @@ header .search_box {
     content: "CSR";
 }
 
-/* 모바일 가로 & 태블릿 세로 (해상도 480px ~ 768px)*/ 
-@media all and (min-width:481px) and (max-width:768px) {
+/* 모바일 가로 & 태블릿 세로 (해상도 480px ~ 780px)*/ 
+@media all and (min-width:481px) and (max-width:780px) {
     .esg_wrap {
         /* height: 50rem; */
     }
@@ -1237,7 +1240,7 @@ header .search_box {
         /* position: relative; */
         display: flex;
         flex-direction: column;
-        gap: 20rem;
+        gap: 25rem;
         height: 100%;
     }
     .preview_swiper {
@@ -1252,11 +1255,16 @@ header .search_box {
 
     .esg_content .event_thumb {
         /* position: relative;  */
+        position: absolute;
+        bottom: 50%;
         width: 100%;
+        justify-content: space-between;
+        align-items: center;
         
     }
     .esg_content .event_thumb span {
         height: 8rem;
+        width: 30%;
     }
     .preview_swiper .swiper-slide .hover_text {
 
@@ -1338,10 +1346,6 @@ header .search_box {
     height: 100%;
     background: #F7F2EA;
     z-index: 11;
-}
-
-.product_wrap .product_swiper .swiper-wrapper {
-
 }
 
 .product_wrap li {
@@ -1475,7 +1479,6 @@ header .search_box {
 
     }
     .product_wrap .product_swiper {
-        /* width: calc(100vw - 16.0rem); */
         width: 100vw;
 
     }
@@ -1523,8 +1526,7 @@ header .search_box {
         position: absolute;
         left: 0;
         top: 0;
-        width: 40rem;
-        /* width: 48rem; */
+        /* width: 40rem; */
         height: 100%;
         background: #F7F2EA;
         z-index: 20;
@@ -1559,14 +1561,7 @@ header .search_box {
 @media screen and (max-width: 1170px) {
     
     .product_wrap .product_swiper .box {
-        /* position: static; */
-
         
-        /* width: 46.5rem; */
-        /* width: 48rem; */
-        /* height: 100%; */
-        /* background: #F7F2EA; */
-        /* z-index: 11; */
     }
 
     .product_wrap .best_product {
@@ -1951,6 +1946,9 @@ header .search_box {
         /* height: 40rem; */
     }
 }
+@media screen and (max-width: 1100px) {
+
+}
 
 @media screen and (max-width: 780px) {
     .business2_content .view_more {  
@@ -1968,7 +1966,7 @@ header .search_box {
     }
 }
 
-@media screen and (max-width: 480px) { 
+@media screen and (max-width: 500px) { 
     .business2_content {
         height: 100%;
         width: 100%;
@@ -2006,14 +2004,15 @@ header .search_box {
 
     }
     .custom_pagination_wrap .progress {
-        width: 15rem;
+        /* width: 15rem; */
+        min-width: 15rem;
         height: 0.2rem;
         background: rgba(255, 255, 255, .5);
         position: relative;
     }
     .business2_content .slide_move_3 {
         /* position: absolute; */
-        top: 40%;
+        top: 45%;
         z-index: 100;
         display: block;
     }
