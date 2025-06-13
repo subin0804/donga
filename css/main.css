@@ -2341,14 +2341,28 @@ footer {
     width: 50%;
 } */
 
-footer .footer_lnfo {
+footer .footer_logo {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
 }
 
 footer img {
+    display: block;
     width: 20rem;
     height: auto;
-    border: 1px solid #000;
     /* object-fit: cover; */
+}
+footer .footer_info address{
+    margin-bottom: .5rem;
+}
+footer .footer_info p {
+    margin-bottom: 1rem;
+}
+footer .footer_info a {
+    
+}
+footer .footer_info i {
+    font-size: 3rem;
 }
