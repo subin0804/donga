@@ -1301,17 +1301,35 @@ header .search_box {
 
     .esg_content .event_thumb {
         position: absolute;
-
-        /* z-index: 30; */
-
         bottom: 50%;
         width: 100%;
-        
     }
 
     .esg_content .event_thumb span {
         height: 6rem;
         /* position: absolute; */
+    }
+
+    .preview_swiper .swiper-slide .hover_text {
+    gap: 2.8rem;
+    left: 2rem;
+    bottom: -5rem;
+    /* font-size: 3.2rem; */
+}
+
+    .preview_swiper .swiper-slide-active .hover_text {
+        opacity: 1;
+        bottom: 3rem;
+    }
+
+    .preview_swiper .hover_text .e_text1 {
+        font-size: 2.2rem;
+    }
+
+    .preview_swiper .hover_text .e_text2 {
+    line-height: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
     }
 }
 
@@ -1979,7 +1997,6 @@ border-radius: 1rem;
 
 .business2_swiper .b_con_box .img_box {
     aspect-ratio: 16 / 9;
-    
 }
 
 .business2_swiper .b_con_box .img_box img {
@@ -1997,11 +2014,11 @@ border-radius: 1rem;
 }
 
 .business2_content .slide_move_3 {
-    bottom: 52%;
+    bottom: 48%;
 
 }
 .business2_content .view_more {
-    top: 34%;
+    top: 36%;
     padding: 1.2rem;
 }
 }
