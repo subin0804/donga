@@ -1021,17 +1021,13 @@ header .search_box {
 }
 
 .preview_swiper {
-    /* display: flex;
-    flex-direction: column; */
-    
-    /* flex: 6; */
     width: 60%;
-
     overflow: hidden;
     aspect-ratio: 1 / 0.7;
     border-radius: 1rem;
     font-weight: 700;
     color: #FFF;
+
 }
 
 .preview_swiper .swiper-slide {
@@ -1138,6 +1134,7 @@ header .search_box {
     /* width: 45%; */
     width: 40%;
     gap: 2rem 2%;
+    
 }
 
 .event_thumb span {
@@ -1223,6 +1220,7 @@ header .search_box {
     content: "CSR";
 }
 
+
 /* 모바일 가로 & 태블릿 세로 (해상도 480px ~ 780px)*/ 
 @media all and (min-width:481px) and (max-width:780px) {
     .esg_wrap {
@@ -1230,8 +1228,18 @@ header .search_box {
     }
     .esg_event_left {
         width: 100%;
-
     }
+
+    .preview_swiper .hover_text .e_text1 {
+        font-size: 2.2rem;
+    }
+
+    .preview_swiper .hover_text .e_text2 {
+    line-height: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    }
+
     .esg_content {
         /* position: relative; */
         display: flex;
@@ -1241,17 +1249,18 @@ header .search_box {
     }
     .preview_swiper {
         width: 100%;
-        aspect-ratio: 0.8 / 0.5;
+        aspect-ratio: 16 / 9;
     }
 
     .preview_swiper .swiper-slide {
         height: 100%;
         width: 100%;
     }
+    
 
     .esg_content .event_thumb {
         /* position: relative;  */
-        position: absolute;
+        /* position: absolute; */
         bottom: 50%;
         width: 100%;
         justify-content: space-between;
@@ -1769,10 +1778,9 @@ header .search_box {
 }
 .business2_content {
     position: relative;
-    height: 54rem;
+    height: 48rem;
     /* width: 160rem; */
     box-sizing: border-box;
-
 }
 
 .business2_content h2 {
@@ -1781,10 +1789,9 @@ header .search_box {
 
 .business2_content .view_more {
     position: absolute;
-    
-    top: 50%;
+    top: 45%;
     border: 1px solid #333;
-    padding: 1.6rem;
+    padding: 1.5rem;
 }
 
 .business2 .business2_swiper {
@@ -1796,7 +1803,7 @@ header .search_box {
     position: relative; 
 }
 
-.business2_swiper .swiper-slide {
+/* .business2_swiper .swiper-slide {
     height: 100%;
     width: 100%;
     flex-shrink: 0;
@@ -1804,7 +1811,6 @@ header .search_box {
 .business2_swiper .b_con_box {
     display: flex;
     gap: 4rem;
-    /* gap: 10rem; */
     height: 100%;
     width: 100%;
 }
@@ -1813,7 +1819,7 @@ header .search_box {
     width: 40%;
     height: 100%;
     overflow: hidden;
-    /* border: 1px solid #000; */
+
 }
 
 .business2_swiper .txt_box span {
@@ -1824,24 +1830,51 @@ header .search_box {
     line-height: 3rem;
 }
 
-/* swiper에서 활성화된 슬라이드에 대해 텍스트 보이도록 설정 */
-.business2_swiper .swiper-slide-active .txt_box {
-    /* opacity: 1; */
-    /* 활성화된 슬라이드에서 텍스트 보이기 */
-}
-
 .business2_swiper .img_box {
-    /* position: relative; */
     overflow: hidden;
     width: 60%;
     height: 100%;
-    /* height: 66rem; */
 }
 
 .business2_swiper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+} */
+
+.business2_swiper .b_con_box {
+    display: flex;
+    /* align-items: center; */
+    gap: 4rem;
+    width: 100%;
+    height: 100%;
+}
+
+.business2_swiper .b_con_box .txt_box {
+width: 40%;
+min-width: 26rem;
+}
+
+.business2_swiper .b_con_box .txt_box span {
+display: block;
+margin-top: 10rem;
+font-size: 1.6rem;
+line-height: 1.6;
+color: #333;
+/* border: 1px solid #000; */
+}
+
+.business2_swiper .b_con_box .img_box {
+flex: 1;
+max-width: 60%;
+height: 100%;
+}
+
+.business2_swiper .b_con_box .img_box img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 1rem;
 }
 
 .business2_swiper video {
@@ -1927,92 +1960,52 @@ header .search_box {
 }
 
     
-@media screen and (max-width: 1440px) {
-    .business2 .container {
-        height: auto;
-    }
+@media screen and (max-width: 768px) {
     .business2_content {
-        width: 100%;  /* 너비는 100%로 유지 */
-        transform: scale(1);  /* 줌 비율이 200%인 것처럼, 50% 크기로 축소 */
-        /* transform-origin: top left;   */
-        /* 변환의 기준점을 왼쪽 상단으로 설정 */
+    height: 54rem;
+}
 
-    }
     .business2_swiper .b_con_box {
-        /* height: 40rem; */
-    }
-}
-@media screen and (max-width: 1100px) {
-
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5rem;
 }
 
-@media screen and (max-width: 780px) {
-    .business2_content .view_more {  
-        top: 85%;
-        padding: 1rem;
-    }
+.business2_swiper .b_con_box .txt_box,
+.business2_swiper .b_con_box .img_box {
+    width: 100%;
+    max-width: 100%;
+}
+
+.business2_swiper .b_con_box .img_box {
+    aspect-ratio: 16 / 9;
     
 }
-@media screen and (max-width: 700px) {
-    .custom_pagination_wrap .progress {
-        width: 15rem;
-        height: 0.2rem;
-        background: rgba(255, 255, 255, .5);
-        position: relative;
-    }
+
+.business2_swiper .b_con_box .img_box img {
+    border-radius: 0.8rem;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
-@media screen and (max-width: 500px) { 
-    .business2_content {
-        height: 100%;
-        width: 100%;
-    }
-
-    .business2 .business2_swiper  {
-        max-width: 100%;
-    }
-    .business2_swiper .b_con_box {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        height: 100%;
-        width: 100%;
-    }
-    .business2_swiper .img_box {
-        width: 100%;
-        height: 30rem;
-    }
-    .business2_swiper img {
-        height: 100%;
-        /* max-width: fit-content; */
-        /* width: 100%; */
-    }
-    .business2_swiper .txt_box {
-        height: 30rem;
-        width: 100%;
-    }
-    .business2_swiper .txt_box span {
-        top: 7%;
-        width: 100%;
-        margin-top: 3rem;
-        line-height: 3rem;
-        font-size: 1.4rem;
-
-    }
-    .custom_pagination_wrap .progress {
-        /* width: 15rem; */
-        min-width: 15rem;
-        height: 0.2rem;
-        background: rgba(255, 255, 255, .5);
-        position: relative;
-    }
-    .business2_content .slide_move_3 {
-        /* position: absolute; */
-        top: 45%;
-        z-index: 100;
-        display: block;
-    }
+.business2_swiper .b_con_box .txt_box span {
+    /* margin-top: 10rem; */
+    margin-bottom: 8rem;
+    font-size: 1.5rem;
+    line-height: 1.6;
 }
+
+.business2_content .slide_move_3 {
+    bottom: 52%;
+
+}
+.business2_content .view_more {
+    top: 34%;
+    padding: 1.2rem;
+}
+}
+
 
 
 
@@ -2070,6 +2063,7 @@ header .search_box {
 .news .swiper-slide {
     flex-shrink: 0;
     width: 29rem;
+    /* width: calc((100% - 160px) / 5); */
     /* slideperview : 'auto'를 설정시 slide width값 설정해줘야 함 */
 
   }
@@ -2184,12 +2178,9 @@ header .search_box {
 
     }
     .news .news_top a {
-        /* position: static; 
-        width: fit-content;
-        margin-top: 1rem;
-        font-size: 1.4rem;
-        padding: .8rem; */
+
     }
+
     .news .news_top a span {
         position: static;
         width: fit-content;
@@ -2197,7 +2188,19 @@ header .search_box {
         font-size: 1.4rem;
         padding: .8rem;
     }
+    .news .phone_frame {
+    top: 30%;
+    left: 50%;
+    width: 32rem;
+    height: 54rem;
+    transform: translateX(-50%);
+    background: #FFF;
+    border: 8px solid #333;
+    border-radius: 4rem;
+    /* pointer-events: none; */
 }
+}
+
 @media screen and (max-width: 480px) {
     .news {
         /* min-height: 90vh; */
@@ -2245,7 +2248,7 @@ header .search_box {
         width: 15rem;
         /* slideperview : 'auto'를 설정시 slide width값 설정해줘야 함 */
     
-      }
+    }
     .news_img_swiper .swiper-slide .n_img {
         height: 15rem;
         width: 15rem;
@@ -2264,12 +2267,6 @@ header .search_box {
     
     .news_text_swiper {
         width: 15rem;
-
-        /* position: absolute;
-        top: 24rem;               
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2; */
     }
 /* ======================================== */
 

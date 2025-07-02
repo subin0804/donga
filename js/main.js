@@ -153,33 +153,6 @@ menuIcons.forEach(function (item, i) {
 });
 
 
-/* 예시 */
-// const esgImg = document.querySelectorAll('.esg_img img')
-// const esgCon = document.querySelectorAll('.esg_content div')
-
-// esgCon.forEach(function(item, i){
-//         item.addEventListener('mouseover',function(){
-
-//             esgImg.forEach(function(img) {
-//                 img.classList.remove('active')
-//             })
-//             esgImg[i].classList.add('active')
-//         })
-//     })
-
-
-
-// menuPlus.addEventListener('click', () => {
-//   menuDep2.style.display = 'block';
-// });
-// menuPlus.addEventListener('click', function() {
-//   if(menuDep2.style.display === 'none') {
-//     menuDep2.style.display = 'block'
-//   } else {
-//     menuDep2.style.display = 'none'
-//   }
-// })
-
 
 
 /* 메인 비주얼 */
@@ -246,6 +219,101 @@ const esgSwiper = new Swiper('.preview_swiper', {
 });
 
 
+
+/* product_swiper */
+const productSwiper = new Swiper('.product_swiper', {
+  autoplay: true,
+  loop: true,
+  slidesPerView: 'auto',
+  // slidesPerView: 3,
+  // slidesOffsetBefore: 465,
+
+  // ✅ 기본 간격 (넓은 화면)
+  spaceBetween: 20,
+
+  // ✅ 반응형 설정 추가
+  breakpoints: {
+    0: {
+      spaceBetween: 20, // 0 ~ 499px 사이에서는 간격 제거
+    },
+    501: {
+      spaceBetween: 20, // 500px 이상에서는 간격 20 유지
+    }
+  },
+
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'fraction',
+  },
+  navigation: {
+    nextEl: '.swiper-next',
+    prevEl: '.swiper-prev',
+  },
+});
+
+
+// business → business2 스크롤 애니메이션
+gsap.registerPlugin(ScrollTrigger);
+
+// 1. business 섹션: 비디오 확대 + 텍스트 등장
+gsap.timeline({
+  scrollTrigger: {
+    trigger: '.business',
+    start: 'top top',
+    end: '+=1200',
+    pin: true,
+    scrub: 1.5,
+  }
+})
+  .to('.business video', {
+    scale: 3.3,
+    borderRadius: '0%',
+    duration: 1
+  })
+  .to('.business_text', {
+    autoAlpha: 1,
+    y: 0,
+    duration: 2
+  });
+
+// 2. business2가 등장할 때 텍스트 & 비디오 사라짐
+gsap.to('.business_text', {
+  scrollTrigger: {
+    trigger: '.business2',
+    start: 'top 90%',
+    end: 'top center',
+    scrub: 1.5,
+  },
+  autoAlpha: 0,
+  duration: 1.5,
+});
+
+gsap.to('.business video', {
+  scrollTrigger: {
+    trigger: '.business2',
+    start: 'top 90%',
+    end: 'top center',
+    scrub: 1.5,
+  },
+  opacity: 0,
+  duration: 1.5,
+});
+
+// 3. business2 슬라이드 전체 등장 (부드럽게 페이드 인)
+gsap.from('.business2_swiper', {
+  scrollTrigger: {
+    trigger: '.business2',
+    start: 'top 80%',
+    toggleActions: 'play none none none',
+  },
+  autoAlpha: 0,
+  y: 50,
+  duration: 1.2,
+  ease: 'power2.out'
+});
+
+
+
 /* Business2 */
 const currentEl = document.querySelector('.custom_pagination_wrap .current');
 const totalEl = document.querySelector('.custom_pagination_wrap .total');
@@ -297,6 +365,8 @@ const businesSwiper2 = new Swiper('.business2_swiper', {
   }
 });
 
+
+
 /* News */
 const newsSwiper = new Swiper('.news_img_swiper', {
   // autoplay: true,
@@ -306,9 +376,12 @@ const newsSwiper = new Swiper('.news_img_swiper', {
   },
   slidesPerView: 'auto',
   spaceBetween: 40,
+  // centeredSlides: false,
   centeredSlides: true,
-  loopedSlides: 2,
+  centeredSlidesBounds: true, // ✅ 추가
+  loopedSlides: 8,
   loop: true,
+  
   navigation: {
     nextEl: '.swiper-next',
     prevEl: '.swiper-prev',
@@ -320,6 +393,14 @@ const newsSwiper = new Swiper('.news_img_swiper', {
       spaceBetween: 30,
     },
     501: {
+      slidesPerView: 'auto',
+      spaceBetween: 40,
+    },
+    768: {
+      slidesPerView: 'auto',
+      spaceBetween: 40,
+    },
+    1024: {
       slidesPerView: 'auto',
       spaceBetween: 40,
     }
@@ -334,182 +415,17 @@ const newsSwiper2 = new Swiper('.news_text_swiper', {
   slidesPerView: 'auto',
   spaceBetween: 40,
   centeredSlides: true,
-  loopedSlides: 2,
+  centeredSlidesBounds: true, // ✅ 이거 꼭 필요함!
+  loopedSlides: 8,
   loop: true,
-  
-  // effect: 'fade',
-  // navigation: {
-  //   nextEl: '.swiper-next',
-  //   prevEl: '.swiper-prev',
-  // },
-  // watchSlidesProgress: true,
-  // freeMode: true,
-});
-
-// 방법1 이미지 ↔ 텍스트 슬라이더 동기화
-newsSwiper.controller.control = newsSwiper2;
-newsSwiper2.controller.control = newsSwiper;
-
-// 방법2 이미지 슬라이드에 맞춰 텍스트 자동 연동 시키고 싶다면
-// newsSwiper.on('slideChange', () => {
-//   newsSwiper2.slideToLoop(newsSwiper.realIndex);
-// });
-
-
-
-
-
-/* product_swiper */
-// const productSwiper = new Swiper('.product_swiper', {
-//   autoplay: true,
-//   loop: true,
-//   slidesPerView: 'auto',
-//   spaceBetween: 20,
-//   pagination: {
-//     el: '.swiper-pagination',
-//     type: 'fraction',
-//   },
-//   navigation: {
-//     nextEl: '.swiper-next',
-//     prevEl: '.swiper-prev',
-//   },
-// })
-
-/* product_swiper */
-const productSwiper = new Swiper('.product_swiper', {
-  autoplay: true,
-  loop: true,
-  slidesPerView: 'auto',
-  // slidesPerView: 3,
-  // slidesOffsetBefore: 465,
-
-  // ✅ 기본 간격 (넓은 화면)
-  spaceBetween: 20,
-
-  // ✅ 반응형 설정 추가
-  breakpoints: {
-    0: {
-      spaceBetween: 20, // 0 ~ 499px 사이에서는 간격 제거
-    },
-    501: {
-      spaceBetween: 20, // 500px 이상에서는 간격 20 유지
-    }
-  },
-
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'fraction',
-  },
   navigation: {
     nextEl: '.swiper-next',
     prevEl: '.swiper-prev',
   },
 });
 
+// 방법1 이미지 ↔ 텍스트 슬라이더 동기화
+newsSwiper.controller.control = newsSwiper2;
+newsSwiper2.controller.control = newsSwiper;
 
 
-
-// business → business2 스크롤 애니메이션
-gsap.registerPlugin(ScrollTrigger);
-
-// 📌 1. business 섹션: 비디오 확대 + 텍스트 등장
-gsap.timeline({
-  scrollTrigger: {
-    trigger: '.business',
-    start: 'top top',
-    end: '+=1200',
-    pin: true,
-    scrub: 1.5,
-  }
-})
-  .to('.business video', {
-    scale: 3.3,
-    borderRadius: '0%',
-    duration: 1
-  })
-  .to('.business_text', {
-    autoAlpha: 1,
-    y: 0,
-    duration: 2
-  });
-
-// 📌 2. business2가 등장할 때 텍스트 & 비디오 사라짐
-gsap.to('.business_text', {
-  scrollTrigger: {
-    trigger: '.business2',
-    start: 'top 90%',
-    end: 'top center',
-    scrub: 1.5,
-  },
-  autoAlpha: 0,
-  duration: 1.5,
-});
-
-gsap.to('.business video', {
-  scrollTrigger: {
-    trigger: '.business2',
-    start: 'top 90%',
-    end: 'top center',
-    scrub: 1.5,
-  },
-  opacity: 0,
-  duration: 1.5,
-});
-
-// 📌 3. business2 슬라이드 전체 등장 (부드럽게 페이드 인)
-gsap.from('.business2_swiper', {
-  scrollTrigger: {
-    trigger: '.business2',
-    start: 'top 80%',
-    toggleActions: 'play none none none',
-  },
-  autoAlpha: 0,
-  y: 50,
-  duration: 1.2,
-  ease: 'power2.out'
-});
-
-
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const sections = document.querySelectorAll('.main_visual, .brand_story_wrap, .esg_wrap, .product_wrap,  .business2, .news');
-//   let current = 0;
-//   let isAnimating = false;
-
-//   function goToSection(index) {
-//       if (index < 0 || index >= sections.length || isAnimating) return;
-//       isAnimating = true;
-//       gsap.to(window, {
-//           duration: 1,
-//           scrollTo: {
-//               y: sections[index].offsetTop - document.querySelector("header").offsetHeight
-//           },
-//           ease: "power2.out",
-//           onComplete: () => {
-//               current = index;
-//               isAnimating = false;
-//           }
-//       });
-//   }
-
-//   // 현재 섹션을 실시간으로 감지해서 current 인덱스 갱신
-//   window.addEventListener("scroll", () => {
-//       const scrollY = window.pageYOffset + window.innerHeight / 2;
-//       sections.forEach((section, i) => {
-//           if (scrollY >= section.offsetTop) {
-//               current = i;
-//           }
-//       });
-//   });
-
-//   // 휠 이벤트로 섹션 이동
-//   window.addEventListener("wheel", (e) => {
-//       if (isAnimating) return;
-//       if (e.deltaY > 0) {
-//           goToSection(current + 1);
-//       } else {
-//           goToSection(current - 1);
-//       }
-//   });
-// }); 
