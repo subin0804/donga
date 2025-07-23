@@ -1021,12 +1021,7 @@ header .search_box {
 }
 
 .preview_swiper {
-    /* display: flex;
-    flex-direction: column; */
-    
-    /* flex: 6; */
     width: 60%;
-
     overflow: hidden;
     aspect-ratio: 1 / 0.7;
     border-radius: 1rem;
