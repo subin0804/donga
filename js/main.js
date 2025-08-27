@@ -199,10 +199,6 @@ function resetProgressBar(duration) {
 }
 
 
-// 구조가 너무 복잡해진 것 같아요,,이방법밖에 없나용
-// 영상 프로그래스바가 작동 잘하는 것 같다가도 영상길이에 맞게 작동안해요 
-// play pause버튼 작동 x
-
 
 
 /* ESG */
