@@ -198,48 +198,146 @@ menuIcons.forEach(function (item, i) {
 });
 
 
-/* 메인 비주얼 */
-const mainSwiper = new Swiper('.main-swiper', {
-  loop: true,
-  autoplay: {
-    delay: 9999999, // 동영상 길이로 제어할 것이므로 의미 없는 값
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'fraction',
-  },
-  navigation: {
-    nextEl: '.swiper-next',
-    prevEl: '.swiper-prev',
-  },
-  on: {
-    slideChangeTransitionStart() {
-      if (!isPaused) {
-        const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
-        resetProgressBar(currentVideo.duration);
-      }
+// /* 메인 비주얼 */
+document.addEventListener('DOMContentLoaded', () => {
+  const progressBar = document.querySelector('.progress .bar');
+  const playBtnIcon = document.querySelector('.btn-play-stop i');
+  const videos = Array.from(document.querySelectorAll('.main-swiper .swiper-slide video'));
+
+  let isPaused = false;
+  let progressTimeout = null;
+
+  function getActiveSlide() {
+    return document.querySelector('.main-swiper .swiper-slide-active');
+  }
+
+  function getCurrentVideo() {
+    const active = getActiveSlide();
+    return active ? active.querySelector('video') : videos[mainSwiper.realIndex];
+  }
+
+  function pauseAllVideos(resetTime = false) {
+    videos.forEach(v => {
+      try { v.pause(); } catch {}
+      if (resetTime) v.currentTime = 0;
+    });
+  }
+
+  function clearProgressBar() {
+    clearTimeout(progressTimeout);
+    progressBar.style.animation = 'none';
+    progressBar.offsetHeight;
+  }
+
+  function resetProgressBar(durationSec) {
+    clearProgressBar();
+    if (!durationSec || !isFinite(durationSec) || durationSec <= 0) return;
+
+    progressBar.style.animation = `slideBar ${durationSec}s linear forwards`;
+
+    // 동영상 길이에 맞춰 자동 슬라이드
+    progressTimeout = setTimeout(() => {
+      if (!isPaused) mainSwiper.slideNext();
+    }, durationSec * 1000);
+  }
+
+  function playCurrentVideoAndBar() {
+    const v = getCurrentVideo();
+    if (!v) return;
+
+    // 모바일(iOS) 호환
+    v.muted = true;
+    v.playsInline = true;
+
+    // 메타데이터가 아직 없는 경우 대비
+    const start = () => {
+      v.play().catch(() => {});
+      resetProgressBar(v.duration || 0);
+    };
+
+    if (isFinite(v.duration) && v.duration > 0) {
+      start();
+    } else {
+      const onMeta = () => {
+        v.removeEventListener('loadedmetadata', onMeta);
+        start();
+      };
+      v.addEventListener('loadedmetadata', onMeta, { once: true });
+      // 혹시 이미 로드가 완료된 상태일 수도 있으니 한 번 시도
+      try { v.play().catch(() => {}); } catch {}
     }
   }
+
+  const mainSwiper = new Swiper('.main-swiper', {
+    loop: true,
+    autoplay: {
+      delay: 9999999,             
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'fraction'
+    },
+    navigation: {
+      nextEl: '.swiper-next',
+      prevEl: '.swiper-prev'
+    },
+    on: {
+      init() {
+        pauseAllVideos(true);
+        playCurrentVideoAndBar();
+      },
+      slideChangeTransitionStart() {
+        if (isPaused) return;
+        pauseAllVideos(true);
+        playCurrentVideoAndBar();
+      }
+    }
+  });
+
+  if (typeof mainSwiper.init === 'function') mainSwiper.init();
+
+  document.querySelector('.btn-play-stop').addEventListener('click', () => {
+    isPaused = !isPaused;
+
+    if (isPaused) {
+      mainSwiper.autoplay.stop();
+      const v = getCurrentVideo();
+      if (v) v.pause();
+      clearTimeout(progressTimeout);
+      progressBar.style.animationPlayState = 'paused';
+      playBtnIcon.className = 'ri-play-line';
+    } else {
+      mainSwiper.autoplay.start();
+      const v = getCurrentVideo();
+      if (v) {
+        v.play().catch(() => {});
+        if (isFinite(v.duration) && v.duration > 0) {
+          resetProgressBar(v.duration);
+        } else {
+          const onMeta = () => {
+            v.removeEventListener('loadedmetadata', onMeta);
+            resetProgressBar(v.duration || 0);
+          };
+          v.addEventListener('loadedmetadata', onMeta, { once: true });
+        }
+      }
+      playBtnIcon.className = 'ri-pause-line';
+    }
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      const v = getCurrentVideo();
+      if (v) v.pause();
+      clearTimeout(progressTimeout);
+      progressBar.style.animationPlayState = 'paused';
+    } else if (!isPaused) {
+      pauseAllVideos(false);
+      playCurrentVideoAndBar();
+    }
+  });
 });
-
-const progressBar = document.querySelector('.progress .bar');
-const playBtn = document.querySelector('.btn-play-stop i');
-let isPaused = false;
-let progressTimeout = null;
-
-// 프로그레스바 초기화 함수
-function resetProgressBar(duration) {
-  clearTimeout(progressTimeout);
-  progressBar.style.animation = 'none';
-  progressBar.offsetHeight; // 리플로우 강제 발생
-  progressBar.style.animation = `slideBar ${duration}s linear forwards`;
-
-  // 해당 영상 끝나면 다음 슬라이드로 전환
-  progressTimeout = setTimeout(() => {
-    mainSwiper.slideNext();
-  }, duration * 1000);
-}
 
 
 /* Brand Story */

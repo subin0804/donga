@@ -661,7 +661,6 @@ header .search_box button {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    pointer-events:none
 }
 
 .main_visual .swiper-slide>span {
@@ -673,7 +672,7 @@ header .search_box button {
     color: #FFF;
 }
 
-.main_swiper {
+.main-swiper {
     position: relative;
 }
 
@@ -1860,6 +1859,7 @@ margin-top: 10rem;
 font-size: 1.6rem;
 line-height: 1.6;
 color: #333;
+/* border: 1px solid #000; */
 }
 
 .business2_swiper .b_con_box .img_box {

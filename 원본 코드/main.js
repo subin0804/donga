@@ -17,7 +17,6 @@ window.addEventListener('scroll', function () {
   }
 })
 
-
 // menu_popup 열었을 때 브라우저 스크롤x
 // 메뉴 열기 버튼
 document.querySelector('.header_menu').addEventListener('click', function () {
@@ -34,9 +33,6 @@ document.querySelector('.header_menu_popup .ri-close-line').addEventListener('cl
   // 스크롤 풀기
   document.body.classList.remove('fixed');
 });
-
-
-
 
 
 /* 헤더 */
@@ -86,22 +82,75 @@ utilBtn.addEventListener('click', function () {
 })
 
 /* 헤더 검색 */
-const searchBtn = document.querySelector('.search_wrap')
-const searchBox = document.querySelector('.search_box')
+document.addEventListener('DOMContentLoaded', () => {
+const headerEl   = document.getElementById('header');
+const container  = headerEl.querySelector('.container');
+const searchWrap = headerEl.querySelector('.search_wrap');   // 돋보기 버튼 래퍼
+const searchBtn  = searchWrap.querySelector('button');       // 실제 버튼
+const searchBox  = headerEl.querySelector('.search_box');    // 패널
+const inputEl    = searchBox.querySelector('input');
 
-// *********** 마우스 가져다대면 열림.
-// 처음엔 검색 박스를 숨겨둠
-searchBox.style.display = 'none';
+// 초기 상태
+closeSearch(false);
 
-// 마우스를 올리면 검색 박스를 보여줌
-searchBtn.addEventListener('mouseenter', () => {
-  searchBox.style.display = 'block';
+function openSearch(focus = true) {
+  headerEl.classList.add('is-search-open');
+  searchBtn.setAttribute('aria-expanded', 'true');
+  if (focus && inputEl) inputEl.focus();
+}
+
+function closeSearch(blur = true) {
+  headerEl.classList.remove('is-search-open');
+  searchBtn.setAttribute('aria-expanded', 'false');
+  if (blur && inputEl && document.activeElement === inputEl) inputEl.blur();
+}
+
+function isOpen() {
+  return headerEl.classList.contains('is-search-open');
+}
+
+// 돋보기 클릭 → 토글
+searchWrap.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation(); // 문서 클릭 닫기와 충돌 방지
+  isOpen() ? closeSearch() : openSearch();
 });
 
-// 마우스가 벗어나면 다시 숨김
-searchBtn.addEventListener('mouseleave', () => {
-  searchBox.style.display = 'none';
+// 검색 박스 클릭: 폼 안이면 유지, 배경(오버레이) 클릭이면 닫기
+searchBox.addEventListener('click', (e) => {
+  const isInsideForm = e.target.closest('.search_box form');
+  if (isInsideForm) {
+    e.stopPropagation(); // 폼 내부는 열림 유지
+  } else {
+    closeSearch();       // 오버레이 클릭 → 닫기
+  }
 });
+
+  // 바깥 클릭 → 닫기 (폼 내부만 "안쪽"으로 간주)
+  document.addEventListener('click', (e) => {
+    const clickedInsideSearch =
+      searchWrap.contains(e.target) || e.target.closest('.search_box form');
+    if (isOpen() && !clickedInsideSearch) closeSearch();
+  });
+
+
+  // ESC로 닫기
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) closeSearch();
+  });
+
+  // (선택) submit 시 비어있으면 기본 동작 막기
+  const form = searchBox.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      if (!inputEl || !inputEl.value.trim()) {
+        e.preventDefault();
+        inputEl?.focus();
+      }
+    });
+  }
+});
+// end
 
 
 // 메뉴 관련 요소 선택
@@ -131,8 +180,6 @@ window.addEventListener('resize', () => {
 
 
 /* 메뉴 팝업 - 모바일 */
-// (1) 플러스 아이콘(i)과 dep2 메뉴 리스트 가져오기
-// 메뉴 아이콘과 dep2 리스트 가져오기
 const menuIcons = document.querySelectorAll('.header_menu_popup .dep1 > li > a > i');
 const dep2Menus = document.querySelectorAll('.header_menu_popup .dep2');
 
@@ -141,8 +188,6 @@ menuIcons.forEach(function (item, i) {
     event.preventDefault(); // a 태그의 기본 동작 방지
 
     const isActive = dep2Menus[i].classList.contains('active');
-
-    // 모든 dep2 닫기
     dep2Menus.forEach(dep2 => dep2.classList.remove('active'));
 
     // 클릭한 항목이 기존에 닫혀있던 경우만 열기
@@ -153,50 +198,146 @@ menuIcons.forEach(function (item, i) {
 });
 
 
+// /* 메인 비주얼 */
+document.addEventListener('DOMContentLoaded', () => {
+  const progressBar = document.querySelector('.progress .bar');
+  const playBtnIcon = document.querySelector('.btn-play-stop i');
+  const videos = Array.from(document.querySelectorAll('.main-swiper .swiper-slide video'));
 
+  let isPaused = false;
+  let progressTimeout = null;
 
-/* 메인 비주얼 */
-const mainSwiper = new Swiper('.main-swiper', {
-  loop: true,
-  autoplay: {
-    delay: 9999999, // 동영상 길이로 제어할 것이므로 의미 없는 값
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'fraction',
-  },
-  navigation: {
-    nextEl: '.swiper-next',
-    prevEl: '.swiper-prev',
-  },
-  on: {
-    slideChangeTransitionStart() {
-      if (!isPaused) {
-        const currentVideo = document.querySelectorAll('.swiper-slide video')[mainSwiper.realIndex];
-        resetProgressBar(currentVideo.duration);
-      }
+  function getActiveSlide() {
+    return document.querySelector('.main-swiper .swiper-slide-active');
+  }
+
+  function getCurrentVideo() {
+    const active = getActiveSlide();
+    return active ? active.querySelector('video') : videos[mainSwiper.realIndex];
+  }
+
+  function pauseAllVideos(resetTime = false) {
+    videos.forEach(v => {
+      try { v.pause(); } catch {}
+      if (resetTime) v.currentTime = 0;
+    });
+  }
+
+  function clearProgressBar() {
+    clearTimeout(progressTimeout);
+    progressBar.style.animation = 'none';
+    progressBar.offsetHeight;
+  }
+
+  function resetProgressBar(durationSec) {
+    clearProgressBar();
+    if (!durationSec || !isFinite(durationSec) || durationSec <= 0) return;
+
+    progressBar.style.animation = `slideBar ${durationSec}s linear forwards`;
+
+    // 동영상 길이에 맞춰 자동 슬라이드
+    progressTimeout = setTimeout(() => {
+      if (!isPaused) mainSwiper.slideNext();
+    }, durationSec * 1000);
+  }
+
+  function playCurrentVideoAndBar() {
+    const v = getCurrentVideo();
+    if (!v) return;
+
+    // 모바일(iOS) 호환
+    v.muted = true;
+    v.playsInline = true;
+
+    // 메타데이터가 아직 없는 경우 대비
+    const start = () => {
+      v.play().catch(() => {});
+      resetProgressBar(v.duration || 0);
+    };
+
+    if (isFinite(v.duration) && v.duration > 0) {
+      start();
+    } else {
+      const onMeta = () => {
+        v.removeEventListener('loadedmetadata', onMeta);
+        start();
+      };
+      v.addEventListener('loadedmetadata', onMeta, { once: true });
+      // 혹시 이미 로드가 완료된 상태일 수도 있으니 한 번 시도
+      try { v.play().catch(() => {}); } catch {}
     }
   }
+
+  const mainSwiper = new Swiper('.main-swiper', {
+    loop: true,
+    autoplay: {
+      delay: 9999999,             
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'fraction'
+    },
+    navigation: {
+      nextEl: '.swiper-next',
+      prevEl: '.swiper-prev'
+    },
+    on: {
+      init() {
+        pauseAllVideos(true);
+        playCurrentVideoAndBar();
+      },
+      slideChangeTransitionStart() {
+        if (isPaused) return;
+        pauseAllVideos(true);
+        playCurrentVideoAndBar();
+      }
+    }
+  });
+
+  if (typeof mainSwiper.init === 'function') mainSwiper.init();
+
+  document.querySelector('.btn-play-stop').addEventListener('click', () => {
+    isPaused = !isPaused;
+
+    if (isPaused) {
+      mainSwiper.autoplay.stop();
+      const v = getCurrentVideo();
+      if (v) v.pause();
+      clearTimeout(progressTimeout);
+      progressBar.style.animationPlayState = 'paused';
+      playBtnIcon.className = 'ri-play-line';
+    } else {
+      mainSwiper.autoplay.start();
+      const v = getCurrentVideo();
+      if (v) {
+        v.play().catch(() => {});
+        if (isFinite(v.duration) && v.duration > 0) {
+          resetProgressBar(v.duration);
+        } else {
+          const onMeta = () => {
+            v.removeEventListener('loadedmetadata', onMeta);
+            resetProgressBar(v.duration || 0);
+          };
+          v.addEventListener('loadedmetadata', onMeta, { once: true });
+        }
+      }
+      playBtnIcon.className = 'ri-pause-line';
+    }
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      const v = getCurrentVideo();
+      if (v) v.pause();
+      clearTimeout(progressTimeout);
+      progressBar.style.animationPlayState = 'paused';
+    } else if (!isPaused) {
+      pauseAllVideos(false);
+      playCurrentVideoAndBar();
+    }
+  });
 });
-
-const progressBar = document.querySelector('.progress .bar');
-const playBtn = document.querySelector('.btn-play-stop i');
-let isPaused = false;
-let progressTimeout = null;
-
-// 프로그레스바 초기화 함수
-function resetProgressBar(duration) {
-  clearTimeout(progressTimeout);
-  progressBar.style.animation = 'none';
-  progressBar.offsetHeight; // 리플로우 강제 발생
-  progressBar.style.animation = `slideBar ${duration}s linear forwards`;
-
-  // 해당 영상 끝나면 다음 슬라이드로 전환
-  progressTimeout = setTimeout(() => {
-    mainSwiper.slideNext();
-  }, duration * 1000);
-}
 
 
 /* Brand Story */
@@ -205,20 +346,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   targets.forEach((el) => {
     const raw = el.textContent.trim();
-    // 3,497 / 242 / 1.5 같은 숫자 부분만 추출
     const match = raw.match(/[\d.,]+/);
 
-    // 숫자가 없는 strong(예: "태양광 발전설비")은 패스
     if (!match) return;
 
-    const end = Number(match[0].replace(/,/g, '')); // 최종 값
-    const suffix = raw.replace(match[0], '');       // 단위/기호 등 나머지
+    const end = Number(match[0].replace(/,/g, '')); 
+    const suffix = raw.replace(match[0], '');       
 
-    // 옵션: 개별 지속시간/시작값 지정 가능 (data-duration, data-from)
-    const duration = Number(el.dataset.duration || 1.6);
+    // 개별 지속시간/시작값 지정 가능 (data-duration, data-from)
+    const duration = Number(el.dataset.duration || 1.8);
     const startVal = Number(el.dataset.from || 0);
 
-    // GSAP 애니메이션 객체
     const obj = { val: startVal };
 
     gsap.to(obj, {
@@ -228,18 +366,15 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollTrigger: {
         trigger: el,
         start: 'top 80%',
-        once: true, // 1회만 실행
+        once: true, 
       },
       onUpdate: () => {
-        // 정수로 표기 (필요하면 소수점 처리도 가능)
         const shown = Math.round(obj.val).toLocaleString('ko-KR');
         el.textContent = shown + suffix;
       },
     });
   });
 });
-
-
 
 
 
@@ -257,25 +392,18 @@ const esgSwiper = new Swiper('.preview_swiper', {
 });
 
 
-
 /* product_swiper */
 const productSwiper = new Swiper('.product_swiper', {
   autoplay: true,
   loop: true,
   slidesPerView: 'auto',
-  // slidesPerView: 3,
-  // slidesOffsetBefore: 465,
-
-  // ✅ 기본 간격 (넓은 화면)
   spaceBetween: 20,
-
-  // ✅ 반응형 설정 추가
   breakpoints: {
     0: {
-      spaceBetween: 20, // 0 ~ 499px 사이에서는 간격 제거
+      spaceBetween: 20, 
     },
     501: {
-      spaceBetween: 20, // 500px 이상에서는 간격 20 유지
+      spaceBetween: 20, 
     }
   },
 
@@ -404,7 +532,6 @@ const businesSwiper2 = new Swiper('.business2_swiper', {
 });
 
 
-
 /* News */
 const newsSwiper = new Swiper('.news_img_swiper', {
   // autoplay: true,
@@ -414,9 +541,8 @@ const newsSwiper = new Swiper('.news_img_swiper', {
   },
   slidesPerView: 'auto',
   spaceBetween: 40,
-  // centeredSlides: false,
   centeredSlides: true,
-  centeredSlidesBounds: true, // ✅ 추가
+  centeredSlidesBounds: true, 
   loopedSlides: 8,
   loop: true,
   
@@ -424,7 +550,6 @@ const newsSwiper = new Swiper('.news_img_swiper', {
     nextEl: '.swiper-next',
     prevEl: '.swiper-prev',
   },
-  // 화면 너비가 "480px 이하"일 때 설정
   breakpoints: {
     0: {
       slidesPerView: 'auto',
@@ -453,7 +578,7 @@ const newsSwiper2 = new Swiper('.news_text_swiper', {
   slidesPerView: 'auto',
   spaceBetween: 40,
   centeredSlides: true,
-  centeredSlidesBounds: true, // ✅ 이거 꼭 필요함!
+  centeredSlidesBounds: true, 
   loopedSlides: 8,
   loop: true,
   navigation: {
