@@ -17,7 +17,6 @@ window.addEventListener('scroll', function () {
   }
 })
 
-
 // menu_popup 열었을 때 브라우저 스크롤x
 // 메뉴 열기 버튼
 document.querySelector('.header_menu').addEventListener('click', function () {
@@ -34,9 +33,6 @@ document.querySelector('.header_menu_popup .ri-close-line').addEventListener('cl
   // 스크롤 풀기
   document.body.classList.remove('fixed');
 });
-
-
-
 
 
 /* 헤더 */
@@ -86,22 +82,75 @@ utilBtn.addEventListener('click', function () {
 })
 
 /* 헤더 검색 */
-const searchBtn = document.querySelector('.search_wrap')
-const searchBox = document.querySelector('.search_box')
+document.addEventListener('DOMContentLoaded', () => {
+const headerEl   = document.getElementById('header');
+const container  = headerEl.querySelector('.container');
+const searchWrap = headerEl.querySelector('.search_wrap');   // 돋보기 버튼 래퍼
+const searchBtn  = searchWrap.querySelector('button');       // 실제 버튼
+const searchBox  = headerEl.querySelector('.search_box');    // 패널
+const inputEl    = searchBox.querySelector('input');
 
-// *********** 마우스 가져다대면 열림.
-// 처음엔 검색 박스를 숨겨둠
-searchBox.style.display = 'none';
+// 초기 상태
+closeSearch(false);
 
-// 마우스를 올리면 검색 박스를 보여줌
-searchBtn.addEventListener('mouseenter', () => {
-  searchBox.style.display = 'block';
+function openSearch(focus = true) {
+  headerEl.classList.add('is-search-open');
+  searchBtn.setAttribute('aria-expanded', 'true');
+  if (focus && inputEl) inputEl.focus();
+}
+
+function closeSearch(blur = true) {
+  headerEl.classList.remove('is-search-open');
+  searchBtn.setAttribute('aria-expanded', 'false');
+  if (blur && inputEl && document.activeElement === inputEl) inputEl.blur();
+}
+
+function isOpen() {
+  return headerEl.classList.contains('is-search-open');
+}
+
+// 돋보기 클릭 → 토글
+searchWrap.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation(); // 문서 클릭 닫기와 충돌 방지
+  isOpen() ? closeSearch() : openSearch();
 });
 
-// 마우스가 벗어나면 다시 숨김
-searchBtn.addEventListener('mouseleave', () => {
-  searchBox.style.display = 'none';
+// 검색 박스 클릭: 폼 안이면 유지, 배경(오버레이) 클릭이면 닫기
+searchBox.addEventListener('click', (e) => {
+  const isInsideForm = e.target.closest('.search_box form');
+  if (isInsideForm) {
+    e.stopPropagation(); // 폼 내부는 열림 유지
+  } else {
+    closeSearch();       // 오버레이 클릭 → 닫기
+  }
 });
+
+  // 바깥 클릭 → 닫기 (폼 내부만 "안쪽"으로 간주)
+  document.addEventListener('click', (e) => {
+    const clickedInsideSearch =
+      searchWrap.contains(e.target) || e.target.closest('.search_box form');
+    if (isOpen() && !clickedInsideSearch) closeSearch();
+  });
+
+
+  // ESC로 닫기
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) closeSearch();
+  });
+
+  // (선택) submit 시 비어있으면 기본 동작 막기
+  const form = searchBox.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      if (!inputEl || !inputEl.value.trim()) {
+        e.preventDefault();
+        inputEl?.focus();
+      }
+    });
+  }
+});
+// end
 
 
 // 메뉴 관련 요소 선택
@@ -131,8 +180,6 @@ window.addEventListener('resize', () => {
 
 
 /* 메뉴 팝업 - 모바일 */
-// (1) 플러스 아이콘(i)과 dep2 메뉴 리스트 가져오기
-// 메뉴 아이콘과 dep2 리스트 가져오기
 const menuIcons = document.querySelectorAll('.header_menu_popup .dep1 > li > a > i');
 const dep2Menus = document.querySelectorAll('.header_menu_popup .dep2');
 
@@ -141,8 +188,6 @@ menuIcons.forEach(function (item, i) {
     event.preventDefault(); // a 태그의 기본 동작 방지
 
     const isActive = dep2Menus[i].classList.contains('active');
-
-    // 모든 dep2 닫기
     dep2Menus.forEach(dep2 => dep2.classList.remove('active'));
 
     // 클릭한 항목이 기존에 닫혀있던 경우만 열기
@@ -151,8 +196,6 @@ menuIcons.forEach(function (item, i) {
     }
   });
 });
-
-
 
 
 /* 메인 비주얼 */
@@ -199,6 +242,42 @@ function resetProgressBar(duration) {
 }
 
 
+/* Brand Story */
+document.addEventListener('DOMContentLoaded', () => {
+  const targets = document.querySelectorAll('.brand_story_wrap ul strong');
+
+  targets.forEach((el) => {
+    const raw = el.textContent.trim();
+    const match = raw.match(/[\d.,]+/);
+
+    if (!match) return;
+
+    const end = Number(match[0].replace(/,/g, '')); 
+    const suffix = raw.replace(match[0], '');       
+
+    // 개별 지속시간/시작값 지정 가능 (data-duration, data-from)
+    const duration = Number(el.dataset.duration || 1.8);
+    const startVal = Number(el.dataset.from || 0);
+
+    const obj = { val: startVal };
+
+    gsap.to(obj, {
+      val: end,
+      duration,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        once: true, 
+      },
+      onUpdate: () => {
+        const shown = Math.round(obj.val).toLocaleString('ko-KR');
+        el.textContent = shown + suffix;
+      },
+    });
+  });
+});
+
 
 
 /* ESG */
@@ -215,25 +294,18 @@ const esgSwiper = new Swiper('.preview_swiper', {
 });
 
 
-
 /* product_swiper */
 const productSwiper = new Swiper('.product_swiper', {
   autoplay: true,
   loop: true,
   slidesPerView: 'auto',
-  // slidesPerView: 3,
-  // slidesOffsetBefore: 465,
-
-  // ✅ 기본 간격 (넓은 화면)
   spaceBetween: 20,
-
-  // ✅ 반응형 설정 추가
   breakpoints: {
     0: {
-      spaceBetween: 20, // 0 ~ 499px 사이에서는 간격 제거
+      spaceBetween: 20, 
     },
     501: {
-      spaceBetween: 20, // 500px 이상에서는 간격 20 유지
+      spaceBetween: 20, 
     }
   },
 
@@ -362,7 +434,6 @@ const businesSwiper2 = new Swiper('.business2_swiper', {
 });
 
 
-
 /* News */
 const newsSwiper = new Swiper('.news_img_swiper', {
   // autoplay: true,
@@ -372,9 +443,8 @@ const newsSwiper = new Swiper('.news_img_swiper', {
   },
   slidesPerView: 'auto',
   spaceBetween: 40,
-  // centeredSlides: false,
   centeredSlides: true,
-  centeredSlidesBounds: true, // ✅ 추가
+  centeredSlidesBounds: true, 
   loopedSlides: 8,
   loop: true,
   
@@ -382,7 +452,6 @@ const newsSwiper = new Swiper('.news_img_swiper', {
     nextEl: '.swiper-next',
     prevEl: '.swiper-prev',
   },
-  // 화면 너비가 "480px 이하"일 때 설정
   breakpoints: {
     0: {
       slidesPerView: 'auto',
@@ -411,7 +480,7 @@ const newsSwiper2 = new Swiper('.news_text_swiper', {
   slidesPerView: 'auto',
   spaceBetween: 40,
   centeredSlides: true,
-  centeredSlidesBounds: true, // ✅ 이거 꼭 필요함!
+  centeredSlidesBounds: true, 
   loopedSlides: 8,
   loop: true,
   navigation: {

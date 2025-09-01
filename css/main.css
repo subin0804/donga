@@ -104,9 +104,10 @@ button {
     font-family: 'remixicon';
     font-size: 1.4rem;
 }
-.view_more {
 
-}
+
+.main-swiper .swiper-slide { position: relative; }
+
 
 @media screen and (max-width: 1440px) {
     .container {
@@ -370,8 +371,26 @@ header.on .dep2 {
     box-sizing: border-box;
 }
 
-.search_box {
-    /* display: none; */
+/* 검색창 닫힘 */
+#header .search_box{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+}
+
+/* 열림 */
+#header.is-search-open .search_box{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+header .search_box h2 {
+    color: #EEE;
+    margin-bottom: 2rem;
 }
 
 header .search_box {
@@ -380,9 +399,25 @@ header .search_box {
     right: 0;
     top: 5rem;
     text-align: center;
-    line-height: 8rem;
+    line-height: normal;
     padding: 10rem 0;
     background: rgba(52, 53, 53, 0.5);
+}
+
+header .search_box form {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+
+header .search_box input {
+    color: #333;
+    width: 25rem;
+}
+
+header .search_box button {
+    font-size: 2.2rem;
+    color: #EEE;
 }
 
 .header_menu {
@@ -626,6 +661,7 @@ header .search_box {
     height: 100vh;
     overflow: hidden;
     position: relative;
+    pointer-events:none
 }
 
 .main_visual .swiper-slide>span {
@@ -881,6 +917,7 @@ header .search_box {
 .brand_story_wrap ul strong {
     font-size: 3rem;
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
 }
 
 @media screen and (max-width: 1100px) {
@@ -968,20 +1005,16 @@ header .search_box {
 
 /* 섹션3 - ESG */
 .esg_content {
-    /* margin: 0 auto; */
-    /* min-height: fit-content; */
+
 }
 .esg_wrap .container {
-    /* min-height: 100%; */
-    /* max-width: 192rem; */
-    /* margin: 0 auto; */
+
 }
 
 .esg_content {
     display: flex;
     position: relative;
     gap: 2rem;
-
 }
 
 .esg_content>* {
@@ -991,7 +1024,6 @@ header .search_box {
 
 .esg_event_left {
     width: 40%;
- 
 }
 
 .esg_wrap hgroup {
@@ -1125,7 +1157,6 @@ header .search_box {
     display: flex;
     flex-wrap: wrap;
     left: 0;
-    /* width: 45%; */
     width: 40%;
     gap: 2rem 2%;
     
@@ -1138,8 +1169,8 @@ header .search_box {
     align-items: center;
     overflow: hidden;
     width: 29%;
-    flex-shrink: 1;
     height: 10rem;
+    flex-shrink: 1;
     margin: 0;
     opacity: 1;
     border-radius: 1rem;
@@ -1253,8 +1284,6 @@ header .search_box {
     
 
     .esg_content .event_thumb {
-        /* position: relative;  */
-        /* position: absolute; */
         bottom: 50%;
         width: 100%;
         justify-content: space-between;
@@ -1679,7 +1708,6 @@ header .search_box {
 
 
 
-
 /* 섹션5 - business */
 .business {
     min-height: 100vh;
@@ -1810,53 +1838,12 @@ header .search_box {
     overflow: hidden;
     height: 100%;
     width: 100%;
-    /* max-width: 100%; */
     opacity: 1;
     position: relative; 
 }
 
-/* .business2_swiper .swiper-slide {
-    height: 100%;
-    width: 100%;
-    flex-shrink: 0;
-}
 .business2_swiper .b_con_box {
     display: flex;
-    gap: 4rem;
-    height: 100%;
-    width: 100%;
-}
-
-.business2_swiper .txt_box {
-    width: 40%;
-    height: 100%;
-    overflow: hidden;
-
-}
-
-.business2_swiper .txt_box span {
-    display: block;
-    position: absolute;
-    top: 30%;
-    width: 40%;
-    line-height: 3rem;
-}
-
-.business2_swiper .img_box {
-    overflow: hidden;
-    width: 60%;
-    height: 100%;
-}
-
-.business2_swiper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-} */
-
-.business2_swiper .b_con_box {
-    display: flex;
-    /* align-items: center; */
     gap: 4rem;
     width: 100%;
     height: 100%;
@@ -1873,7 +1860,6 @@ margin-top: 10rem;
 font-size: 1.6rem;
 line-height: 1.6;
 color: #333;
-/* border: 1px solid #000; */
 }
 
 .business2_swiper .b_con_box .img_box {
