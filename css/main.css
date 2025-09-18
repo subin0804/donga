@@ -298,7 +298,8 @@ header .dep2>li {
 }
 
 header .dep2>li:hover {
-    color: #3d290c;
+    /* color: #3d290c; */
+    color: #ACDFF5;
 }
 
 header.on .dep2 {
@@ -1358,7 +1359,8 @@ header .search_box button {
 
 /* 섹션4 - product */
 .product_wrap {
-    background: #F7F2EA;
+    /* background: #F7F2EA; */
+    background: #caefff;
     position: relative;
     /* min-height: 89.5rem; */
 }
@@ -1389,7 +1391,8 @@ header .search_box button {
     top: 0;
     width: 46.5rem;
     height: 100%;
-    background: #F7F2EA;
+    /* background: #F7F2EA; */
+    background: #caefff;
     z-index: 11;
 }
 
@@ -1409,22 +1412,22 @@ header .search_box button {
 .product_wrap .p_rank {
     position: absolute;
     left: 3rem;
-    top: -5rem;
+    top: -7.3rem;
 }
 
 .product_wrap .p_rank span {
     /* rank-label*/
     position: absolute;
-    left: 2.7rem;
-    top: 1.9rem;
+    left: 5.1rem;
+    top: 4.1rem;
     z-index: 100;
-    font-size: 4rem;
+    font-size: 5rem;
     color: #FFF;
 }
 
 .product_wrap ul .p_rank img {
-    width: 8rem;
-    height: 8rem;
+    width: 13rem;
+    height: 13rem;
 }
 
 .product_wrap li>img {
@@ -2329,15 +2332,10 @@ footer {
     padding: 4rem 0;
 }
 
-/* footer>* {
-    width: 50%;
-} */
-
 footer .footer_logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 footer img {
@@ -2346,6 +2344,11 @@ footer img {
     height: auto;
     /* object-fit: cover; */
 }
+
+.footer_info {
+    color: #DDD;
+}
+
 footer .footer_info address{
     margin-bottom: .5rem;
 }
