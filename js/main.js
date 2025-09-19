@@ -536,14 +536,14 @@ const businesSwiper2 = new Swiper('.business2_swiper', {
 const newsSwiper = new Swiper('.news_img_swiper', {
   // autoplay: true,
   autoplay: {
-    delay: 3000,
+    delay: 5000,
     disableOnInteraction: false,
   },
   slidesPerView: 'auto',
   spaceBetween: 40,
   centeredSlides: true,
   centeredSlidesBounds: true, 
-  loopedSlides: 8,
+  // loopedSlides: 8,
   loop: true,
   
   navigation: {
