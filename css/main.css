@@ -1522,7 +1522,7 @@ header .search_box button {
         width: 40rem;
         /* width: 48rem; */
         height: 100%;
-        background: #F7F2EA;
+        background: #caefff;
         z-index: 11;
 
     }
@@ -1576,7 +1576,7 @@ header .search_box button {
         top: 0;
         /* width: 40rem; */
         height: 100%;
-        background: #F7F2EA;
+        background: #caefff;
         z-index: 20;
 
     }
@@ -1699,12 +1699,8 @@ header .search_box button {
     .product_wrap .product_swiper a {
         bottom: 0;
         left: 0;
-
         padding: .5rem 4rem;
         border-radius: .6rem;
-    }
-    .product_wrap .controls>* {
-        
     }
 }
 
