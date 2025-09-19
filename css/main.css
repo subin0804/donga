@@ -1538,10 +1538,18 @@ header .search_box button {
         left: 3rem;
         top: -5rem;
     }
+
     .product_wrap ul .p_rank img {
-        width: 7.5rem;
-        height: 7.5rem;
+        width: 9rem;
+        height: 9rem;
     }
+
+    .product_wrap .p_rank span {
+    left: 3.5rem;
+    top: 2.9rem;
+    font-size: 3.5rem;
+    }
+
     .product_wrap li>img {
         width: 13rem;
         height: 38rem;
@@ -1553,15 +1561,18 @@ header .search_box button {
     .product_wrap {
         min-height: 84.1rem;
     }
+
     .product_wrap hgroup p {
         font-size: 1.6rem;
         line-height: 2.8rem;
     }
+
     .product_wrap .best_product {
         right: 0;
         top: 16rem;
         width: 80rem;
     }
+
     .product_wrap .product_swiper {
         position: relative;
         width: calc(100vw - 16.0rem);
@@ -1578,25 +1589,34 @@ header .search_box button {
         height: 100%;
         background: #caefff;
         z-index: 20;
-
     }
+
     .product_wrap .product_swiper {
         /* width: calc(100vw - 16.0rem); */
         width: 100vw;
-
     }
+
     .product_wrap li {
         width: 40rem;
         height: 31.5rem;
     }
+    
     .product_wrap .p_rank {
         left: 3rem;
         top: -5rem;
     }
+
     .product_wrap ul .p_rank img {
         width: 7.5rem;
         height: 7.5rem;
     }
+
+    .product_wrap .p_rank span {
+        left: 2.6rem;
+        top: 2.1rem;
+        font-size: 3.5rem;
+    }
+
     .product_wrap li>img {
         width: 13rem;
         height: 38rem;
@@ -1618,24 +1638,21 @@ header .search_box button {
         top: 16rem;
         width: 4rem;
     }
+
     .product_wrap .product_swiper {
         margin-top: 3rem;
-
     }
+
     .product_wrap li>img {
-        /* position: absolute; */
-        /* bottom: 2rem; */
         left: 25rem;
         width: 12rem;
         height: 35rem;
-
     }
     .product_wrap .controls {
         top: -40rem;
     }
-
-
 }
+
 @media screen and (max-width: 930px) {
     .product_wrap .product_swiper .box {
         /* position: static; */
@@ -1652,11 +1669,12 @@ header .search_box button {
         font-size: 1.6rem;
         margin-top: 4rem;
         line-height: 3rem;
- 
     }
+
     .product_wrap .best_product {
         display: none;
     }   
+
     .product_wrap .product_swiper {
         overflow: hidden;
         padding-top: 10rem;
@@ -1678,13 +1696,11 @@ header .search_box button {
         box-sizing: border-box;
     }
     .product_wrap li>img {
-        /* position: absolute; */
-        /* bottom: 2rem; */
         left: 20rem;
         width: 8rem;
         height: 25rem;
-        
     }
+
     .product_wrap .product_swiper strong {
         display: block;
         margin-bottom: 2rem;
@@ -2345,9 +2361,15 @@ footer img {
     color: #DDD;
 }
 
+.footer .footer_info br {
+    display: none;
+}
+
 footer .footer_info address{
     margin-bottom: .5rem;
+    line-height: 1.4;
 }
+
 footer .footer_info p {
     margin-bottom: 1rem;
 }
@@ -2364,6 +2386,10 @@ footer .footer_info i {
         flex-direction: column;
         align-items: flex-start;
         gap: 3rem;
-
+    }
+    
+    .footer_info {
+        display: block;
+        font-size: 1.4rem;
     }
 }
